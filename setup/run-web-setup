@@ -1,0 +1,57 @@
+# run-web-setup
+
+source setup/setup_ctm_web.sh
+
+rm -rf  Anaconda3-2024.02-1-Linux-x86_64.sh 
+
+yum install -y tar mkdir sudo which git wget gawk
+yum install -y autotools autoconf aclocal automake libtool.x86_64 file
+yum install -y perl-CPAN.noarch 
+yum install -y pkgconfig.x86_64
+yum install -y zlib.x86_64
+yum install -y zlib-devel.x86_64
+
+## install for perl (openssl needs these)
+yum install -y perl-Module-Load.noarch perl-ExtUtils-MakeMaker.noarch perl-ExtUtils-Install.noarch perl-ExtUtils-Manifest.noarch perl.x86_64 perl-Module-Load.noarch perl-Module-Load-Conditional.noarch perl-Params-Check.noarch perl-version.x86_64 
+
+### 24.5.0, old one is 4.7.10
+wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+bash Anaconda3-2024.02-1-Linux-x86_64.sh -b -f -p $ANACONDA3_TOP_DIR
+
+rm -rf  Anaconda3-2024.02-1-Linux-x86_64.sh 
+
+source $ANACONDA3_TOP_DIR/bin/activate
+conda init
+
+## python basemap, basemap-data-hires, matplotlib
+## Apparently, after python3.12, distutils got kicked out
+$ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray pyproj
+export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
+
+conda config --add channels conda-forge
+
+# load gmt
+#conda install conda-forge::gmt -y
+
+# use environment
+# preprocess to get a new yml file to be used during runtime 
+#   conda create --name ctm_explorer_conda_env
+#   conda activate ctm_explorer_conda_env
+#   conda install conda-forge::gmt -y
+#   conda install setuptools -y
+#   conda install anaconda::pybind11 -y
+#   conda install conda-forge::h5py -y
+#   conda env export > ctm_explorer_conda_env.yml
+
+conda env create -f ./setup/ctm_explorer_conda_env.yml
+conda activate ctm_explorer_conda_env
+echo "conda activate ctm_explorer_conda_env" >> ~/.bashrc
+
+$ANACONDA3_TOP_DIR/bin/pip install setuptools
+
+## setup plotting  
+mkdir -p $PLOTTING_TOP_DIR
+cd $PLOTTING_TOP_DIR
+git clone https://github.com/SCECcode/ctm_plotting.git 
+cd ctm_plotting
+$ANACONDA3_TOP_DIR/bin/pip install dist/ctm_plotting-0.0.1.tar.gz

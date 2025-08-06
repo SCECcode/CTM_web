@@ -1,0 +1,18 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    ports:
+      - 5438:5432
+    restart: unless-stopped
+      
+  web:
+   volumes:
+    - ./:/app
+    - ./custom-php.ini:/etc/php.d/custom-php.ini
+    - ./ctm-result:/usr/local/share/ctm/ctm-result
+   restart: unless-stopped
+
+

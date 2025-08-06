@@ -1,0 +1,6 @@
+
+pid=`docker ps | grep ctm_web_web | cut -f 1 -d ' '`
+
+#docker container exec -u apache -it $pid /bin/bash
+docker container exec -it $pid /bin/bash
+

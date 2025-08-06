@@ -1,0 +1,13 @@
+var CTM_tb={
+  "models": [
+    {'id':1,
+     'name':'Lee_2025',
+     'data':'ThermalModel_WUS_v2.nc'},
+    {'id':2,
+     'name':'Shinevar_2018',
+     'data':'Shinevar_2018_Temperature.nc'}
+  ]
+};
+
+
+

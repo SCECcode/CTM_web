@@ -1,0 +1,317 @@
+/* required styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+#opacitySlider {
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(153, 00, 00));
+}
+
+#opacitySlider-handle {
+   width: 2em;
+   height: 1.6em;
+   top: 50%;
+   margin-top: -0.8em;
+   text-align: center;
+   line-height: 1.6em;
+}
+
+.cxm-small-btn {
+          background: transparent;
+          color: #011638;
+          border: none;
+          display: inline-block;
+          padding: 0rem 0.2rem 0rem 0.3rem;
+          }
+
+.cxm-small-btn:hover, .cxm-small-btn:active, .cxm-small-btn:focus, .cxm-small-btn:checked {
+          color: #DC3545;
+          outline:0 !important;
+          border: none;
+          box-shadow: none;
+          display: inline-block;
+          }
+
+.cxm-small-btn:disabled {
+          color: white;
+          }
+
+.modal-full { 
+    width: 100%; 
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+} 
+
+.modal-full .modal-content, modal-full-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+}       
+
+.modal-full .modal-dialog, modal-full-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+}
+.modal-full .modal-body, modal-full-body {
+    top: 10px;
+    height: 100%;
+    margin-left: 240px;
+    overflow-y: auto;
+}
+
+.modal-full .modal-header {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 275px; /* Adjust width as needed */
+  height: 100%; /* Make it take the full height of the modal */
+  text-align: center;
+}
+
+:root {
+    /*font-size: 90%;*/
+}
+
+body, html {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 10pt;
+}
+
+div.container.main {
+    min-width: 1140px;
+}
+
+input, select, .btn, .custom-select, .input-group-text {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.container-fluid.top {
+    padding: 0;
+}
+
+.banner-container {
+    width: 100%;
+    background-color: #E4EBF1;
+    padding-top: 50px;
+}
+
+#banner-container .navbar-brand {
+    color: #C22B48;
+    font-weight: bold;
+}
+
+.scec-header {
+    background-color: #E4EBF1;
+    border-radius: 0;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    padding: 0;
+}
+
+.navbar span {
+    color: #C22B48;
+    font-weight: 600;
+    font-size: 14pt;
+    margin-top: 18px;
+    margin-left: -2px;
+}
+
+.navbar-brand > img {
+    display: block;
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: -15px;
+}
+
+.navbar-brand, .navbar-nav > a {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
+}
+
+a.navbar-brand span {
+    position: relative;
+    top: 19px;
+    left: 21px;
+}
+
+.navbar-nav {
+    margin-top: 16px;
+}
+
+.navbar-nav a {
+    color: white;
+    padding-right: 20px;
+}
+
+
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+}
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    font-size: 11pt;
+    line-height: 20px;
+    color: #C22B48;
+}
+
+.container .navbar-header a {
+    color: white;
+}
+
+.navbar-brand .scec-logo {
+    width: 110px;
+    vertical-align: middle;
+    display: inline-block;
+    bottom: 28px;
+    position: relative;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    background-color: #577399;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #577399;
+}
+
+.navbar-toggler {
+    border: 0;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+}
+
+img {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container a {
+    color: #C22B48;
+}
+
+nav.navbar.navbar-dark a.nav-link  {
+    color: #577399;
+}
+
+nav.navbar .nav-link.disabled {
+    color: lightgray;
+}
+
+.scec-main-container {
+    background-color: #FFFFFF;
+}
+
+label { 
+    font-weight: bold;
+}
+
+ul li {
+    list-style: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .scec-main-container {
+        border: 0px;
+    }
+}
+
+.container .btn-dark {
+    background-color: #577399;
+    border-color: #577399;
+    color: white;
+}
+
+
+.info-page-container {
+    padding: 10px;
+    margin-top: 51px;
+}
+
+.info-page-container.guide {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.info-page-container.guide div {
+    z-index: 100;
+    position: relative;
+}
+
+.info-page-container h3,
+.info-page-container h4 {
+    margin-top: 20px;
+}
+
+.info-page-container h4 {
+    margin-top: 20px;
+}
+
+.info-page-container.guide .ctm-interface img {
+   border: 1px solid #ddd;
+    max-width: 630px;
+    width: 100%;
+}
+
+.info-page-container.guide .ctm-perspective-view {
+    max-width: 550px;
+}
+
+ul.references {
+    padding-left: 0;
+}
+
+div.guide figure {
+    padding: 0 0 5px 15px;
+    margin-bottom: 0;
+}
+
+div.guide div ul li {
+    list-style-type: square;
+}
+
+div.guide ul {
+    padding-left: 20px;
+}
+
+#modalplotoptionContent .btn-dark {
+    background-color: #577399;
+    border-color: #577399;
+}
+
+#modalplotoptionContent .cvm-btn {
+    background-color: #C22B48;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+    height: 28px;
+}
+
+#modalplotoptionContent div#options-container {
+    border: 1px solid lightgray;
+    padding: 7px;
+}
