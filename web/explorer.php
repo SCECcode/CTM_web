@@ -96,9 +96,6 @@ $header = getHeader("Explorer");
     <script type="text/javascript" src="js/cxm_kml.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_model_util.js?v=1"></script>
 
-    <!-- plotly profile -->
-    <script type="text/javascript" src="js/ctm_profile_util.js"></script>
-
 <!-- Global site tag (gtag.js) - Google Analytics o
 TODO: need a new id
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-495056-12"></script>

@@ -28,22 +28,6 @@ var CTM = new function () {
        density:'DENSITY'
    };    
 
-// PIXI
-   this.changePixiLayerOpacity= function (alpha) {
-    
-      let spec = [];
-      let spec_idx = [];
-      let spec_data = [];
-      [ spec, spec_idx, spec_data ] = this.getSpec();
-    
-      let pixiuid= this.lookupModelLayers(
-                    spec_idx[0], spec_idx[1], spec_idx[2]);
-      let old=pixiGetPixiOverlayOpacity(pixiuid);
-      if(alpha != old) {
-        pixiSetPixiOverlayOpacity(pixiuid, alpha);
-      } 
-   }   
-
 // HOW TO DEFINE spec
 // spec = [ tmodel, ddepth, mmetric ];
 // spec_idx = [ tidx,midx,didx ];

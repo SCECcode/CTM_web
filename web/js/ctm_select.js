@@ -59,20 +59,9 @@ function areaClick() {
 
 function set_area_latlons_preset() {
    var t= document.getElementById("zModeType").value;
-   var tt= document.getElementById("areaDataTypeTxt").value;
    var areazptr=$('#areaZTxt');
-   if(tt == "vs30" ) {
-      areazptr.val(0);
-      areazptr.css("display","none");
-      return;
-   }
-   if(t == "d") {
-      areazptr.val(1000);
-      areazptr.css("display","");
-      } else {
-        areazptr.val(-1000);
-        areazptr.css("display","");
-   }
+   areazptr.val(1000);
+   areazptr.css("display","");
 }
 
 function set_area_latlons(uid, firstlat,firstlon,secondlat,secondlon) {
@@ -84,9 +73,6 @@ function set_area_latlons(uid, firstlat,firstlon,secondlat,secondlon) {
        $( "#areaSecondLatTxt" ).val(round2Four(secondlat));
        $( "#areaSecondLonTxt" ).val(round2Four(secondlon));
        set_area_latlons_preset();
-       if(tt == "") {
-	 $( "#areaDataTypeTxt" ).val("vs"); 
-       }
        $( "#areaUIDTxt" ).val(uid);
    }
 }
@@ -97,7 +83,6 @@ function reset_area_latlons() {
    $( "#areaSecondLatTxt" ).val('');
    $( "#areaSecondLonTxt" ).val('');
    $( "#areaZTxt" ).val('');
-   $( "#areaDataTypeTxt" ).val('');
    reset_area_UID();
 }
 
@@ -225,26 +210,6 @@ function set_point_latlons_preset()
     $( "#pointZTxt" ).val(0);
 }
 
-/*  special preset case for ivslu/cvlsu because they are sparse */
-function set_point_latlons_special() 
-{
-    reset_point_latlons();
-/*  special preset case for ivslu/cvlsu because they are sparse */
-    var model=document.getElementById("selectModelType").value;
-    if(model == "ivlsu") {
-        $( "#pointFirstLatTxt" ).val(32.686);
-        $( "#pointFirstLonTxt" ).val(-116.05);
-        reset_point_UID();
-        $( "#pointZTxt" ).val(1000);
-    } 
-    if(model == "cvlsu") {
-        $( "#pointFirstLatTxt" ).val(33.31);
-        $( "#pointFirstLonTxt" ).val(-116.57);
-        reset_point_UID();
-        $( "#pointZTxt" ).val(1000);
-    } 
-}
- 
 function set_point_latlons(uid,lat,lon) {
    // need to capture the lat lon and draw a point
    if(point_select && drawing_point) {
@@ -359,13 +324,8 @@ function lineClick() {
 
 function set_line_latlons_preset() {
    var t= document.getElementById("zModeType").value;
-   if(t == "d") {
-      $( "#lineZTxt" ).val(5000);
-      $( "#lineZStartTxt" ).val(0);
-      } else {
-          $( "#lineZTxt" ).val(-4000);
-          $( "#lineZStartTxt" ).val(300);
-   }
+   $( "#lineZTxt" ).val(5000);
+   $( "#lineZStartTxt" ).val(0);
 }
 
 function set_line_latlons(uid,firstlat,firstlon,secondlat,secondlon) {
@@ -376,7 +336,6 @@ function set_line_latlons(uid,firstlat,firstlon,secondlat,secondlon) {
        $( "#lineSecondLatTxt" ).val(round2Four(secondlat));
        $( "#lineSecondLonTxt" ).val(round2Four(secondlon));
        set_line_latlons_preset();
-       $( "#lineDataTypeTxt" ).val("vs"); 
        $( "#lineUIDTxt" ).val(uid);
    }
 }
@@ -388,7 +347,6 @@ function reset_line_latlons(){
    $( "#lineSecondLonTxt" ).val('');
    $( "#lineZTxt" ).val('');
    $( "#lineZStartTxt" ).val('');
-   $( "#lineDataTypeTxt" ).val('');
    reset_line_UID();
 }
 
@@ -509,17 +467,9 @@ function profileClick() {
 function set_profile_latlons_preset()
 {
    var t= document.getElementById("zModeType").value;
-   if( t == 'd' ) {
-       $( "#profileZEndTxt" ).val(30000);
-       $( "#profileZStartTxt" ).val(0);
-       $( "#profileZStepTxt" ).val(100);
-       $( "#profileDataTypeTxt" ).val('vs');
-       } else {
-           $( "#profileZEndTxt" ).val(-25000);
-           $( "#profileZStartTxt" ).val(500);
-           $( "#profileZStepTxt" ).val(-100);
-           $( "#profileDataTypeTxt" ).val('vs');
-   }
+   $( "#profileZEndTxt" ).val(30000);
+   $( "#profileZStartTxt" ).val(0);
+   $( "#profileZStepTxt" ).val(100);
 }
 
 function set_profile_latlons(uid,lat,lon) {
@@ -537,7 +487,6 @@ function reset_profile_latlons() {
    $( "#profileFirstLatTxt" ).val('');
    $( "#profileFirstLonTxt" ).val('');
    $( "#profileZEndTxt" ).val('');
-   $( "#profileDataTypeTxt" ).val('vs');
    $( "#profileZStartTxt" ).val('');
    $( "#profileZStepTxt" ).val('');
    reset_profile_UID();
