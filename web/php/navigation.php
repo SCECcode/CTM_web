@@ -4,7 +4,7 @@
 $host_site_actual_path = "/";
 if (isset($_SERVER['HTTP_X_FORWARDED_SERVER'])) {
 	// check that we're behind a proxy
-	$host_site_actual_path = "/research/cvm-explorer/";
+	$host_site_actual_path = "/research/ctm-explorer/";
 }
 
 
@@ -18,7 +18,7 @@ function getHeader($this_page) {
 /*
 		$host_site_actual_path => "Explorer",
 */
-		"explorer.php" => "CVM Explorer",
+		"explorer.php" => "CTM Explorer",
 		"guide.php" => "User Guide",
 		"disclaimer.php" => "Disclaimer",
 		"cite" => "How to Cite",
@@ -43,7 +43,7 @@ _END;
              <nav class="navbar navbar-expand-lg navbar-light scec-header">
           
             <a class="navbar-brand" href="$host_site_actual_path"><img class="scec-logo d-inline-block align-top" src="img/scec-statewide-logo-white-bg.png">
-               <span>Community Velocity Model Explorer</span></a>
+               <span>Community Thermal Model Explorer</span></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

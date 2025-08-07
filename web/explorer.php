@@ -160,8 +160,8 @@ TODO: need a new id
             </div>
         </div>
 <p class="col-11 intro-text">
-	The <a href="https://www.scec.org/research/ctm">SCEC Community Velocity Model (CTM) Explorer </a>
-allows easy access to a range of seismic velocity models using the UCTM package. The interface allows for downloading data in csv format and various visualization capabilities including 2D horizonal slices, 2D vertical cross sections, and 1D vertical profiles. See the <a href="guide.php">user guide</a> for more details and usage instructions.</p> </div>
+	The <a href="https://www.scec.org/research/ctm">SCEC Community Thermal Model (CTM) Explorer </a>
+allows easy access to a range of thermal models. The interface allows for downloading data in csv format and various visualization capabilities including 2D horizonal slices, 2D vertical cross sections, and 1D vertical profiles. See the <a href="guide.php">user guide</a> for more details and usage instructions.</p> </div>
 
 <!-- leaflet control -->
     <div class="row" style="display:none;">
@@ -239,59 +239,6 @@ allows easy access to a range of seismic velocity models using the UCTM package.
 
             </div> <!-- model select -->
 
-<!-- special pull-out for elygtl -->
-            <div id="zrange" class="input-group mt-0 mb-1" style="display:none;"> 
-                <div class="row offset-2">
-                Z range:
-                  <div class="col-4 pr-0">
-                    <input type="text"
-                        id="zrangeStartTxt"
-                        placeholder="Start"
-                        title="zrange start"
-                        onfocus="this.value=''"
-                        class="form-control">
-                  </div>
-                  <div class="col-4 pr-0">
-                    <input type="text"
-                        id="zrangeStopTxt"
-                        placeholder="Stop"
-                        title="zrange stop"
-                        onfocus="this.value=''"
-                        class="form-control">
-                  </div>
-                </div>
-            </div>
-<!-- special pull-out for elygtl, taper -->
-            <div id="floors" class="input-group mt-1" style="display:none;"> 
-                <div class="row offset-2">
-                Floors:
-                  <div class="col-3 pr-0">
-                    <input type="text"
-                        id="vsFloorTxt"
-                        placeholder="vsFloor"
-                        title="vs floor value"
-                        onfocus="this.value=''"
-                        class="form-control">
-                  </div>
-                  <div class="col-3 pr-0">
-                    <input type="text"
-                        id="vpFloorTxt"
-                        placeholder="vsFloor"
-                        title="vp floor value"
-                        onfocus="this.value=''"
-                        class="form-control">
-                  </div>
-                  <div class="col-3 pr-0">
-                    <input type="text"
-                        id="densityFloorTxt"
-                        placeholder="densityFloor"
-                        title="density floor value"
-                        onfocus="this.value=''"
-                        class="form-control">
-                  </div>
-                </div>
-            </div>
-
             <div class="input-group input-group-sm custom-control-inline" style="max-width:450px">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="searchType">Select Profile Type</label>
@@ -303,16 +250,6 @@ allows easy access to a range of seismic velocity models using the UCTM package.
                     <option value="pointClick">0D Point</option>
                 </select>&nbsp;<button class="btn ctm-top-small-btn" data-toggle="modal" data-target="#modalstype"><span class="glyphicon glyphicon-info-sign"></span></button>
             </div> <!-- query option -->
-
-            <div class="input-group input-group-sm custom-control-inline" style="max-width:450px">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="modelType">Select Z Mode</label>
-                </div>
-                <select id="zModeType" class="custom-select custom-select-sm">
-                    <option id="zMode-depthClick" value="d">Depth (m)</option>
-                    <option id="zMode-elevClick" value="e">Elevation (m)</option>
-                </select>&nbsp;<button class="btn ctm-top-small-btn" data-toggle="modal" data-target="#modalzmode"><span class="glyphicon glyphicon-info-sign"></span></button>
-            </div> <!-- z select -->
 
 <!-- selection -->
 <div id="workspace" style="border:0px solid red">
@@ -429,13 +366,6 @@ allows easy access to a range of seismic velocity models using the UCTM package.
                                                title="Z ends"
                                                onfocus="this.value=''" 
                                                class="form-control mt-1">
-                                        <select title="profileDatatype" id="profileDataTypeTxt" class="my-custom-select custom-select mt-1" style="border-radius:0.25rem">
-                                               <option value="">Data Type</option>
-                                               <option value="vs">Vs</option>
-                                               <option value="vp">Vp</option>
-                                               <option value="density">Density</option>
-                                               <option value="all">Vs,Vp,Density</option>
-                                        </select>
 
                                         <input type="text"
                                                id="profileUIDTxt" 
@@ -496,12 +426,6 @@ allows easy access to a range of seismic velocity models using the UCTM package.
                                                title="lineZStartTxt"
                                                onfocus="this.value=''" 
                                                class="form-control mt-1">
-                                        <select title="Datatype" id="lineDataTypeTxt" class="my-custom-select custom-select mt-1" style="border-radius:0.25rem">
-                                               <option value="">Data Type</option>
-                                               <option value="vs">Vs</option>
-                                               <option value="vp">Vp</option>
-                                               <option value="density">Density</option>
-                                        </select>
                                     </div>
                                     <div class="col-5 pr-0">
                                         <input type="text"
@@ -591,16 +515,6 @@ allows easy access to a range of seismic velocity models using the UCTM package.
                                                onfocus="this.value=''"
                                                onchange="reset_area_presets()"
                                                class="form-control mt-1">
-                                        <select title="Datatype" id="areaDataTypeTxt" class="my-custom-select custom-select mt-1" style="border-radius:0.25rem" >
-                                               <option value="">Data Type</option>
-                                               <option value="vs">Vs</option>
-                                               <option value="vp">Vp</option>
-                                               <option value="density">Density</option>
-<!--
-                                               <option value="poisson">poisson</option>
-                                               <option value="vs30">vs30 etree</option>
--->
-                                        </select>
 
                                         <input type="text"
                                                id="areaUIDTxt" 
@@ -635,7 +549,7 @@ allows easy access to a range of seismic velocity models using the UCTM package.
 	       <p id="ctm-model-selected" style="margin-bottom:0.5rem"></p>
 	       <p id="ctm-model-description" style="margin-bottom:0.5rem;"></p>
 	       <p id="ctm-model-reference" style="margin-bottom:0.5rem;"></p>
-	       <p style="margin-bottom:0.5rem;">For additional information about UCTM and included models refer to the <a href="https://github.com/SCECcode/uctm">UCTM Github homepage</a></p>
+	       <p style="margin-bottom:0.5rem;">For additional information about CTM and included models refer to the <a href="https://github.com/SCECcode/ctm">CTM Github homepage</a></p>
             </div>
 </div> <!-- workspace -->
 
@@ -788,19 +702,19 @@ allows easy access to a range of seismic velocity models using the UCTM package.
       <div id="plotoption-header" class="modal-header" style="text-align:left; border:0px solid blue;display:">
 	  <div class="col-12" style="border:0px solid orange;padding:10px 0px 0px 0px">
              <div id="options-container">
-                 <h4 style="margin-bottom: 17px;">SCEC Community Velocity Model Explorer</h4>
+                 <h4 style="margin-bottom: 17px;">SCEC Community Thermal Model Explorer</h4>
 
 <!-- Map Option -->
              <div class="mb-3" style="border:0px solid green;margin-left:4px;">
                 <div id="plotoption-interp-option" class="form-check form-check-inline" style="display:">
                      <label class='form-check-label mini-option'
-                            title='Interpolates data using splines in tension (tension=0.2). This has the effect of smoothing the resultant data plot, but may produce undesirable results in some situations, especially for spatially discontinuous models or models with sharp velocity discontinuities. Leave unchecked to plot the raw extracted data'
+                            title='Interpolates data using splines in tension (tension=0.2). This has the effect of smoothing the resultant data plot, but may produce undesirable results in some situations, especially for spatially discontinuous models or models with sharp thermal discontinuities. Leave unchecked to plot the raw extracted data'
 			    for="plotoption-interp">
                      <input class='form-check-inline mr-2'
                             type="checkbox"
 			    id="plotoption-interp"/>Interp mode
                      </label>
-                     <button class="btn ctm-top-small-btn" data-toggle="modal" data-target="#modalinfo" data-info='Interpolates data using splines in tension (tension=0.2). This has the effect of smoothing the resultant data plot, but may produce undesirable results in some situations, especially for spatially discontinuous models or models with sharp velocity discontinuities. Leave unchecked to plot the raw extracted data'><span class="glyphicon glyphicon-info-sign"></span></button>
+                     <button class="btn ctm-top-small-btn" data-toggle="modal" data-target="#modalinfo" data-info='Interpolates data using splines in tension (tension=0.2). This has the effect of smoothing the resultant data plot, but may produce undesirable results in some situations, especially for spatially discontinuous models or models with sharp thermal discontinuities. Leave unchecked to plot the raw extracted data'><span class="glyphicon glyphicon-info-sign"></span></button>
                 </div>
                 <div id="plotoption-point-option" class="form-check form-check-inline" style="display:">
                      <label class='form-check-label mini-option'
@@ -1121,42 +1035,14 @@ allows easy access to a range of seismic velocity models using the UCTM package.
       <div class="modal-body" id="modalstypeBody">
         <h4><b>Options:</b></h4>
 	<ul class="mb-1" id="info-list">
-           <li style="list-style-type:disc">Plot horizontal slice of vs, vp or density with <b>2D&nbsp;Horizontal&nbsp;Slice</b> option </li>
-           <li style="list-style-type:disc">Plot cross section for vs, vp or density data type with <b>2D&nbsp;Vertical&nbsp;Cross&nbsp;Section</b> option</li>
+           <li style="list-style-type:disc">Plot horizontal slice with <b>2D&nbsp;Horizontal&nbsp;Slice</b> option </li>
+           <li style="list-style-type:disc">Plot cross section with <b>2D&nbsp;Vertical&nbsp;Cross&nbsp;Section</b> option</li>
            <li style="list-style-type:disc">Plot depth or elevation profile with <b>1D&nbsp;Vertical&nbsp;Profile</b> option</li> 
-           <li style="list-style-type:disc">Query for material properties with <b>0D&nbsp;Point</b> option</li> 
+           <li style="list-style-type:disc">Query for thermal properties with <b>0D&nbsp;Point</b> option</li> 
         </ul>
       </div>
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn close" data-dismiss="modal">&times;</button>
-      </div>
-
-    </div> <!--Content-->
-  </div>
-</div> <!--Modal: Name-->
-
-<!--Modal: ZMode -->
-<div class="modal" id="modalzmode" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" id="modalzmodeDialog" role="document">
-
-    <!--Content-->
-    <div class="modal-content" id="modalzmodeContent" style="font-size:20px">
-      <div id="zm-header" class="modal-header" style="display:">
-         <p>Z-values can be extracted in depth for all proflies, but elevation is only supported in 1D vertical profile and 0D material property retrieval.</p> 
-      </div>
-
-      <!--Body-->
-      <div class="modal-body" id="modalzmodeBody">
-        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
-          <h4><b>Zmode:</b></h4>
-          <ul class="mb-1" id="info-list">
-             <li style="list-style-type:disc">Depth: 0 at surface and positive depth value</li>
-             <li style="list-style-type:disc">Elevation: 0 at sealevel and positive value toward the air and negative value toward the center of the earth</li>
-          </ul>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn close" data-dismiss="modal"">&times;</button>
       </div>
 
     </div> <!--Content-->
@@ -1179,7 +1065,7 @@ allows easy access to a range of seismic velocity models using the UCTM package.
 lon1 lat1 z1             lon1,lat1,z1
 lon2 lat2 z2      or     lon2,lat2,z2
 </pre>
-<h5> Z value should match the Z mode selection from the main explorer, maximum display points is 200</h5>
+<h5>Maximum display points is 200</h5>
           </div>
         </div>
       </div>

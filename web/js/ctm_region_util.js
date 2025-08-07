@@ -7,7 +7,7 @@
 // information on model 
 var CTM_installed=[];
 
-// str is a blob { 'models': ['ctmh','ctms5'] }
+// str is a blob { 'models': ['lee2025','shinevar2018'] }
 function makeInstallModelList(str) {
   var blob;
   if( str == undefined || str == "" ) {
@@ -26,7 +26,6 @@ function makeInstallModelList(str) {
     var item=mlist[i];
     CTM_installed.push(item);
   }
-
   setup_modeltype();
 }
 
@@ -46,7 +45,6 @@ function makeModelSelection() {
    var cnt=tb.length;
    var i;
    var option;
-   var all_model_list=[];
    for(i=0; i<cnt; i++) {
      var item=tb[i];
      var color=item['color'];
@@ -62,182 +60,8 @@ function makeModelSelection() {
         option.label = mname;
         option.value= aname;
         sel.add(option);
-        all_model_list.push(aname);
      }
    } 
-   // special case
-   var sel=document.getElementById('selectModelType');
-   option = document.createElement("option");
-   option.text = "-- Tiled Models --";
-   option.setAttribute("disabled", true);
-   option.value= "disabled";
-   sel.add(option);
-
-   if(isModelInstalled("ctmh") && isModelInstalled("cs248")) {
-   option = document.createElement("option");
-   option.text = "CS 248,CTM-H v15.1.1";
-   option.label = "CS 248,CTM-H v15.1.1";
-   option.value= "cs248,ctmh";
-   sel.add(option);
-   }
-
-   if(isModelInstalled("ctmhlabn") && isModelInstalled("ctmsi")) {
-   option = document.createElement("option");
-   option.text = "CTM-H LA Basin,CTM-S4.26M01";
-   option.label = "CTM-H LA Basin,CTM-S4.26M01";
-   option.value= "ctmhlabn,ctmsi";
-   sel.add(option);
-   }
-
-   if(isModelInstalled("ctms5") && isModelInstalled("cca")) {
-   option = document.createElement("option");
-   option.text = "CCA,CTM-S4.26,elygtl:ely";
-   option.label = "CCA,CTM-S4.26,elygtl:ely";
-   option.value= "cca,ctms5,elygtl:ely";
-   sel.add(option);
-   }
-
-   if(isModelInstalled("ctmsi")) {
-   option = document.createElement("option");
-   option.text = "CTM-S4.26M01,elygtl:taper";
-   option.label = "CTM-S4.26M01,elygtl:taper";
-   option.value= "ctmsi,elygtl:taper";
-   sel.add(option);
-   }
-
-   if(isModelInstalled("ctmsi")) {
-   option = document.createElement("option");
-   option.text = "CTM-S4.26M01,elygtl:ely";
-   option.label = "CTM-S4.26M01,elygtl:ely";
-   option.value= "ctmsi,elygtl:ely";
-   sel.add(option);
-   }
-
-/***
-   if(isModelInstalled("1d")) {
-     option = document.createElement("option");
-     option.text = "1D";
-     option.label = "1D";
-     option.value= "1d"; 
-     sel.add(option);
-   }
-
-   if(isModelInstalled("1d")) {
-     option = document.createElement("option");
-     option.text = "BBP1D";
-     option.text = "BBP1D";
-     option.label = "BBP1D";
-     option.value= "bbp1d"; 
-     sel.add(option);
-   }
-
-   if(isModelInstalled("ctmhlabn") && isModelInstalled("ctmhsgbn"),
-      isModelInstalled("ctmhvbn") && isModelInstalled("ctmhrbn"),
-      isModelInstalled("ctmhibbn") && isModelInstalled("ctmhsmbn"),
-      isModelInstalled("ctmhsbbn") && isModelInstalled("ctmhsbcbn"),
-      isModelInstalled("ctmhstbn") && isModelInstalled("ctmsi")) {
-        option = document.createElement("option");
-        option.text = "CTM-H All Basins, CTM-S4.26.M01";
-        option.value= "ctmhlabn,ctmhsgbn,ctmhvbn,ctmhrbn,ctmhibbn,ctmhsmbn,ctmhsbbn,ctmhsbcbn,ctmhstbn,ctmsi";
-        sel.add(option);
-   }
-
-   if(isModelInstalled("sfctm") && isModelInstalled("cca")) {
-     option = document.createElement("option");
-     option.text = "SFCTM,CCA";
-     option.label = "SFCTM,CCA";
-     option.value= "sfctm,cca"; 
-     sel.add(option);
-   }
-
-   if(isModelInstalled("sfctm") && isModelInstalled("1d")) {
-     option = document.createElement("option");
-     option.text = "SFCTM,1D";
-     option.label = "SFCTM,1D";
-     option.value= "sfctm,1d"; 
-     sel.add(option);
-   }
-
-   if(isModelInstalled("sfctm") && isModelInstalled("cca") && isModelInstalled("1d")) {
-     option = document.createElement("option");
-     option.text = "SFCTM,CCA,1D";
-     option.label = "SFCTM,CCA,1D";
-     option.value= "sfctm,cca,1d";
-     sel.add(option);
-   }
-
-// nc1d is with 1d
-   if(isModelInstalled("sfctm") && isModelInstalled("cca") && isModelInstalled("1d")) {
-     option = document.createElement("option");
-     option.text = "SFCTM,CCA,SF1D";
-     option.label = "SFCTM,CCA,SF1D";
-     option.value= "sfctm,cca,sf1d";
-     sel.add(option);
-   }
-
-
-// bbp1d is with 1d
-   if(isModelInstalled("sfctm") && isModelInstalled("cca") && isModelInstalled("1d")) {
-     option = document.createElement("option");
-     option.text = "SFCTM,CCA,BBP1D";
-     option.label = "SFCTM,CCA,BBP1D";
-     option.value= "sfctm,cca,bbp1d";
-     sel.add(option);
-   }
-
-
-   if(isModelInstalled("sjfz") && isModelInstalled("1d")) {
-     option = document.createElement("option");
-     option.text = "SJFZ,1D";
-     option.label = "SJFZ,1D";
-     option.value= "sjfz,1d"; 
-     sel.add(option);
-   }
-
-   if(isModelInstalled("ctmhlabn") && isModelInstalled("ctmhsgbn") &&
-      isModelInstalled("ctmhvbn") && isModelInstalled("ctmhrbn") &&
-      isModelInstalled("ctmhibbn") && isModelInstalled("ctmhsmbn") &&
-      isModelInstalled("ctmhsbbn") && isModelInstalled("ctmhsbcbn") &&
-      isModelInstalled("ctmhstbn") && isModelInstalled("canvas")) {
-        option = document.createElement("option");
-        option.text = "CTM-H All Basins,CANVAS";
-        option.label = "CTM-H All Basins,CANVAS";
-        option.value= "ctmhlabn,ctmhsgbn,ctmhvbn,ctmhrbn,ctmhibbn,ctmhsmbn,ctmhsbbn,ctmhsbcbn,ctmhstbn,canvas";
-        sel.add(option);
-   }
-
-        option.value= "ctmhlabn,ctmhsgbn,ctmhvbn,ctmhrbn,ctmhibbn,ctmhsmbn,ctmhsbbn,ctmhsbcbn,ctmhstbn,ctmsi";
-        sel.add(option);
-   }
-***/
-
-   if(isModelInstalled("ctmhlabn") 
-	   && isModelInstalled("ctmhsmbn")
-	   && isModelInstalled("ctms5") ) {
-      option = document.createElement("option");
-      option.text = "CTM-H LA Basin,CTM-H Santa Maria Basin,CTM-S4.26";
-      option.label = "CTM-H LA Basin,CTM-H Santa Maria Basin,CTM-S4.26";
-      option.value= "ctmhlabn,ctmhsmbn,ctms5";
-      sel.add(option);
-   }
-
-  if(isModelInstalled("sfctm") && isModelInstalled("cca")) {
-   option = document.createElement("option");
-   option.text = "SFCTM,CCA,SF1D";
-   option.label = "SFCTM,CCA,SF1D";
-   option.value= "sfctm,cca,sf1d";
-   sel.add(option);
-   }
-
-   // All of them
-  if(all_model_list.length != 0) {
-   option = document.createElement("option");
-   option.text = "All models";
-   option.label = "All models";
-   option.value= all_model_list.toString();
-   sel.add(option);
-   }
-
 }
 
 // target_nm is abb_name
@@ -300,7 +124,6 @@ function getReferenceIndex(nm, olist,alist,rlist) {
       for(let j=0; j<ncnt; j++) {
         if(nlist[j] == target) {
           if(olist.includes(i)) {
-//            window.console.log("duplicate found..",i);
             } else {
              
               if( 'author' in fitem ) {
@@ -327,135 +150,7 @@ function getReferenceByList(reflist,alist,rlist) {
    return alist,rlist;
 }
 
-function getInterpolatorIndex(nm) {
-   let target=nm.trim()
-   var tb=CTM_tb['interpolator'];
-   var icnt=tb.length;
-   var i;
-   for(i=0; i<icnt; i++) {
-     var item=tb[i];
-     if(item['abb name'] == target) {
-        return i;
-     }
-  }
-  return -1;
-}
-
-function getInterpolatorDescriptionById(id) {
-   let tb=CTM_tb['interpolator'];
-   let item=tb[id];
-   var descript=item['description'];
-   return descript;
-}
-
-function getInterpolatorNameById(id) {
-   let tb=CTM_tb['interpolator'];
-   let item=tb[id];
-   var name=item['name'];
-   return name;
-}
-
-function getInterpolatorAbbNameById(id) {
-   let tb=CTM_tb['interpolator'];
-   let item=tb[id];
-   var name=item['abb name'];
-   return name;
-}
-
-function getInterpolatorReferenceById(id) {
-   let tb=CTM_tb['interpolator'];
-   let item=tb[id];
-   if ('references' in item ) {
-     return item['references'];
-   } 
-   return undefined;
-}
-
-function getInterpolatorAuthorById(id) {
-   let tb=CTM_tb['interpolator'];
-   let item=tb[id];
-   if ('authors' in item ) {
-     return item['authors'];
-   } 
-   return undefined;
-}
-
-function getInterpolatorAuthorById(id) {
-   let tb=CTM_tb['interpolator'];
-   let item=tb[id];
-   if ('authors' in item ) {
-     return item['authors'];
-   } 
-   return undefined;
-}
-
-
-function get1DModelIndex(nm) {
-   let target=nm.trim();
-   var tb=CTM_tb['1D model'];
-   var icnt=tb.length;
-   var i;
-   for(i=0; i<icnt; i++) {
-     var item=tb[i];
-     if(item['abb name'] == target) {
-        return i;
-     }
-  }
-  return -1;
-}
-
-function get1DModelDescriptionById(id) {
-   let tb=CTM_tb['1D model'];
-   let item=tb[id];
-   var descript=item['description'];
-   return descript;
-}
-
-function get1DModelNameById(id) {
-   let tb=CTM_tb['1D model'];
-   let item=tb[id];
-   var name=item['name'];
-   return name;
-}
-
-function get1DModelAbbNameById(id) {
-   let tb=CTM_tb['1D model'];
-   let item=tb[id];
-   var name=item['abb name'];
-   return name;
-}
-
-function get1DModelReferenceById(id) {
-   let tb=CTM_tb['1D model'];
-   let item=tb[id];
-   if ('references' in item ) {
-     return item['references'];
-   } 
-   return undefined;
-}
-
-function get1DModelAuthorById(id) {
-   let tb=CTM_tb['1D model'];
-   let item=tb[id];
-   if ('authors' in item ) {
-     return item['authors'];
-   } 
-   return undefined;
-}
-
-function get1DModelAuthorById(id) {
-   let tb=CTM_tb['1D model'];
-   let item=tb[id];
-   if ('authors' in item ) {
-     return item['authors'];
-   } 
-   return undefined;
-}
-
-
-
 function getModelColor(nm) {
-// this is an optional field, vs30/topo etree map
    let target=nm.trim();
    var tb=CTM_tb['models'];
    var icnt=tb.length;
@@ -468,23 +163,6 @@ function getModelColor(nm) {
      }
   }
   return "black";
-}
-
-// this is an optional field, vs30/topo etree map
-function getModelMap(nm) {
-   let target=nm.trim();
-   var tb=CTM_tb['models'];
-   var icnt=tb.length;
-   var i;
-   for(i=0; i<icnt; i++) {
-     var item=tb[i];
-     if(item['abb name'] == target) {
-        if(item.has('map')) {
-           return item['map'];
-        }
-     }
-  }
-  return NULL;
 }
 
 function makeLatlngsCoordinate(nm) {
@@ -585,18 +263,6 @@ function getModelNameWithType(t) {
    }
 
    return rt;
-}
-function getZModeNameWithType(t) {
-   var tb=CTM_tb['zmodes'];
-   var cnt=tb.length;
-   var i;
-   for(i=0; i<cnt;i++) {
-      var zmode=tb[i];
-      if(zmode['value'] == t) {
-        return zmode['mode name'];
-      }
-   }
-   return undefined;
 }
 
 function getModelColorWithID(id) {

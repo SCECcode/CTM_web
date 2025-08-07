@@ -24,25 +24,6 @@ var hold_mptable=1;
 var ctm_metaplottb_list=[];
 
 /******************************************/
-// tracking showing all loaded models
-var show_ctm_save_list=[];
-var show_ctm=false;
-
-function reset_ctm_save_list() {
-   show_ctm_save_list=[];
-}
-
-function toggleShowModels() {
-   show_ctm=!show_ctm;
-   if(show_ctm) {
-     show_ctm_save_list=load_all_models();
-     } else {
-       reload_models_from_list(show_ctm_save_list);
-       show_ctm_save_list=[];
-   }
-}
-
-/******************************************/
 function _makeReferenceLink(author, reference) {
   let link="<button class=\"btn btn-sm ctm-small-btn\" data-toggle=\"modal\" data-body=\"reference\" data-target=\"#modalreference\">"+author+"</button>";
   return link;
