@@ -134,11 +134,6 @@ TODO: need a new id
 
 <div id="ctmMain" class="main" style="border:solid 1 red;">
 
-<!-- hidden btn to do profile comparison -->
-    <div>
-        <button id="plotProfileBtn" onclick="" class="btn ctm-small-btn" data-toggle="modal" data-target="#modalProfile" style="display:none"></button>
-    </div>
-
 <!-- spinners -->
     <div class="spinDialog" style="position:absolute;top:52%;left:49%; z-index:9999;">
         <div id="spinIconForProperty" align="center" style="display:none;"><i class="glyphicon glyphicon-cog fa-spin" style="color:red"></i></div>
@@ -1105,35 +1100,3 @@ a label that is being used as datafile prefix separated by a comma or a space </
     </div> <!--Content-->
   </div>
 </div> <!--Modal: Name-->
-
-<!--Modal: profileIfram -->
-<div class="modal" id="modalProfile" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" id="modalProfileDialog" role="document">
-
-    <!--Content-->
-    <div class="modal-content" id="modalProfileContent">
-      
-      <!--Body-->
-      <div class="modal-body" id="modalProfileBody">
-        <div id="profile-iframe-container" class="col-12" style="overflow:auto;">
-
-<iframe id="viewProfileIfram" src="" height="0" width="100%" onload="setIframSize(this.id)" allowfullscreen></iframe>
-
-        </div>
-      </div>
-
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close</button>
-      </div> 
-<!--
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn close" data-dismiss="modal">&times;</button>
-      </div>
---->
-
-
-    </div> <!--Content-->
-   </div>
-</div> <!--Modal: Name-->
-</body>
-</html>
