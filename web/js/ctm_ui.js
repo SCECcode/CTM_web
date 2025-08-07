@@ -62,32 +62,8 @@ function refreshModelDescription(modelstr) {
         abbname=abbname+sp+tmp;
         sp=", ";
         getReferenceIndex(nm,reflist,alist,rlist);
-        } else { // something else ??
-          let idx=getInterpolatorIndex(nm);
-          if(idx != -1) {
-// found Interpolator
-            description=description+sp+getInterpolatorDescriptionById(idx);
-            name=name+sp+getInterpolatorNameById(idx);
-            let tmp=getInterpolatorAbbNameById(idx);
-            justinterp.push(tmp);
-            abbname=abbname+sp+tmp;
-            sp=", ";
-            getReferenceIndex(nm,reflist,alist,rlist);
-            } else {  // 1D ? 
-              let idx=get1DModelIndex(nm);
-              if(idx != -1) {
-// found 1D
-                description=description+sp+get1DModelDescriptionById(idx);
-                name=name+sp+get1DModelNameById(idx);
-                let tmp=get1DModelAbbNameById(idx);
-                justname.push(tmp);
-                abbname=abbname+sp+tmp;
-                sp=", ";
-                getReferenceIndex(nm,reflist,alist,rlist);
-                } else { //
-                     window.console.log("BAD BAD..wrong name ??",nm);
-              }
-         }
+        } else {
+          window.console.log("BAD BAD BAD");
       }
     }
 
@@ -103,16 +79,6 @@ function refreshModelDescription(modelstr) {
       }
     }
 
-//should just be 1
-    let icnt=justinterp.length;
-    if(icnt > 1) {
-       window.console.log("BAD BAD,  should have just 1 interpolator function allowed..");
-    }
-    if(icnt == 1) {
-      justnamestring=justnamestring+" with " +justinterp[0];
-    }
-
-    let t_description=" A tiled CTM that combines the "+justnamestring+" into a single model. Tiling is accomplished by model ordering using UCTM. For descriptions of the individual models refer to their descriptions by selecting the relevant model in the CTM Explorer";
 
 // show model name and abbrevshow
     if(name.length + abbname.length > 200) {
@@ -123,19 +89,6 @@ function refreshModelDescription(modelstr) {
     }
 
 // show description 
-    if(jcnt+icnt > 1) {
-      description=t_description;
-      if(t_description.length > 200) {
-        let idx= t_description.indexOf(".");
-        b_description = idx !== -1 ? t_description.substring(0, idx) : t_description;
-        if(b_description.length > 200) {
-          b_description = " A Tiled CTM that combines ";
-        }
-        } else {
-          b_description=null;
-      }
-    }
-
     if(description.length > 350 || b_description != null) {
 
         $("#modaldescriptionbody").html("<div><b>Description:</b>"+description+"</div>");
@@ -311,10 +264,10 @@ window.console.log("XX calling updatePlotOptions.. with ",blob);
     switch (plotparam) {
       case 1:
       case 2:	 
-        document.getElementById("setPlotRange").innerHTML="Set Plot Range (km/s)";
+        document.getElementById("setPlotRange").innerHTML="Set Plot Range (???)";
 	break;
       case 3:
-        document.getElementById("setPlotRange").innerHTML="Set Plot Range (g/cm^3)";
+        document.getElementById("setPlotRange").innerHTML="Set Plot Range (???)";
         break;
       case 4:
         document.getElementById("setPlotRange").innerHTML="Set Plot Range";
@@ -693,51 +646,6 @@ function collapse_mpr_table()
        $('#ctm_collapse_result_btn').addClass('ctm-active');
        $('#mprCollapseLi').text("Expand");
    }
-}
-
-function refresh_zmode() {
-    $("#zModeType").val('d');
-    set_floors_presets();
-    set_zrange_presets();
-}
-
-function set_zrange_presets()
-{
-   var t= document.getElementById("zModeType").value;
-   if( t == 'd' ) {
-       $( "#zrangeStartTxt" ).val('0');
-       $( "#zrangeStopTxt" ).val('350');
-// enable all search type
-       $( "#searchType-lineClick" ).attr("disabled",false);
-       $( "#searchType-areaClick" ).attr("disabled",false);
-       } else {
-         $( "#zrangeStartTxt" ).val('0');
-         $( "#zrangeStopTxt" ).val('-350');
-// disable the crosssection and horizontal slice
-         $( "#searchType-lineClick" ).attr("disabled","disabled");
-         $( "#searchType-areaClick" ).attr("disabled","disabled");
-   }
-}
-
-function set_floors_presets()
-{
-   var t= document.getElementById("zModeType").value;
-   if( t == 'd' ) {
-       $( "#vsFloorTxt" ).val('500');
-       $( "#vpFloorTxt" ).val('1700');
-       $( "#densityFloorTxt" ).val('1700');
-       } else {
-         $( "#vsFloorTxt" ).val('-1');
-         $( "#vpFloorTxt" ).val('-1');
-         $( "#densityFloorTxt" ).val('-1');
-   }
-}
-
-function set_zrange_start(v) {
-   $( "#zrangeStartTxt" ).val(v);
-}
-function set_zrange_stop(v) {
-   $( "#zrangeStopTxt" ).val(v);
 }
 
 function getCSVFromJSON(jblob) {
