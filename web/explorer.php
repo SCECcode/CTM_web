@@ -570,15 +570,6 @@ allows easy access to a range of thermal models. The interface allows for downlo
                     </table>
                 </div>
 	    </div> 
-
-            <div class="col-12 flex-row" align="end">
-                <button class="btn ctm-top-small-btn dropdown-toggle" data-toggle="dropdown"></button>
-                <ul id='processMetaPlotResultTableList' class="dropdown-menu list-inline" role="menu">
-                   <li data-id='s' hidden >Save All</li>
-                   <li id='mprCollapseLi' data-id='c' hidden>Collapse</li>
-		   <li data-id='p'>Click here to plot the comparison plot <br>after select 1 or more vertical profiles <br>from the result table</li>
-                </ul>
-            </div>
             <div class="col-12  mt-0 mb-1" id="result-table" style="display:">
                <div id="metadataPlotTable-container" style="overflow:auto;max-height:20vh;margin:0px 0px 0px 0px;">
                     <table id="metadataPlotTable">
@@ -982,7 +973,7 @@ allows easy access to a range of thermal models. The interface allows for downlo
     <div class="modal-content" id="modalmodeltypeContent" style="font-size:20px">
       <!--Body-->
       <div class="modal-body" id="modalmodeltypeBody">
-          <p>The CTM Explorer hosts multiple models. Select the  model you wish to query or visualize in this list. The model bound will be displayed on the map except the 1D background models. </p>
+          <p>The CTM Explorer hosts multiple models. Select the  model you wish to query or visualize in this list. The model regions will be displayed on the map. </p>
       </div>
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn close" data-dismiss="modal">&times;</button>
@@ -1029,7 +1020,7 @@ allows easy access to a range of thermal models. The interface allows for downlo
 	<ul class="mb-1" id="info-list">
            <li style="list-style-type:disc">Plot horizontal slice with <b>2D&nbsp;Horizontal&nbsp;Slice</b> option </li>
            <li style="list-style-type:disc">Plot cross section with <b>2D&nbsp;Vertical&nbsp;Cross&nbsp;Section</b> option</li>
-           <li style="list-style-type:disc">Plot depth or elevation profile with <b>1D&nbsp;Vertical&nbsp;Profile</b> option</li> 
+           <li style="list-style-type:disc">Plot depth profile with <b>1D&nbsp;Vertical&nbsp;Profile</b> option</li> 
            <li style="list-style-type:disc">Query for thermal properties with <b>0D&nbsp;Point</b> option</li> 
         </ul>
       </div>
