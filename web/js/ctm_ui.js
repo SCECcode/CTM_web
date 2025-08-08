@@ -83,9 +83,9 @@ function refreshModelDescription(modelstr) {
 // show model name and abbrevshow
     if(name.length + abbname.length > 200) {
       $("#modalselectedbody").html("<div><b>Model Selected:</b>"+name+"</div>");
-      $("#ctm-model-selected").html("<b>Model Selected:</b><button class=\"btn btn-sm ctm-small-btn\" data-toggle=\"modal\" data-target=\"#modalselected\"><span class=\"glyphicon glyphicon-expand\"></span></button><br><b>UCTM Abbreviation:</b>"+abbname);
+      $("#ctm-model-selected").html("<b>Model Selected:</b><button class=\"btn btn-sm ctm-small-btn\" data-toggle=\"modal\" data-target=\"#modalselected\"><span class=\"glyphicon glyphicon-expand\"></span></button><br><b>CTM Abbreviation:</b>"+abbname);
       } else {
-        $("#ctm-model-selected").html("<b>Model Selected:</b>"+name+"<br><b>UCTM Abbreviation:</b>"+abbname);
+        $("#ctm-model-selected").html("<b>Model Selected:</b>"+name+"<br><b>CTM Abbreviation:</b>"+abbname);
     }
 
 // show description 
