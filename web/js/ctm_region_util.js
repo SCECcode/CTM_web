@@ -110,6 +110,13 @@ function getModelAbbNameById(id) {
    return name;
 }
 
+function getModelFilenameById(id) {
+   let tb=CTM_tb['models'];
+   let item=tb[id];
+   var name=item['model filename'];
+   return name;
+}
+
 // nm = 'abb name'
 // return unique index list into references array
 function getReferenceIndex(nm, olist,alist,rlist) {

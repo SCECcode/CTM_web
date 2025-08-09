@@ -16,7 +16,7 @@ let c_height = elt.clientHeight+(celt.clientHeight/2);
 let h=576+c_height;
 
 $('#top-intro').css("display", "none");
-$('#CVM_plot').css("height", h);
+$('#CTM_plot').css("height", h);
 $('#search-container').css("display", "none");
 $('.leaflet-control-attribution').css("width", "70rem");
 $('#mapDataBig').removeClass('row').addClass('col-12');
@@ -44,8 +44,8 @@ let elt = document.getElementById('banner-container');
 let c_height = elt.clientHeight;
 let h = height - c_height-4.5;
 let w = width - 15;
-$('#CVM_plot').css("height", h);
-$('#CVM_plot').css("width", w);
+$('#CTM_plot').css("height", h);
+$('#CTM_plot').css("width", w);
 resize_map();
 }
 
@@ -53,8 +53,8 @@ function _toNormalView()
 {
 $('#top-control').css("display", "");
 $('#result-container').css("display", "");
-$('#CVM_plot').css("height", "576px");
-$('#CVM_plot').css("width", "635px");
+$('#CTM_plot').css("height", "576px");
+$('#CTM_plot').css("width", "635px");
 $('.navbar').css("margin-bottom", "20px");
 $('.container').css("max-width", "1140px");
 $('.leaflet-control-attribution').css("width", "35rem");

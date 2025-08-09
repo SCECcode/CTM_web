@@ -8,34 +8,24 @@
 $lat = ($_GET['lat']);
 $lon = ($_GET['lon']);
 $z = ($_GET['z']);
-$zmode = ($_GET['zmode']);
 $model = ($_GET['model']);
-$zrange = ($_GET['zrange']);
-$floors = ($_GET['floors']);
 $uid = ($_GET['uid']);
+$modelpath = ($_GET['modelpath']);
 
-$InstallLoc= getenv('UCVM_INSTALL_PATH');
+$estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --modelpath '".$modelpath."' --outpath ./foo";
+$query="query_0d_point.py ".$estr;
 
-$estr = " -b -l ".$lat.",".$lon.",".$z." ";
-
-if ($zmode == 'e') {
-  $estr=" -c ge".$estr;
-  } else {
-    $estr=" -c gd".$estr;
-}
-if ($zrange != 'none') {
-  $estr=" -z ".$zrange.$estr;
-}
-if ($floors != 'none') {
-  $estr=" -L ".$floors.$estr;
-}
-
-$query=$InstallLoc."/utilities/run_ucvm_query.sh -m ".$model." -f ".$InstallLoc."/conf/ucvm.conf ".$estr;
 $result = exec(escapeshellcmd($query), $retval, $status);
+//print($query);
 
-$item=json_decode($result);
-$item->{"Zmode"} = $zmode;
+$result2="{\"longitude\":-118.0,\"latitude\":36.0,\"depth\":8000.0,\"temperature\":256.192703927}";
+
+$item=json_decode($result2);
+$item->{"model"} = $model;
+$item->{"uid"} = $uid;
 $nresult= json_encode($item);
+print($nresult);
+
 $itemlist = new \stdClass();
 
 $itemlist->mp=$nresult;

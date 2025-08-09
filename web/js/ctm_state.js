@@ -8,7 +8,7 @@
 //   tracks uid+meta in external state_uid.json
 function saveUserStateToFile(stateblob) {
    var uid=getRnd("");
-   var sname="cvm_state_"+uid+".json";
+   var sname="ctm_state_"+uid+".json";
 }
 
 

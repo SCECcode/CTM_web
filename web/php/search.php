@@ -1,7 +1,7 @@
 <?php
-require_once("CVM.php");
+require_once("CTM.php");
 
-$cvm = new CVM();
+$ctm = new CTM();
 
 $type = $_REQUEST["t"];
 $spec = json_decode($_REQUEST["s"]);
@@ -16,15 +16,15 @@ if (is_object($spec[0])) { $spec = (array)$spec[0]; }
 
 if ($type === "model") {
   try {
-    print $cvm->searchForModel($type, $spec)->outputJSON();
+    print $ctm->searchForModel($type, $spec)->outputJSON();
   } catch (BadFunctionCallException $e) {
-    print "cvm search error";
+    print "ctm search error";
   }
   } else {
     try {
-      print $cvm->search($type, $spec, $criteria)->outputJSON();
+      print $ctm->search($type, $spec, $criteria)->outputJSON();
     } catch (BadFunctionCallException $e) {
-      print "cvm search error";
+      print "ctm search error";
     }
 }
 

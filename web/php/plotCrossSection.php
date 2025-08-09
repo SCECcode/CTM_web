@@ -5,34 +5,23 @@
 <body>
 
 <?php
-/*  plotCrossSection.php,
-    for vs,vp,rho 
-       plot_cross_section.py
-      or
-       plot_elevation_cross_section.py
-*/
-
 $start_time = microtime(true);
 
 include ("util.php");
 
+//query_2d_cross_section.py --lat_start 34 --lon_start -119 --lat_end 35 --lon_end -116 
+//--z_start 0 --z_end 25000 
+//--modelname Lee_2025 --modelpath ${MPATH}/ThermalModel_WUS_v2.nc --outpath ./test2d_cross.csv
+
 $firstlat = ($_GET['firstlat']);
 $firstlon = ($_GET['firstlon']);
-$z = ($_GET['z']);
-$zmode = ($_GET['zmode']);
-$model= ($_GET['model']);
-$zrange = ($_GET['zrange']);
-$floors = ($_GET['floors']);
-$zstart = ($_GET['zstart']);
-$datatype = ($_GET['datatype']);
-$uid = ($_GET['uid']);
 $secondlat = ($_GET['secondlat']);
 $secondlon = ($_GET['secondlon']);
+
+$model= ($_GET['model']);
+$zstart = ($_GET['zstart']);
+$uid = ($_GET['uid']);
 $hval = ($_GET['spacing']);
-
-$InstallLoc= getenv('UCVM_INSTALL_PATH');
-
-$envstr=makeEnvString();
 
 $file="../result/".$uid."_c.png";
 $csvfile="../result/".$uid."_c_data.csv";

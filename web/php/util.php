@@ -1,19 +1,19 @@
 <?php
 function makeEnvString() {
    $myhost = gethostname();
-   $installLoc= getenv('UCVM_INSTALL_PATH');
+   $ctmwebLoc= getenv('CTM_WEB_TOP_DIR');
    $conda3Loc= getenv('ANACONDA3_TOP_DIR');
    $plottingLoc= getenv('PLOTTING_TOP_DIR');
    $syspathstr= getenv('PATH');
-   $pycvmLoc= $conda3Loc."/lib/python3.11/site-packages";
+   $pyctmLoc= $conda3Loc."/lib/python3.11/site-packages";
    $projstr= $installLoc."/lib/proj/share/proj";
    $metadataLoc= $plottingLoc."/metadata_utilities";
 
-   $condaenvLoc=$conda3Loc."/envs/cvm_explorer_conda_env";
+   $condaenvLoc=$conda3Loc."/envs/ctm_explorer_conda_env";
 
    $pathstr= $metadataLoc."/bin:".$conda3Loc."/bin:".$conda3Loc."/condabin:".$condaenvLoc."/bin:".$syspathstr;
 
-   $pythonstr=$plottingLoc."/ucvm_plotting";
+   $pythonstr=$plottingLoc."/ctm_plotting";
    $envstr="PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
 //   print($envstr);
    return $envstr;
@@ -54,7 +54,7 @@ function makeCSVDepthProfile($uid) {
 
   $depth=$json_meta["ending_depth"];
   $start=$json_meta["starting_depth"];
-  $cvm=$json_meta["cvm"];
+  $ctm=$json_meta["ctm"];
   $lon=$json_meta["lon1"];
   $lat=$json_meta["lat1"];
   $step=$json_meta["vertical_spacing"];
@@ -63,7 +63,7 @@ function makeCSVDepthProfile($uid) {
   $mplist=$json_mp["matprops"];
 
   fwrite($cfp,"#UID:".$uid."\n");
-  fwrite($cfp,"#CVM:".$comment." (".$cvm.")\n");
+  fwrite($cfp,"#CTM:".$comment." (".$ctm.")\n");
   fwrite($cfp,"#Lat:".$lat."\n");
   fwrite($cfp,"#Long:".$lon."\n");
   fwrite($cfp,"#Start_depth(m):".$start."\n");
@@ -97,7 +97,7 @@ function makeCSVElevationProfile($uid) {
 
   $depth=$json_meta["ending_elevation"];
   $start=$json_meta["starting_elevation"];
-  $cvm=$json_meta["cvm"];
+  $ctm=$json_meta["ctm"];
   $lon=$json_meta["lon1"];
   $lat=$json_meta["lat1"];
   $step=$json_meta["vertical_spacing"];
@@ -106,7 +106,7 @@ function makeCSVElevationProfile($uid) {
   $mplist=$json_mp["matprops"];
 
   fwrite($cfp,"#UID:".$uid."\n");
-  fwrite($cfp,"#CVM:".$comment." (".$cvm.")\n");
+  fwrite($cfp,"#CTM:".$comment." (".$ctm.")\n");
   fwrite($cfp,"#Lat:".$lat." Long:".$lon." Start_elevation(m):".$start." End_elevation(m):".$depth." Vert_spacing(m):".$step."\n");
   fwrite($cfp,"#Elevation(m), Vp(km/s), Vs(km/s), Density(kg/m^3)\n");
 

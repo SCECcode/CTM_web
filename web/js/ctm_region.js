@@ -11,8 +11,8 @@ var CTM_tb={
      'abb name':'lee2025',
      'path name':'lee2025',
      'model filename':'ThermalModel_WUS_v2.nc',
-     'description':'ThermalModel_WUS_v2',
-     'description_brief':'ThermalModel_WUS_v2.nc brief ...',
+     'description':'CTM of Lee et al. (2025) is a statewide California-Nevada 3D thermal model. This model is built by a Monte-Carlo sampling technique to generate unique thermal parameters (e.g., thermal conductivity, radiogenic heat production) and crustal heat flow scenarios that fit the input independent temperature proxies, including surface heat flow (Mordensky et al., 2023), new seismogenic thickness inferred from >40 years of earthquake records, crustal thickness (Buehler and Shearer, 2017) and Moho temperature (Schutt et al., 2018). This model integrates best-fit 1D vertical steady-state conductive geotherm at each pixel across the model, yielding a 3D volume of crustal temperature estimates. 3D temperature volume is statistically diffused in the lateral direction for 5 myr with a thermal diffusivity of 10^-6m^2s^-1',
+     'description_brief':'CTM of Lee et al. (2025) is a statewide California-Nevada 3D thermal model. This model is built by a Monte-Carlo sampling technique to generate unique thermal parameters (e.g., thermal conductivity, radiogenic heat production) and crustal heat flow scenarios that fit the input independent temperature proxies, including surface heat flow (Mordensky et al., 2023), ...',
      'coordinates': [ {'lon':-125.0,'lat':41.97},
                       {'lon':-114.0,'lat':41.97},
                       {'lon':-114.0,'lat':32.06},
@@ -23,9 +23,8 @@ var CTM_tb={
      'abb name':'shinevar2018',
      'path name':'shinevar2018',
      'model filename':'Shinevar_2018_Temperature.nc',
-     'map':'ucvm_utah',
-     'description':'Shinevar_2018_Temperature',
-     'description_brief':'Shinevar_2018_Temperature ... ',
+     'description':'CTM of Shinevar et al. (2018) is a southern California 3D thermal model. This model assumes steady-state, 1D vertical heat conduction throughout the region, and relies on heat flow measurements from Williams and DeAngelo (2011) and the SMU Geothermal Database. Temperature as a function of depth is calculated at each grid point assuming a steady-state 1-D geotherm following the assumption that the heat production in the upper crust accounts for 40% of the measured surface heat flow (Pollack and Chapman, 1977). Thermal conductivity is taken to be a function of temperature (Durham et al., 1987, and EQ 8 in Shinevar et al., 2018). To smooth horizontal temperature gradients, the temperature field is allowed to diffuse laterally for 5 myr, assuming constant boundary temperatures and a thermal diffusivity of 10^-6m^2s^-1',
+     'description_brief':'CTM of Shinevar et al. (2018) is a southern California 3D thermal model. This model assumes steady-state, 1D vertical heat conduction throughout the region, and relies on heat flow measurements from Williams and DeAngelo (2011) and the SMU Geothermal Database. Temperature as a function of depth is calculated at each grid point assuming a steady-state 1-D geotherm following the assumption ...',
      'coordinates': [ {'lon':-121.0,'lat':37.0},
                       {'lon':-112.0,'lat':37.0},
                       {'lon':-112.0,'lat':31.0},
@@ -44,7 +43,7 @@ var CTM_tb={
      'description':'Material Properties are returned for the selected location'},
     {'id': 2,
      'product name': '1D Vertical Profile',
-     'description':'3 Vertical profile(Vp, Vs, Rho) plots are produced for the selected location. The plot starts at Z start, ends at Z ends, and in Z step interval'},
+     'description':'3 Vertical profile plots are produced for the selected location. The plot starts at Z start, ends at Z ends, and in Z step interval'},
     {'id': 3,
      'product name': '2D Vertical Cross Section',
      'description':'A Cross section of a selected property is produced between two selected points. The plot starts at Z start, ends at Z ends, and the interval is determined by the web service'},
@@ -53,18 +52,20 @@ var CTM_tb={
      'description':'A Horizontal slice of a selected property is produced in a area marked by the rectangle drawn with the depth or elevation supplied as Z, and the interval is determined by the web service.'}
  ],
 "descript": [
-    {'id':'lon','label':'lon','show':1,'descript':'Longitude'},
-    {'id':'lat','label':'lat','show':1,'descript':'Latitude'},
-    {'id':'Z','label':'Z','show':1,'descript':'depth - meters below ground surface. Positive numbers below ground surface'}
+    {'id':'longitude','label':'lon','show':1,'descript':'Longitude'},
+    {'id':'latitude','label':'lat','show':1,'descript':'Latitude'},
+    {'id':'depth','label':'Z','show':1,'descript':'Depth'},
+    {'id':'temperature','label':'temperature','show':1,'descript':'Temperature'},
+    {'id':'model','label':'model','show':1,'descript':'Model'}
  ],
 "references": [
 { 'type':'model','name': ['lee2025'],
-     'author': 'Bowden et al., (2016)',
-     'ref': 'Bowden, D. C., Kohler, M. D., Tsai, V. C., & Weeraratne, D. S. (2016). Offshore southern California lithospheric velocity structure from noise cross-correlation functions. Journal of Geophysical Research, 121(5), 3415-3427. doi:10.1002/2016JB012919'
+     'author': 'Lee et al., (2025)',
+     'ref': 'Lee, T., Zuza, A. V., Trugman, D. T., Vlaha, D. R., & Cao, W. (2025, 09). Statewide Community Thermal Model of California and Nevada: Model comparisons, implications, and a new explorer platform. Poster Presentation at 2025 SCEC Annual Meeting. SCEC Contribution 14291'
 },
 { 'type':'model','name':['shinevar2018'],
-     'author':'Doody et al., (2023)',
-     'ref':'Doody, C., Rodgers, A., Afanasiev, M., Boehm, C., Krischer, L., Chiang, A., & Simmons, N. (2023). CANVAS: An adjoint waveform tomography model of California and Nevada. Journal of Geophysical Research: Solid Earth, 128(12). https://doi.org/10.1029/2023JB027583'
+     'author':'Shinevar et al. (2018)',
+     'ref':'Shinevar, W. J., Behn, M. D., Hirth, G., & Jagoutz, O. (2018). Inferring crustal viscosity from seismic velocity: Application to the lower crust of Southern California. Earth and Planetary Science Letters, 494, 83-91'
 }]
 
 };

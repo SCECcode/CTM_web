@@ -541,7 +541,7 @@ allows easy access to a range of thermal models. The interface allows for downlo
 	       <p id="ctm-model-selected" style="margin-bottom:0.5rem"></p>
 	       <p id="ctm-model-description" style="margin-bottom:0.5rem;"></p>
 	       <p id="ctm-model-reference" style="margin-bottom:0.5rem;"></p>
-	       <p style="margin-bottom:0.5rem;">For additional information about CTM and included models refer to the <a href="https://github.com/SCECcode/ctm">CTM Github homepage</a></p>
+	       <p style="margin-bottom:0.5rem;">For additional information about CTM and included models please refer to the <a href="https://www.scec.org/research/ctm">CTM homepage</a></p>
             </div>
 </div> <!-- workspace -->
 

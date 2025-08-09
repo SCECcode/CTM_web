@@ -58,7 +58,6 @@ function areaClick() {
 }
 
 function set_area_latlons_preset() {
-   var t= document.getElementById("zModeType").value;
    var areazptr=$('#areaZTxt');
    areazptr.val(1000);
    areazptr.css("display","");
@@ -194,7 +193,7 @@ function pointClick() {
   if(point_select) {
     select_point_option();
     $('#pointBtn').addClass('pick');
-    set_point_latlons_special();
+    set_point_latlons();
     markPointLatlon();
     } else {
       // enable the popup on map
@@ -323,7 +322,6 @@ function lineClick() {
 }
 
 function set_line_latlons_preset() {
-   var t= document.getElementById("zModeType").value;
    $( "#lineZTxt" ).val(5000);
    $( "#lineZStartTxt" ).val(0);
 }
@@ -466,7 +464,6 @@ function profileClick() {
 
 function set_profile_latlons_preset()
 {
-   var t= document.getElementById("zModeType").value;
    $( "#profileZEndTxt" ).val(30000);
    $( "#profileZStartTxt" ).val(0);
    $( "#profileZStepTxt" ).val(100);

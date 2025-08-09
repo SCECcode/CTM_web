@@ -7,18 +7,13 @@
 <?php
 /* get string and then need to split and extract triplet out of them */
 $datastr = ($_GET['datastr']); 
-$zmode = ($_GET['zmode']);
 $model = ($_GET['model']);
-$zrange = ($_GET['zrange']);
-$floors = ($_GET['floors']);
 $chunkid = intVal($_GET['chunkid']);
 $uid = ($_GET['uid']);
 $lastchunks = intVal($_GET['chunks'])-1;
 
-$InstallLoc= getenv('UCVM_INSTALL_PATH');
-
 /* if chunkid == 0, it is first chunk, create 
-   the .json file in result/UCVM_uid_p_matprops.json, 
+   the .json file in result/CTM_uid_p_matprops.json, 
    other ones, just 'append'               */
 
 $fname="../result/".$uid."_p_matprops.json";
@@ -51,18 +46,6 @@ for($i=0; $i< $set; $i++) {
 }
 
 $estr = " -b -I ".$tmpname." -O ".$fname;
-
-if ($zmode == 'e') {
-  $estr=" -c ge".$estr;
-  } else {
-    $estr=" -c gd".$estr;
-}
-if ($zrange != 'none') {
-  $estr=' -z '.$zrange.$estr;
-}
-if ($floors != 'none') {
-  $estr=' -L '.$floors.$estr;
-}
 
 $query= $InstallLoc."/utilities/run_ucvm_query.sh -m ".$model." -f ".$InstallLoc."/conf/ucvm.conf ".$estr;
 

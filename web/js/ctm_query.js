@@ -40,35 +40,6 @@ function getTextFile(url) {
   return result;
 }
 
-function _getZrange(modelstr)
-{
-    var ret="none";
-    if( typeof modelstr === 'string') {
-        if(modelstr.endsWith("elygtl:ely") || modelstr.endsWith("elygtl:taper")) {
-            var zstartstr=document.getElementById("zrangeStartTxt").value;
-            var zstopstr=document.getElementById("zrangeStopTxt").value;
-            ret=zstartstr+","+zstopstr;
-        }
-    }
-    return ret;
-}
-
-// to set taper interpolation's vs/vp/density flooring
-function _getFloors(modelstr)
-{
-    var ret="none";
-    if( typeof modelstr === 'string') {
-        if(modelstr.endsWith("elygtl:taper")) {
-            var vsfloorstr=document.getElementById("vsFloorTxt").value;
-            var vpfloorstr=document.getElementById("vpFloorTxt").value;
-            var densityfloorstr=document.getElementById("densityFloorTxt").value;
-            ret=vsfloorstr+","+vpfloorstr+","+densityfloorstr;
-        }
-    }
-    return ret;
-}
-
-
 //
 // get a data array
 //    [[lon1,lat1,z1],...,[lonn,latn,zn]]
@@ -102,10 +73,7 @@ function getMaterialPropertyByLatlonList(uid,dataarray,current_chunk, total_chun
 function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk, total_chunks, chunk_step) {
     var xmlhttp;
     // extract content of a file
-    var zmodestr=document.getElementById("zModeType").value;
     var modelstr=document.getElementById("selectModelType").value;
-    var zrangestr=_getZrange(modelstr);
-    var floorstr=_getFloors(modelstr);
 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -130,9 +98,8 @@ function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk
             if(current_chunk==(total_chunks-1)) { // last one
               var mpname=str['mp'];
 // create a download link to the actual data file
-              var zstr=getZModeNameWithType(zmodestr);
               var mstr=getModelNameWithType(modelstr);
-              var note="Material Property with "+mstr + " search by "+zstr;
+              var note="Material Property with "+mstr;
               insertMetaPlotResultTable(note,uid, {"materialproperty":mpname});
               document.getElementById('spinIconForListProperty').style.display = "none";
               if( dataarray.length < MAX_FILEPOINTS) {
@@ -142,22 +109,23 @@ function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk
             }
        }
     }
-    xmlhttp.open("GET","php/getMaterialPropertyByLatlonChunk.php?datastr="+datastr+"&zmode="+zmodestr+"&chunkid="+current_chunk+"&chunks="+total_chunks+"&model="+modelstr+"&zrange="+zrangestr+"&floors="+floorstr+ "&uid="+uid, true);
+    xmlhttp.open("GET","php/getMaterialPropertyByLatlonChunk.php?datastr="+datastr+"&zmode="+zmodestr+"&chunkid="+current_chunk+"&chunks="+total_chunks+"&model="+modelstr+ "&uid="+uid, true);
     xmlhttp.send();
 }
 
-// get material property blob by lat lon z zmode
+// get material property blob by lat lon z 
 function getMaterialPropertyByLatlon() {
     document.getElementById('spinIconForProperty').style.display = "block";
     var xmlhttp;
     var latstr=document.getElementById("pointFirstLatTxt").value;
     var lonstr=document.getElementById("pointFirstLonTxt").value;
     var zstr=document.getElementById("pointZTxt").value;
-    var zmodestr=document.getElementById("zModeType").value;
-    var modelstr=document.getElementById("selectModelType").value;
-    var zrangestr=_getZrange(modelstr);
-    var floorstr=_getFloors(modelstr);
     var uid=document.getElementById("pointUIDTxt").value;
+    var modelshort=document.getElementById("selectModelType").value;
+    var mid=getModelIndex(modelshort);
+    var modeldata=getModelFilenameById(mid);
+    var modelstr=getModelNameById(mid);
+    var modelpath = "../ctm_data/"+modeldata;
 
     if (latstr == "" || lonstr=="" || zstr=="" ) {
         document.getElementById('spinIconForProperty').style.display = "none";
@@ -186,12 +154,13 @@ function getMaterialPropertyByLatlon() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
             var str=processSearchResult("getMaterialPropertyByLatlon",uid);
+            window.console.log("XXX str..",str);
             makeMPTable(uid,str);
             document.getElementById('spinIconForProperty').style.display = "none";
             reset_point_UID();
         }
     }
-    xmlhttp.open("GET","php/getMaterialPropertyByLatlon.php?lat="+latstr+"&lon="+lonstr+"&z="+zstr+"&zmode="+zmodestr+"&model="+modelstr+"&zrange="+zrangestr+"&floors="+floorstr+"&uid="+uid, true);
+    xmlhttp.open("GET","php/getMaterialPropertyByLatlon.php?lat="+latstr+"&lon="+lonstr+"&z="+zstr+"&model="+modelstr+"&modelpath="+modelpath+"&uid="+uid, true);
     xmlhttp.send();
 }
 
@@ -351,13 +320,13 @@ function plotVerticalProfileByList(dataarray,idx,total) {
     var zstartstr=item[2];
     var zendstr=item[3];
     var zstepstr=item[4];
-    var datatypestr=item[5];
-    var uid=item[6]; // could change to json blob            
+    var uid=item[5]; // could change to json blob            
 
-    var zmodestr=document.getElementById("zModeType").value;
-    var modelstr=document.getElementById("selectModelType").value;
-    var zrangestr=_getZrange(modelstr);
-    var floorstr=_getFloors(modelstr);
+    var modelshort=document.getElementById("selectModelType").value;
+    var mid=getModelIndex(modelshort);
+    var modeldata=getModelFilenameById(mid);
+    var modelstr=getModelNameById(mid);
+    var modelpath = "../ctm_data/"+modeldata;
     var elt=document.getElementById("selectModelType");
     var commentstr = elt.options[elt.selectedIndex].innerHTML;
 
@@ -390,7 +359,7 @@ function plotVerticalProfileByList(dataarray,idx,total) {
             plotVerticalProfileByList(dataarray,idx+1,total);
         }
     }
-    xmlhttp.open("GET","php/plotVerticalProfile.php?lat="+latstr+"&lon="+lonstr+"&z="+zendstr+"&zmode="+zmodestr+"&model="+modelstr+"&comment="+commentstr+"&zrange="+zrangestr+"&floors="+floorstr+"&zstart="+zstartstr+"&zstep="+zstepstr+"&datatype="+datatypestr+"&uid="+uid,true);
+    xmlhttp.open("GET","php/plotVerticalProfile.php?lat="+latstr+"&lon="+lonstr+"&zstart="+zstartstr+"&zend="+zendstr+"&zstep="+zstepstr+"&model="+modelstr+"&comment="+commentstr+"&zstart="+zstartstr+"&zstep="+zstepstr+"&model="+modelstr+"&modelpath="+modelpath+"&uid="+uid,true);
     xmlhttp.send();
 }
 
@@ -401,10 +370,9 @@ function plotVerticalProfile() {
     var zendstr=document.getElementById("profileZEndTxt").value;
     var zstartstr=document.getElementById("profileZStartTxt").value;
     var zstepstr=document.getElementById("profileZStepTxt").value;
-    var datatypestr=document.getElementById("profileDataTypeTxt").value;
     var uid=document.getElementById("profileUIDTxt").value;
 
-    if (latstr == "" || lonstr=="" || zendstr=="" || zstartstr=="" || zstepstr==""  || datatypestr=="") {
+    if (latstr == "" || lonstr=="" || zendstr=="" || zstartstr=="" || zstepstr=="") {
         document.getElementById('spinIconForProfile').style.display = "none";
         reset_profile_UID();
         return;
@@ -422,7 +390,7 @@ function plotVerticalProfile() {
     let v=[]
     v.push(lonstr); v.push(latstr); 
     v.push(zstartstr); v.push(zendstr); v.push(zstepstr); 
-    v.push(datatypestr);v.push(uid);
+    v.push(uid);
     var dataarray=[];
     dataarray.push(v);
     plotVerticalProfileByList(dataarray,0,1);

@@ -9,18 +9,13 @@ include ("util.php");
 
 $lat = ($_GET['lat']);
 $lon = ($_GET['lon']);
-$z = ($_GET['z']);
 $zstart = ($_GET['zstart']);
+$zend = ($_GET['zend']);
 $zstep = ($_GET['zstep']);
-$datatype_b = ($_GET['datatype']);
-$zmode = ($_GET['zmode']);
 $model = ($_GET['model']);
 $comment = "'".($_GET['comment'])."'";
-$zrange = ($_GET['zrange']);
-$floors = ($_GET['floors']);
 $uid = ($_GET['uid']);
-
-$InstallLoc= getenv('UCVM_INSTALL_PATH');
+$modelpath = ($_GET['modelpath']);
 
 $file="../result/".$uid."_v.png";
 $metafile="../result/".$uid."_v_meta.json";
@@ -31,67 +26,32 @@ $pdffile="../result/".$uid."_v_matprops.pdf";
 
 $gmtpl="../perl/plotCVM-1Dvert.pl";
 
-$envstr=makeEnvString();
+//query_1d_depth_profile.py --lat 35 --lon -118 --z_start 0 --z_end 30000 --z_step 100 --mod
+//elname Lee_2025 --modelpath ${MPATH}/ThermalModel_WUS_v2.nc --outpath ./test1d.csv
+$estr = " --lat ".$lat." --lon ".$lon." --z_start ".$zstart." --z_end ".$zend.
+	" --z_step ".$zstep." --modelname '".$model."' --modelpath '".$modelpath."' --outpath ./foo";
+$query="query_1d_depth_profile.py ".$estr;
 
-if ($datatype_b == "all") {
-  $datatype="vs,vp,density";
-  } else {
-    $datatype=$datatype_b;
-}
-
-$lstr = " -v ".$zstep." -b ".$zstart." -s ".$lat.",".$lon." -e ".$z;
-
-if ($zrange != 'none') {
-  $lstr = " -z ".$zrange.$lstr;
-}
-if ($floors != 'none') {
-  $lstr = " -L ".$floors.$lstr;
-}
-
-if ($comment != 'none') {
-  $lstr = " -C ".$comment.$lstr;
-}
-
-$qstub=" -n ".$InstallLoc."/conf/ucvm.conf -i ".$InstallLoc." -d ".$datatype." -c ".$model." -o ".$file;
-
-if ($zmode == 'e') {
-  $query= $envstr." plot_elevation_profile.py -S ".$qstub.$lstr;
-  } else {
-    $query= $envstr." plot_depth_profile.py -S ".$qstub.$lstr;
-}
-
-#print($query);
+print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
 $rc=checkResult($query, $result, $uid);
 
-$cvsquery = $envstr." ucvm_vertical_profile2csv.py ".$matpropsfile." ".$metafile;
-$cvsresult = exec(escapeshellcmd($cvsquery), $cvsretval, $cvsstatus);
-#print($cvsquery);
-
-#if ($zmode == 'e') {
-#  $rc=makeCSVElevationProfile($uid);
-#  } else {
-#    $rc=makeCSVDepthProfile($uid);
-#}
 $mode=4;
-if ($datatype == 'vp') $mode=1;
-if ($datatype == 'vs') $mode=2;
-if ($datatype == 'density') $mode=3;
 
 #Usage: ./plotCVM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$mode." 1 0 0 0 1 0";
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 
-#print($gmtcommand);
-#print("<br>");
-#print("gmtresult:"); print($gmtresult); print("<br>");
-#print("gmtstatus:"); print($gmtstatus); print("<br>");
-#print("gmtretval:"); 
-#print("<pre>");
-#print_r($gmtretval);
-#print("</pre>");
-#print("<br>");
+print($gmtcommand);
+print("<br>");
+print("gmtresult:"); print($gmtresult); print("<br>");
+print("gmtstatus:"); print($gmtstatus); print("<br>");
+print("gmtretval:"); 
+print("<pre>");
+print_r($gmtretval);
+print("</pre>");
+print("<br>");
 
 $resultarray = new \stdClass();
 $resultarray->uid= $uid;
