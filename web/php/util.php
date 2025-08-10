@@ -21,6 +21,8 @@ function makeEnvString() {
 
 function checkResult($query,$result,$uid) {
   $qname="../result/query_".$uid;
+  print("TESTing");
+  print($qname);
   $pos=strpos($result,"ERROR:");
   $fp= fopen($qname,"w+") or die("Unable to open query command file!");
   fwrite($fp,$query); fwrite($fp,"\n");
@@ -35,6 +37,24 @@ function checkResult($query,$result,$uid) {
   } 
   return FALSE;
 }
+
+function checkResult0($ofile,$result,$uid) {
+  $qname="../result/query_".$uid;
+  $pos=strpos($result,"ERROR:");
+  $fp= fopen($qname,"w+") or die("Unable to open query command file!");
+  fwrite($fp,$query); fwrite($fp,"\n");
+  fwrite($fp,$result); fwrite($fp,"\n");
+  fclose($fp);
+  if( $pos != FALSE ) { // found ERROR
+     $fp= fopen($qname,"w+") or die("Unable to open query command file!");
+     fwrite($fp,$query); fwrite($fp,"\n");
+     fwrite($fp,$result); fwrite($fp,"\n");
+     fclose($fp);
+     return TRUE;
+  } 
+  return FALSE;
+}
+
 
 function makeCSVDepthProfile($uid) {
   $csvname="../result/".$uid."_v_data.csv";

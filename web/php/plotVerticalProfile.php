@@ -28,8 +28,8 @@ $gmtpl="../perl/plotCVM-1Dvert.pl";
 
 //query_1d_depth_profile.py --lat 35 --lon -118 --z_start 0 --z_end 30000 --z_step 100 --mod
 //elname Lee_2025 --modelpath ${MPATH}/ThermalModel_WUS_v2.nc --outpath ./test1d.csv
-$estr = " --lat ".$lat." --lon ".$lon." --z_start ".$zstart." --z_end ".$zend.
-	" --z_step ".$zstep." --modelname '".$model."' --modelpath '".$modelpath."' --outpath ./foo";
+
+$estr = " --lat ".$lat." --lon ".$lon." --z_start ".$zstart." --z_end ".$zend." --z_step ".$zstep." --modelname '".$model."' --modelpath '".$modelpath."' --outpath ".$csvfile;
 $query="query_1d_depth_profile.py ".$estr;
 
 print($query);

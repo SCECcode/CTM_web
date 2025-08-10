@@ -124,7 +124,7 @@ function getMaterialPropertyByLatlon() {
     var modelshort=document.getElementById("selectModelType").value;
     var mid=getModelIndex(modelshort);
     var modeldata=getModelFilenameById(mid);
-    var modelstr=getModelNameById(mid);
+    var modelstr=getModelAbbNameById(mid);
     var modelpath = "../ctm_data/"+modeldata;
 
     if (latstr == "" || lonstr=="" || zstr=="" ) {
@@ -325,7 +325,7 @@ function plotVerticalProfileByList(dataarray,idx,total) {
     var modelshort=document.getElementById("selectModelType").value;
     var mid=getModelIndex(modelshort);
     var modeldata=getModelFilenameById(mid);
-    var modelstr=getModelNameById(mid);
+    var modelstr=getModelAbbNameById(mid);
     var modelpath = "../ctm_data/"+modeldata;
     var elt=document.getElementById("selectModelType");
     var commentstr = elt.options[elt.selectedIndex].innerHTML;

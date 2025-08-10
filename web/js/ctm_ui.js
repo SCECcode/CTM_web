@@ -89,7 +89,7 @@ function refreshModelDescription(modelstr) {
     }
 
 // show description 
-    if(description.length > 450 || b_description != null) {
+    if(description.length > 350 || b_description != null) {
 
         $("#modaldescriptionbody").html("<div><b>Description:</b>"+description+"</div>");
         // if there is a description_brief.. prepend it

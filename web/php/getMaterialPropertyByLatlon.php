@@ -12,15 +12,12 @@ $model = ($_GET['model']);
 $uid = ($_GET['uid']);
 $modelpath = ($_GET['modelpath']);
 
-$estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --modelpath '".$modelpath."' --outpath ./foo";
-$query="query_0d_point.py ".$estr;
+$estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --modelpath '".$modelpath;$query="query_0d_point.py ".$estr;
 
 $result = exec(escapeshellcmd($query), $retval, $status);
-//print($query);
+print($query);
 
-$result2="{\"longitude\":-118.0,\"latitude\":36.0,\"depth\":8000.0,\"temperature\":256.192703927}";
-
-$item=json_decode($result2);
+$item=json_decode($result);
 $item->{"model"} = $model;
 $item->{"uid"} = $uid;
 $nresult= json_encode($item);
