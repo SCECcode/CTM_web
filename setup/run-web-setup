@@ -29,7 +29,6 @@ source $ANACONDA3_TOP_DIR/bin/activate
 conda init
 
 conda config --set solver classic
-
 conda update conda
 conda update -all
 
@@ -43,24 +42,23 @@ conda update -all
 $ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray pyproj netCDF4
 export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 
-conda config --add channels conda-forge
-
+#conda config --add channels conda-forge
 # load gmt
-conda install conda-forge::gmt -y
+#conda install conda-forge::gmt -y
 
 # use environment
 # preprocess to get a new yml file to be used during runtime 
-   conda create --name ctm_explorer_conda_env
-   conda activate ctm_explorer_conda_env
-   conda install conda-forge::gmt -y
-   conda install setuptools -y
-   conda install anaconda::pybind11 -y
-   conda install conda-forge::h5py -y
-   conda env export > ctm_explorer_conda_env.yml
+#   conda create --name ctm_explorer_conda_env
+#   conda activate ctm_explorer_conda_env
+#   conda install conda-forge::gmt -y
+#   conda install setuptools -y
+#   conda install anaconda::pybind11 -y
+#   conda install conda-forge::h5py -y
+#   conda env export > ctm_explorer_conda_env.yml
 
-#conda env create -f ./setup/ctm_explorer_conda_env.yml
-#conda activate ctm_explorer_conda_env
-#echo "conda activate ctm_explorer_conda_env" >> ~/.bashrc
+conda env create -f ./setup/ctm_explorer_conda_env.yml
+conda activate ctm_explorer_conda_env
+echo "conda activate ctm_explorer_conda_env" >> ~/.bashrc
 
 $ANACONDA3_TOP_DIR/bin/pip install setuptools
 
