@@ -16,6 +16,8 @@ $estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --mo
 
 $result = exec(escapeshellcmd($query), $retval, $status);
 print($query);
+print($status);
+print_r($result);
 
 $item=json_decode($result);
 $item->{"model"} = $model;
