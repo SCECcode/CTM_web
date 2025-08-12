@@ -2,6 +2,7 @@ FROM amazonlinux:2
 
 ENV CTM_WEB_TOP_DIR=/app/web
 ENV ANACONDA3_TOP_DIR=/usr/local/share/anaconda3
+ENV PLOTTING_TOP_DIR=/usr/local/share/plotting
 
 ENV CTM_IN_DOCKER='#'
 
