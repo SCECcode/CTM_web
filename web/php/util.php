@@ -7,15 +7,14 @@ function makeEnvString() {
    $syspathstr= getenv('PATH');
    $pyctmLoc= $conda3Loc."/lib/python3.11/site-packages";
    $projstr= $installLoc."/lib/proj/share/proj";
-   $metadataLoc= $plottingLoc."/metadata_utilities";
 
    $condaenvLoc=$conda3Loc."/envs/ctm_explorer_conda_env";
 
-   $pathstr= $metadataLoc."/bin:".$conda3Loc."/bin:".$conda3Loc."/condabin:".$condaenvLoc."/bin:".$syspathstr;
+   $pathstr= ".$conda3Loc."/bin:".$conda3Loc."/condabin:".$condaenvLoc."/bin:".$syspathstr;
 
    $pythonstr=$plottingLoc."/ctm_plotting";
    $envstr="PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
-//   print($envstr);
+   print($envstr);
    return $envstr;
 }
 

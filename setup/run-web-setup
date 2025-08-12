@@ -49,19 +49,20 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 
 # use conda environment
 # preprocess to create a new yml file to be used during runtime 
-   conda create --name ctm_explorer_conda_env
-   conda activate ctm_explorer_conda_env
-   conda install conda-forge::gmt -y
-   conda install setuptools -y
-   conda install anaconda::pybind11 -y
-   conda install conda-forge::h5py -y
-   conda env export > ctm_explorer_conda_env.yml
-#
+#   conda create --name ctm_explorer_conda_env
+#   conda activate ctm_explorer_conda_env
+#   conda install conda-forge::gmt -y
+#   conda install setuptools -y
+#   conda install anaconda::pybind11 -y
+#   conda install conda-forge::h5py -y
+#   conda env export > ctm_explorer_conda_env.yml
+
+
 ## use conda environment
 # these are the 'runtime' commands
-#conda env create -f ./setup/ctm_explorer_conda_env.yml
-#conda activate ctm_explorer_conda_env
-#echo "conda activate ctm_explorer_conda_env" >> ~/.bashrc
+conda env create -f ./setup/ctm_explorer_conda_env.yml
+conda activate ctm_explorer_conda_env
+echo "conda activate ctm_explorer_conda_env" >> ~/.bashrc
 
 $ANACONDA3_TOP_DIR/bin/pip install setuptools
 
@@ -71,8 +72,6 @@ cd $PLOTTING_TOP_DIR
 git clone https://github.com/SCECcode/ctm_plotting.git 
 cd ctm_plotting
 $ANACONDA3_TOP_DIR/bin/pip install dist/ctm_plotting-0.0.1.tar.gz
-
-conda env export > ctm_explorer_conda_env.yml
 
 
 
