@@ -5,6 +5,9 @@
 <body>
 
 <?php
+
+include ("util.php");
+
 $lat = ($_GET['lat']);
 $lon = ($_GET['lon']);
 $z = ($_GET['z']);
@@ -12,7 +15,10 @@ $model = ($_GET['model']);
 $uid = ($_GET['uid']);
 $modelpath = ($_GET['modelpath']);
 
-$estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --modelpath '".$modelpath;$query="query_0d_point.py ".$estr;
+$envstr=makeEnvString();
+
+$estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --modelpath '".$modelpath;
+$query = $envstr." query_0d_point.py ".$estr;
 
 $result = exec(escapeshellcmd($query), $retval, $status);
 print($query);

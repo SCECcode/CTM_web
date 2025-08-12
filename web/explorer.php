@@ -556,7 +556,10 @@ allows easy access to a range of thermal models. The interface allows for downlo
          </div> <!-- map-container -->
     </div> <!-- mapDataBig -->
 
-    <div id="result-container" class="row">
+    <div id="result-container" class="row mt-2">
+           <div class="col-12 pr-0">
+              <p style="margin-bottom:0"><b>Disclaimer:</b> SCEC and the CEM development teams do not make any representations or warranties as to the accuracy, completeness, reliability, currency, or quality of any data provided herein </p>
+           </div>
            <div class="col-12 flex-row" align="end">
                <button class="btn ctm-top-small-btn" title="download all the material property in the table" onclick="downloadMPTable()" ><span class="glyphicon glyphicon-download"></span></button>
                <button class="btn ctm-top-small-btn" title="material property  parameters displayed in the table" data-toggle="modal" data-target="#modalparameters"><span class="glyphicon glyphicon-info-sign"></span></button></td>
@@ -582,10 +585,6 @@ allows easy access to a range of thermal models. The interface allows for downlo
             <div id="phpResponseTxt"></div>
      </div> <!-- result-container -->
   </div> <!-- ctmMain -->
-  <div class="col-12 mb-2">
-    <p> <b>Disclaimer:</b> SCEC and the CEM development teams do not make any representations or warranties as to the accuracy, completeness, reliability, currency, or quality of any data provided herein
-    </p>
-  </div>
 </div> <!-- container -->
 
 <div id="expand-view-key-container" style="display:none;">
