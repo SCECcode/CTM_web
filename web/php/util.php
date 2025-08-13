@@ -14,14 +14,13 @@ function makeEnvString() {
 
    $pythonstr=$plottingLoc."/ctm_plotting";
    $envstr="PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
-   print($envstr);
+//   print($envstr);
    return $envstr;
 }
 
 function checkResult($query,$result,$uid) {
   $qname="../result/query_".$uid;
-  print("TESTing");
-  print($qname);
+  //print("TESTing"); print($qname);
   $pos=strpos($result,"ERROR:");
   $fp= fopen($qname,"w+") or die("Unable to open query command file!");
   fwrite($fp,$query); fwrite($fp,"\n");

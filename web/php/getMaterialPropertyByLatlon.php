@@ -17,19 +17,19 @@ $modelpath = ($_GET['modelpath']);
 
 $envstr=makeEnvString();
 
-$estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --modelpath '".$modelpath;
+$estr = " --lat ".$lat." --lon ".$lon." --z ".$z." --modelname '".$model."' --modelpath ".$modelpath;
 $query = $envstr." query_0d_point.py ".$estr;
 
 $result = exec(escapeshellcmd($query), $retval, $status);
-print($query);
-print($status);
-print_r($result);
+//print($query);
+//print($status);
+//print_r($result);
 
 $item=json_decode($result);
 $item->{"model"} = $model;
 $item->{"uid"} = $uid;
 $nresult= json_encode($item);
-print($nresult);
+//print($nresult);
 
 $itemlist = new \stdClass();
 

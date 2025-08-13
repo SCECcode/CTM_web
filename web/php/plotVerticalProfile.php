@@ -17,6 +17,8 @@ $comment = "'".($_GET['comment'])."'";
 $uid = ($_GET['uid']);
 $modelpath = ($_GET['modelpath']);
 
+$envstr=makeEnvString();
+
 $file="../result/".$uid."_v.png";
 $metafile="../result/".$uid."_v_meta.json";
 $matpropsfile="../result/".$uid."_v_matprops.json";
@@ -30,19 +32,20 @@ $gmtpl="../perl/plotCVM-1Dvert.pl";
 //elname Lee_2025 --modelpath ${MPATH}/ThermalModel_WUS_v2.nc --outpath ./test1d.csv
 
 $estr = " --lat ".$lat." --lon ".$lon." --z_start ".$zstart." --z_end ".$zend." --z_step ".$zstep." --modelname '".$model."' --modelpath '".$modelpath."' --outpath ".$csvfile;
-$query="query_1d_depth_profile.py ".$estr;
-
-print($query);
+$query = $envstr." query_1d_depth_profile.py ".$estr;
+ 
+//print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
 $rc=checkResult($query, $result, $uid);
 
-$mode=4;
+$mode=1;
 
 #Usage: ./plotCVM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$mode." 1 0 0 0 1 0";
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 
+/*
 print($gmtcommand);
 print("<br>");
 print("gmtresult:"); print($gmtresult); print("<br>");
@@ -52,6 +55,7 @@ print("<pre>");
 print_r($gmtretval);
 print("</pre>");
 print("<br>");
+*/
 
 $resultarray = new \stdClass();
 $resultarray->uid= $uid;
@@ -71,15 +75,47 @@ $jj->uid=$uid;
 $gmtresult_n=json_encode($jj);
 $resultarray->gmtresult= $gmtresult_n;
 
-#print($pngfile);
-#print("<br>");
-#if (file_exists($pngfile)) {
-#   print("png exist...");
-#   } else {
-#   print("png NOT exist...");
-#}
+/**
+// wait for pdf file to create if gmtstatus == 0
+if ( $gmtstatus == 0 ) {
+  $timeout = 30; // seconds
+  $interval = 10; // seconds
+  $elapsed = 0;
+  $lastSize = -1;
+  $filename = $resultarray->gmtpdf;
 
-if ( $gmtstatus == 0 && file_exists($pngfile)) {
+  while ($elapsed < $timeout) {
+     print("trying..");
+     if (file_exists($filename)) {
+          clearstatcache(true, $filename);
+          $currentSize = filesize($filename);
+	  print("currentSize "+$currentSize);
+
+        // Check if file size is stable
+        if ($currentSize === $lastSize && $currentSize > 0) {
+            echo "File is ready.\n";
+            break;
+        }
+        $lastSize = $currentSize;
+     }
+     sleep($interval);
+     $elapsed += $interval;
+   }
+   if ($elapsed >= $timeout) {
+     echo "Timeout: File not ready.\n";
+   }
+}
+
+print($resultarray->gmtpdf);
+print("<br>");
+if (file_exists($resultarray->gmtpdf)) {
+   print("result exist...");
+   } else {
+   print("result NOT exist...");
+}
+**/
+
+if ( $gmtstatus == 0 ) {
 $resultstring = htmlspecialchars(json_encode($resultarray), ENT_QUOTES, 'UTF-8');
 echo "<div data-side=\"verticalProfile".$uid."\" data-params=\""; 
 echo $resultstring;

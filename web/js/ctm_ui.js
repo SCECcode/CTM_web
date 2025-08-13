@@ -263,14 +263,12 @@ window.console.log("XX calling updatePlotOptions.. with ",blob);
 // for color scale: cross/horizonal, vs=1, vp=2, density=3
     switch (plotparam) {
       case 1:
-      case 2:	 
-        document.getElementById("setPlotRange").innerHTML="Set Plot Range (???)";
-	break;
-      case 3:
-        document.getElementById("setPlotRange").innerHTML="Set Plot Range (???)";
+        document.getElementById("setPlotRange").innerHTML="Set Plot Range (1000°C)";
         break;
+      case 2:	 
+      case 3:
       case 4:
-        document.getElementById("setPlotRange").innerHTML="Set Plot Range";
+        document.getElementById("setPlotRange").innerHTML="Set Plot Range (???)";
         break;
     }
 
@@ -469,18 +467,13 @@ function makeMPTable(uid,str)
     var datakeys=Object.keys(datablob);
     var sz=(Object.keys(datablob).length);
 
-    var tmp;
     if(hold_mptable) {
         for(i=0; i<sz; i++) {
             key=datakeys[i];
             // special case
             if(!showInTable(key))
               continue;
-            if(key == 'Z') { 
-              labelline=labelline+"<th style=\"width:48vw;background-color:whitesmoke;\"><b>"+key+"</b></th>";
-              } else {
-                labelline=labelline+"<th style=\"width:24vw;background-color:whitesmoke\"><b>"+key+"</b></th>";
-            }
+            labelline=labelline+"<th style=\"width:48vw;background-color:whitesmoke;\"><b>"+key+"</b></th>";
         }
         table.deleteRow(0); // delete the holdover
         hold_mptable=0;
@@ -500,22 +493,12 @@ function makeMPTable(uid,str)
 
         var mpline="<td style=\"width:4px\"><button class=\"btn btn-sm ctm-small-btn\" title=\"toggle the layer\" onclick=toggle_a_layergroup(\""+uid+"\");><span value=0 id=\"ctm_layer_"+uid+"\" class=\"glyphicon glyphicon-eye-open\"></span></button></td>";
 
-        var tmp;
         for(i=0; i<sz; i++) {
             var key2=datakeys[i];
             var val2=datablob[key2];
-            var zmodestr=datablob["Zmode"];
             if(!showInTable(key2))
               continue;
-            if(key2=="Z") {
-              if(zmodestr == "e")
-                val2=val2+"(by&nbsp;elevation)";
-                else
-                  val2=val2+"(by&nbsp;depth)";
-              tmp="<td style=\"width:24vw\">"+val2+"</td>";
-              } else { 
-                  tmp="<td style=\"width:24vw\">"+val2+"</td>";
-            }
+            let tmp="<td style=\"width:24vw\">"+val2+"</td>";
             mpline=mpline+tmp;
          }
          row=table.insertRow(1);

@@ -52,10 +52,10 @@ var CTM_tb={
      'description':'A Horizontal slice of a selected property is produced in a area marked by the rectangle drawn with the depth or elevation supplied as Z, and the interval is determined by the web service.'}
  ],
 "descript": [
-    {'id':'longitude','label':'lon','show':1,'descript':'Longitude'},
-    {'id':'latitude','label':'lat','show':1,'descript':'Latitude'},
-    {'id':'depth','label':'Z','show':1,'descript':'Depth'},
-    {'id':'temperature','label':'temperature','show':1,'descript':'Temperature'},
+    {'id':'lon','label':'lon','show':1,'descript':'Longitude'},
+    {'id':'lat','label':'lat','show':1,'descript':'Latitude'},
+    {'id':'Z','label':'Z','show':1,'descript':'Depth'},
+    {'id':'temp','label':'temperature','show':1,'descript':'Temperature'},
     {'id':'model','label':'model','show':1,'descript':'Model'}
  ],
 "references": [

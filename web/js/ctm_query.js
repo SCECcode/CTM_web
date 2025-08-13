@@ -109,7 +109,7 @@ function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk
             }
        }
     }
-    xmlhttp.open("GET","php/getMaterialPropertyByLatlonChunk.php?datastr="+datastr+"&zmode="+zmodestr+"&chunkid="+current_chunk+"&chunks="+total_chunks+"&model="+modelstr+ "&uid="+uid, true);
+    xmlhttp.open("GET","php/getMaterialPropertyByLatlonChunk.php?datastr="+datastr+"&chunkid="+current_chunk+"&chunks="+total_chunks+"&model="+modelstr+ "&uid="+uid, true);
     xmlhttp.send();
 }
 
@@ -170,37 +170,25 @@ function plotCrossSection() {
     var xmlhttp;
     var firstlatstr=document.getElementById("lineFirstLatTxt").value;
     var firstlonstr=document.getElementById("lineFirstLonTxt").value;
-    var zstr=document.getElementById("lineZTxt").value;
+    var zendstr=document.getElementById("lineZEndTxt").value;
     var zstartstr=document.getElementById("lineZStartTxt").value;
-    var datatypestr=document.getElementById("lineDataTypeTxt").value;
-    var zmodestr=document.getElementById("zModeType").value;
-    var modelstr=document.getElementById("selectModelType").value;
-    var zrangestr=_getZrange(modelstr);
-    var floorstr=_getFloors(modelstr);
 
     var secondlatstr=document.getElementById("lineSecondLatTxt").value;
     var secondlonstr=document.getElementById("lineSecondLonTxt").value;
 
+    var modelshort=document.getElementById("selectModelType").value;
+    var mid=getModelIndex(modelshort);
+    var modeldata=getModelFilenameById(mid);
+    var modelstr=getModelAbbNameById(mid);
+    var modelpath = "../ctm_data/"+modeldata;
+
     if (firstlatstr == "" || firstlonstr=="" ||
-              secondlatstr == "" || secondlonstr=="" || zstr=="" || zstartstr=="" ) {
+              secondlatstr == "" || secondlonstr=="" || zendstr=="" || zstartstr=="" ) {
         document.getElementById('spinIconForLine').style.display = "none";
 	$("#modalwaiton").modal('hide');
         reset_line_UID();
         return;
     }
-
-    // precalculate the spacing
-    var flat1=parseFloat(firstlatstr);
-    var flon1=parseFloat(firstlonstr);
-    var flat2=parseFloat(secondlatstr);
-    var flon2=parseFloat(secondlonstr);
-
-    var dlon=flon2-flon1;
-    var dlat=flat2-flat1;
-
-    var z=Math.sqrt((dlon*dlon) + (dlat*dlat));
-
-    var dz4 = (round2Four(z) * 1000.0);
 
     var uid=document.getElementById("lineUIDTxt").value;
 
@@ -226,9 +214,8 @@ function plotCrossSection() {
             var str=processSearchResult("plotCrossSection",uid);
 
          if (str != undefined) { 
-                var zstr=getZModeNameWithType(zmodestr);
                 var mstr=getModelNameWithType(modelstr);
-                var note="Vertical "+zstr+" Cross Section("+datatypestr+") with "+mstr;
+                var note="Vertical Cross Section with "+mstr;
                 insertMetaPlotResultTable(note,uid,str);
             }
 
@@ -237,7 +224,7 @@ function plotCrossSection() {
             reset_line_UID();
             }
     }
-    xmlhttp.open("GET","php/plotCrossSection.php?firstlat="+firstlatstr+"&firstlon="+firstlonstr+"&secondlat="+secondlatstr+"&secondlon="+secondlonstr+"&z="+zstr+"&zmode="+zmodestr+"&model="+modelstr+"&zrange="+zrangestr+"&floors="+floorstr+"&zstart="+zstartstr+"&datatype="+datatypestr+"&uid="+uid+"&spacing="+dz4,true);
+    xmlhttp.open("GET","php/plotCrossSection.php?firstlat="+firstlatstr+"&firstlon="+firstlonstr+"&secondlat="+secondlatstr+"&secondlon="+secondlonstr+"&zend="+zendstr+"&model="+modelstr+"&modelpath="+modelpath+"&zstart="+zstartstr+"&uid="+uid,true);
     xmlhttp.send();
 }
 
@@ -344,9 +331,8 @@ function plotVerticalProfileByList(dataarray,idx,total) {
             var str=processSearchResult("plotVerticalProfile",uid);
 
             if (str != undefined) {
-                var zstr=getZModeNameWithType(zmodestr);
                 var mstr=getModelNameWithType(modelstr);
-                var note="Vertical "+zstr+" Profile ("+datatypestr+") with "+mstr;
+                var note="Vertical Profile with "+mstr;
 		add_bounding_profile(uid,latstr,lonstr);
                 insertMetaPlotResultTable(note, uid,str);
                 reset_profile_UID();
@@ -465,11 +451,7 @@ function plotHorizontalSlice() {
     var firstlatstr=document.getElementById("areaFirstLatTxt").value;
     var firstlonstr=document.getElementById("areaFirstLonTxt").value;
     var zstr=document.getElementById("areaZTxt").value;
-    var datatypestr=document.getElementById("areaDataTypeTxt").value;
-    var zmodestr=document.getElementById("zModeType").value;
     var modelstr=document.getElementById("selectModelType").value;
-    var zrangestr=_getZrange(modelstr);
-    var floorstr=_getFloors(modelstr);
     var uid=document.getElementById("areaUIDTxt").value;
 
     var secondlatstr=document.getElementById("areaSecondLatTxt").value;
@@ -525,9 +507,8 @@ function plotHorizontalSlice() {
             var str=processSearchResult("plotHorizontalSlice",uid);
 
             if (str != undefined) { 
-                var zstr=getZModeNameWithType(zmodestr);
                 var mstr=getModelNameWithType(modelstr);
-                var note="Horizontal Slice("+datatypestr+") by "+zstr+" with "+mstr;
+                var note="Horizontal Slice with "+mstr;
                 insertMetaPlotResultTable(note,uid,str);
             }
 
@@ -536,7 +517,7 @@ function plotHorizontalSlice() {
             reset_area_UID();
         }
     }
-    xmlhttp.open("GET","php/plotHorizontalSlice.php?firstlat="+flat1+"&firstlon="+flon1+"&secondlat="+flat2+"&secondlon="+flon2+"&z="+zstr+"&zmode="+zmodestr+"&model="+modelstr+"&zrange="+zrangestr+"&floors="+floorstr+"&datatype="+datatypestr+"&uid="+uid+"&spacing="+ds4,true);
+    xmlhttp.open("GET","php/plotHorizontalSlice.php?firstlat="+flat1+"&firstlon="+flon1+"&secondlat="+flat2+"&secondlon="+flon2+"&z="+zstr+"&model="+modelstr+"&uid="+uid+"&spacing="+ds4,true);
     xmlhttp.send();
 }
 
@@ -600,110 +581,5 @@ window.console.log("??? str",str);
     }
 
     xmlhttp.open("GET","php/replotHorizontalSlice.php?oncfm="+oncfm+"&onca="+onca+"&oncmap="+oncmap+"&onrange="+onrange+"&oninterp="+oninterp+"&onpoint="+onpoint+"&onmin="+onmin+"&onmax="+onmax+"&onpar="+onpar+"&fname="+fname+"&uid="+uid,true);
-    xmlhttp.send();
-}
-
-function plotZ10Slice() {
-    var xmlhttp;
-    var firstlatstr=document.getElementById("areaFirstLatTxt").value;
-    var firstlonstr=document.getElementById("areaFirstLonTxt").value;
-    var modelstr=document.getElementById("selectModelType").value;
-    var uid=document.getElementById("areaUIDTxt").value;
-    var secondlatstr=document.getElementById("areaSecondLatTxt").value;
-    var secondlonstr=document.getElementById("areaSecondLonTxt").value;
-
-    if (firstlatstr == "" || firstlonstr=="" ||
-              secondlatstr == "" || secondlonstr=="" ) {
-        document.getElementById('spinIconForArea').style.display = "none";
-        reset_area_UID();
-        return;
-    }
-
-    if(uid == '') {
-      uid=getRnd("CTM");
-      set_area_UID(uid);
-      add_bounding_area(uid,firstlatstr,firstlonstr,secondlatstr,secondlonstr);
-      } else {    
-        reset_dirty_uid();
-    }
-
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("phpResponseTxt").innerHTML = this.responseText;
-            var str=processSearchResult("plotZ10Slice",uid);
-
-            if (str != undefined) { 
-                var zstr=getZModeNameWithType(zmodestr);
-                var mstr=getModelNameWithType(modelstr);
-                var note="Z10 Slice with "+mstr;
-                insertMetaPlotResultTable(note,uid,str);
-            }
-
-            document.getElementById('spinIconForArea').style.display = "none";
-            reset_area_UID();
-        }
-    }
-    xmlhttp.open("GET","php/plotZ10Slice.php?firstlat="+firstlatstr+"&firstlon="+firstlonstr+"&secondlat="+secondlatstr+"&secondlon="+secondlonstr+"&model="+modelstr+"&uid="+uid,true);
-    xmlhttp.send();
-}
-
-
-function plotZ25Slice() {
-    var xmlhttp;
-    var firstlatstr=document.getElementById("areaFirstLatTxt").value;
-    var firstlonstr=document.getElementById("areaFirstLonTxt").value;
-    var modelstr=document.getElementById("selectModelType").value;
-    var uid=document.getElementById("areaUIDTxt").value;
-    var secondlatstr=document.getElementById("areaSecondLatTxt").value;
-    var secondlonstr=document.getElementById("areaSecondLonTxt").value;
-
-    if (firstlatstr == "" || firstlonstr=="" ||
-              secondlatstr == "" || secondlonstr=="" ) {
-        document.getElementById('spinIconForArea').style.display = "none";
-        reset_area_UID();
-        return;
-    }
-
-    if(uid == '') {
-      uid=getRnd("CTM");
-      set_area_UID(uid);
-      add_bounding_area(uid,firstlatstr,firstlonstr,secondlatstr,secondlonstr);
-      } else {    
-        reset_dirty_uid();
-    }
-
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("phpResponseTxt").innerHTML = this.responseText;
-            var str=processSearchResult("plotZ25Slice",uid);
-
-            if (str != undefined) { 
-                var zstr=getZModeNameWithType(zmodestr);
-                var mstr=getModelNameWithType(modelstr);
-                var note="Z25 Slice with "+mstr;
-                insertMetaPlotResultTable(note,uid,str);
-            }
-
-            document.getElementById('spinIconForArea').style.display = "none";
-            reset_area_UID();
-        }
-    }
-    xmlhttp.open("GET","php/plotZ25Slice.php?firstlat="+firstlatstr+"&firstlon="+firstlonstr+"&secondlat="+secondlatstr+"&secondlon="+secondlonstr+"&model="+modelstr+"&uid="+uid,true);
     xmlhttp.send();
 }

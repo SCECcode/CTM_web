@@ -9,48 +9,37 @@ $start_time = microtime(true);
 
 include ("util.php");
 
-//query_2d_cross_section.py --lat_start 34 --lon_start -119 --lat_end 35 --lon_end -116 
-//--z_start 0 --z_end 25000 
-//--modelname Lee_2025 --modelpath ${MPATH}/ThermalModel_WUS_v2.nc --outpath ./test2d_cross.csv
-
 $firstlat = ($_GET['firstlat']);
 $firstlon = ($_GET['firstlon']);
 $secondlat = ($_GET['secondlat']);
 $secondlon = ($_GET['secondlon']);
+$modelpath = ($_GET['modelpath']);
 
 $model= ($_GET['model']);
 $zstart = ($_GET['zstart']);
+$zend = ($_GET['zend']);
 $uid = ($_GET['uid']);
 $hval = ($_GET['spacing']);
+
+$envstr=makeEnvString();
 
 $file="../result/".$uid."_c.png";
 $csvfile="../result/".$uid."_c_data.csv";
 $pngfile="../result/".$uid."_c_data.png";
 $pdffile="../result/".$uid."_c_data.pdf";
 
-$lstr = " -b ".$firstlat.",".$firstlon." -u ".$secondlat.",".$secondlon;
-if ($zrange != 'none') {
-	$lstr= ' -z '.$zrange.$lstr;
-}
-if ($floors != 'none') {
-	$lstr= ' -L '.$floors.$lstr;
-}
+//query_2d_cross_section.py --lat_start 34 --lon_start -119 --lat_end 35 --lon_end -116 
+//--z_start 0 --z_end 25000 
+//--modelname Lee_2025 --modelpath ${MPATH}/ThermalModel_WUS_v2.nc --outpath ./test2d_cross.csv
 
-// keep vertical to be 100 layers
-$vval= intval(((float)$z-(float)$zstart)/100); 
-
-$lstr=$lstr ." -e ".$z;
-// always get a full set
-$qstub=" -s ".$zstart." -h ".$hval." -d all -c ".$model." -a sd -o ".$file." -n ".$InstallLoc."/conf/ucvm.conf -i ".$InstallLoc." -v ".$vval;
-if ($zmode == 'e') {
-	$query= $envstr." plot_elevation_cross_section.py".$qstub.$lstr;
-} else {
-        $query= $envstr." plot_cross_section.py -S ".$qstub.$lstr;
-}
-//print($query);
+$estr = " --lat_start ".$firstlat." --lon_start ".$firstlon." --lat_end ".$secondlat." --lon_end ".$secondlon." --z_start ".$zstart." --z_end ".$zend." --modelname ".$model." --modelpath ".$modelpath." --outpath ".$csvfile;
+$query = $envstr." query_2d_cross_section.py ".$estr;
+print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
-$rc=checkResult($query, $result, $uid);
+//$rc=checkResult($query, $result, $uid);
+//
+print($result);
 
 $vp_metafile="../result/".$uid."_vp_meta.json";
 $vp_binfile="../result/".$uid."_vp_data.bin";
@@ -64,20 +53,17 @@ $cvsresult = exec(escapeshellcmd($cvsquery), $cvsretval, $cvsstatus);
 #Usage: ./plotCVM-vertSectionAll.pl path/to/file.csv 
 #              interp plotPts plotMap plotFaults plotCities pad cMap forceRange zMin zMax
 
-#1=Vp; 2=Vs; 3=Density
-$gtype=2;
-if($datatype == "vp" ) $gtype=1;
-if($datatype == "density" ) $gtype=3;
+$gtype=1;
 
 $gmtpl="../perl/plotCVM-vertSectionAll.pl";
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$gtype. " 0 0 1 0 0 1 1 0"; 
 
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 
-#print($gmtcommand);
-#print("<pre>");
-#print_r($gmtretval);
-#print("</pre>");
+print($gmtcommand);
+print("<pre>");
+print_r($gmtretval);
+print("</pre>");
 
 $end_time = microtime(true);
 $elapsed_time = $end_time - $start_time;
@@ -102,7 +88,7 @@ $jj->uid=$uid;
 $gmtresult_n=json_encode($jj);
 $resultarray->gmtresult= $gmtresult_n;
 
-if ( $gmtstatus == 0 && file_exists($pngfile)) {
+if ( $gmtstatus == 0 ) {
     $resultstring = htmlspecialchars(json_encode($resultarray), ENT_QUOTES, 'UTF-8');
     echo "<div data-side=\"crossSection".$uid."\" data-params=\"";
     echo $resultstring;

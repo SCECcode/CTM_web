@@ -322,7 +322,7 @@ function lineClick() {
 }
 
 function set_line_latlons_preset() {
-   $( "#lineZTxt" ).val(5000);
+   $( "#lineZEndTxt" ).val(5000);
    $( "#lineZStartTxt" ).val(0);
 }
 
@@ -343,7 +343,7 @@ function reset_line_latlons(){
    $( "#lineFirstLonTxt" ).val('');
    $( "#lineSecondLatTxt" ).val('');
    $( "#lineSecondLonTxt" ).val('');
-   $( "#lineZTxt" ).val('');
+   $( "#lineZEndTxt" ).val('');
    $( "#lineZStartTxt" ).val('');
    reset_line_UID();
 }

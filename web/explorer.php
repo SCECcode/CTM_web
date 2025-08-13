@@ -435,9 +435,9 @@ allows easy access to a range of thermal models. The interface allows for downlo
                                                onchange="reset_line_presets()"
                                                class="form-control mt-1">
                                         <input type="text"
-                                               id="lineZTxt"
+                                               id="lineZEndTxt"
                                                placeholder="Z ends"
-                                               title="lineZTxt"
+                                               title="lineZEndTxt"
                                                onfocus="this.value=''"
                                                class="form-control mt-1">
                                         <input type="text"
@@ -745,10 +745,12 @@ allows easy access to a range of thermal models. The interface allows for downlo
                  <div id="plotoption-param-option" class="form-check form-check-inline mt-3" style="display:">
                      <label class="input-group-text" for="plotParamTxt">Select Parameter</label>
                      <select id="plotParamTxt" class="my-custom-select custom-select">
-                        <option value=1>Vp</option>
-                        <option value=2>Vs</option>
-                        <option value=3>Density</option>
+                        <option value=1>Temperature</option>
+<!--
+                        <option value=2>dummy1</option>
+                        <option value=3>dummy2</option>
                         <option id="plotoption-param-all" value="4">All</option>
+-->
                       </select>
                   </div>
 
