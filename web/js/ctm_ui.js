@@ -263,7 +263,7 @@ window.console.log("XX calling updatePlotOptions.. with ",blob);
 // for color scale: cross/horizonal, vs=1, vp=2, density=3
     switch (plotparam) {
       case 1:
-        document.getElementById("setPlotRange").innerHTML="Set Plot Range (1000°C)";
+        document.getElementById("setPlotRange").innerHTML="Set Plot Range (°C)";
         break;
       case 2:	 
       case 3:

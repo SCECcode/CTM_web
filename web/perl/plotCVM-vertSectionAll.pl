@@ -190,10 +190,10 @@ while(<CSV>){
 		if($plotParam==1){
 			#convert depth from m to km and Vp from m/s to km/s
 			$data[2]/=1000;
-			$data[3]/=1000;
+			$data[3];
 			#set the colorbar and eps file titles
-			$zTitle="Temperature (1000C)"; #"Vp (km/s)";
-			$epsTitle="Temperature (1000C)"; #"Vp (km/s)";
+			$zTitle="Temperature (C)"; #"Vp (km/s)";
+			$epsTitle="Temperature (C)"; #"Vp (km/s)";
 			#print the line to the new GMT file (still a csv file, format-wise)
 			print GMT "$data[0] $data[1] $data[2] $data[3]\n";
 		}#end if

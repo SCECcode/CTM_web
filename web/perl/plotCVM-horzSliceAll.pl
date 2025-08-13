@@ -174,12 +174,12 @@ while(<CSV>){
 		#print the Vp data to $gmtFile
 		if($plotParam==1){
 			#the conversion is the same for m/s to km/s and kg/m^3 to g/cm^3. Cool!
-			$data[2]/=1000;
+			$data[2];
 			#print the line to the new GMT file (still a csv file, format-wise)
 			printf GMT ("%.10f %.10f %.10f\n",$data[0],$data[1],$data[2]);
 			#set the colorbar and eps file titles
-			$zTitle="Temperature (1000C)"; #"Vp (km/s)";
-			$epsTitle="Temperature (1000C)"; #"Vp (km/s)";
+			$zTitle="Temperature (C)"; #"Vp (km/s)";
+			$epsTitle="Temperature (C)"; #"Vp (km/s)";
 		}#end if
 		#print the Vs data to $gmtFile
 		elsif($plotParam==2){

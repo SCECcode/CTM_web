@@ -35,14 +35,9 @@ conda update -all
 
 export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 
-#Error while loading conda entry point: conda-libmamba-solver (module 'libmambapy' has no attribute 'QueryFormat'
-#
-#conda update -n base -c defaults conda conda-libmamba-solver libmamba libmambapy
-
-
 ## python basemap, basemap-data-hires, matplotlib
 ## Apparently, after python3.12, distutils got kicked out
-#  $ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray pyproj netCDF4
+  $ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray pyproj netCDF4
 
 #conda config --add channels conda-forge
 # load gmt

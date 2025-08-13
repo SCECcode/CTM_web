@@ -34,12 +34,12 @@ $pdffile="../result/".$uid."_c_data.pdf";
 
 $estr = " --lat_start ".$firstlat." --lon_start ".$firstlon." --lat_end ".$secondlat." --lon_end ".$secondlon." --z_start ".$zstart." --z_end ".$zend." --modelname ".$model." --modelpath ".$modelpath." --outpath ".$csvfile;
 $query = $envstr." query_2d_cross_section.py ".$estr;
-print($query);
+//print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
 //$rc=checkResult($query, $result, $uid);
 //
-print($result);
+//print($result);
 
 $vp_metafile="../result/".$uid."_vp_meta.json";
 $vp_binfile="../result/".$uid."_vp_data.bin";
