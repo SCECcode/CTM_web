@@ -60,14 +60,14 @@ $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$gtype. " 0 0 1 0 0 1 1 0";
 
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 
-print($gmtcommand);
-print("<pre>");
-print_r($gmtretval);
-print("</pre>");
+//print($gmtcommand);
+//print("<pre>");
+//print_r($gmtretval);
+//print("</pre>");
 
 $end_time = microtime(true);
 $elapsed_time = $end_time - $start_time;
-#print("Elapsed time: ".round($elapsed_time, 2)." sec\n");
+//print("Elapsed time: ".round($elapsed_time, 2)." sec\n");
 
 $resultarray = new \stdClass();
 $resultarray->type= "cross";
