@@ -56,14 +56,14 @@ $gmtpl="../perl/plotCTM-horzSliceAll.pl";
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$gtype." 0 0 0 0 1 0";
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 
-print($gmtcommand);
-print("gmtresult:"); print($gmtresult); print("<br>");
-print("gmtstatus:"); print($gmtstatus); print("<br>");
-print("gmtretval:"); 
-print("<pre>");
-print_r($gmtretval);
-print("</pre>");
-print("<br>");
+//print($gmtcommand);
+//print("gmtresult:"); print($gmtresult); print("<br>");
+//print("gmtstatus:"); print($gmtstatus); print("<br>");
+//print("gmtretval:"); 
+//print("<pre>");
+//print_r($gmtretval);
+//print("</pre>");
+//print("<br>");
 
 
 $end_time = microtime(true);

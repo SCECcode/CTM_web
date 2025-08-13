@@ -43,7 +43,7 @@ use File::Basename;
 #Should I open the .eps file when finished? 0=no, 1=gv, 2=evince, 3=illustrator
 $openEPS=0;
 #Should I print useful stats about the data to STDOUT? 1=yes 0=no, but json metadata will be printed for the CTM Explorer
-$printStats=1;
+$printStats=0;
 
 #grab the command line arguments
 if   (@ARGV==10){($csvFile,$plotParam,$interp,$plotPts,$plotFaults,$plotCities,$cMap,$forceRange,$zMin,$zMax)=@ARGV}
