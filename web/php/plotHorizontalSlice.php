@@ -49,21 +49,10 @@ $result = exec(escapeshellcmd($query), $retval, $status);
 $rc=checkResult($query,$result,$uid);
 #print($result);
 
-$vp_metafile="../result/".$uid."_vp_meta.json";
-$vp_binfile="../result/".$uid."_vp_data.bin";
-$vs_metafile="../result/".$uid."_vs_meta.json";
-$vs_binfile="../result/".$uid."_vs_data.bin";
-$density_metafile="../result/".$uid."_density_meta.json";
-$density_binfile="../result/".$uid."_density_data.bin";
-$cvsquery = $envstr." ucvm_horizontal_slice2csv_all.py ".$vp_binfile." ".$vp_metafile." ".$vs_binfile." ".$vs_metafile." ".$density_binfile." ".$density_metafile." ".$csvfile;
-$cvsresult = exec(escapeshellcmd($cvsquery), $cvsretval, $cvsstatus);
-#print($cvsquery);
-
 $gtype=1;
-
 ##old: csv, plotparam, plotfault, plotcities, potpts, cmap, range
 ##new: csv, plotparam, interp, plotpts, plotfault, plotcities, cmap, range
-$gmtpl="../perl/plotCVM-horzSliceAll.pl";
+$gmtpl="../perl/plotCTM-horzSliceAll.pl";
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$gtype." 0 0 0 0 1 0";
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 

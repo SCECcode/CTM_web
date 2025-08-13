@@ -38,24 +38,14 @@ $query = $envstr." query_2d_cross_section.py ".$estr;
 
 $result = exec(escapeshellcmd($query), $retval, $status);
 //$rc=checkResult($query, $result, $uid);
-//
 //print($result);
 
-$vp_metafile="../result/".$uid."_vp_meta.json";
-$vp_binfile="../result/".$uid."_vp_data.bin";
-$vs_metafile="../result/".$uid."_vs_meta.json";
-$vs_binfile="../result/".$uid."_vs_data.bin";
-$density_metafile="../result/".$uid."_density_meta.json";
-$density_binfile="../result/".$uid."_density_data.bin";
-$cvsquery = $envstr." ucvm_cross_section2csv_all.py ".$vp_binfile." ".$vp_metafile." ".$vs_binfile." ".$vs_metafile." ".$density_binfile." ".$density_metafile." ".$csvfile;
-$cvsresult = exec(escapeshellcmd($cvsquery), $cvsretval, $cvsstatus);
-
-#Usage: ./plotCVM-vertSectionAll.pl path/to/file.csv 
+#Usage: ./plotCTM-vertSectionAll.pl path/to/file.csv 
 #              interp plotPts plotMap plotFaults plotCities pad cMap forceRange zMin zMax
 
 $gtype=1;
 
-$gmtpl="../perl/plotCVM-vertSectionAll.pl";
+$gmtpl="../perl/plotCTM-vertSectionAll.pl";
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$gtype. " 0 0 1 0 0 1 1 0"; 
 
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);

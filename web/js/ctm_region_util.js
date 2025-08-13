@@ -303,6 +303,20 @@ function getAllModelNames() {
    return ret;
 }
 
+function labelInTable(key) {
+   var tb=CTM_tb['descript'];
+   var cnt=tb.length;
+   for( i=0; i<cnt; i++) {
+     var item=tb[i];
+     var label=item['id'];
+     if(label == key) {
+       return item['label'];
+     }
+  }
+  window.console.log("ERROR, labelInTable, no such key",key);
+  return 0;
+}
+
 function showInTable(key) {
    var tb=CTM_tb['descript'];
    var cnt=tb.length;

@@ -28,10 +28,10 @@ $csvfile="../result/".$fname;
 
 $envstr=makeEnvString();
 
-#Usage: ./plotCVM-vertSection.pl path/to/file.csv 
+#Usage: ./plotCTM-vertSection.pl path/to/file.csv 
 #            plotParam interp plotPts plotMap plotFaults plotCities pad cMap forceRange zMin zMax
 
-$gmtpl="../perl/plotCVM-vertSectionAll.pl";
+$gmtpl="../perl/plotCTM-vertSectionAll.pl";
 
 if( $onrange == '1' ) {
   $gmtlstr=" ".$onpar." ".$oninterp." ".$onpoint." ".$onmap." ".$oncfm." ".$onca." ".$onpad. " ".$oncmap." 1 ".$onmin." ".$onmax;

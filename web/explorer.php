@@ -292,12 +292,15 @@ allows easy access to a range of thermal models. The interface allows for downlo
                                                class="form-control mt-1" style="display:none">
                                     </div>
                                 </div>
+
+<!--- disable for now
                                 <div class="mt-1">
                                      <input class="form-control" id='infileBtn' type='file' onchange='selectLocalFiles(this.files,1)' style='display:none;'></input>
                                      <button id="fileSelectBtn" class="btn ctm-top-btn" style="width:85%" title="open a file to ingest" onclick='javascript:document.getElementById("infileBtn").click();'>
                                      <span class="glyphicon glyphicon-file"></span> Select file to use</button>
 <button class="btn ctm-top-small-btn" data-toggle="modal" data-target="#modalfileinfo"><span class="glyphicon glyphicon-info-sign"></span></button>
                                 </div>
+--->
 
                                 <div class="row d-flex mt-1">
                                     <div class="col-5 pr-0">
@@ -367,12 +370,14 @@ allows easy access to a range of thermal models. The interface allows for downlo
                                                class="form-control mt-1" style="display:none">
                                     </div>
                                 </div>
+<!--- disable this for now
                                 <div class="mt-1">
                                      <input class="form-control" id='inprofilefileBtn' type='file' onchange='selectLocalFiles(this.files,0)' style='display:none;'></input>
                                      <button id="profilefileSelectBtn" class="btn ctm-top-btn" style="width:85%" title="open a file to ingest" onclick='javascript:document.getElementById("inprofilefileBtn").click();'>
                                      <span class="glyphicon glyphicon-file"></span>Select file to use</button>
 <button class="btn ctm-top-small-btn" data-toggle="modal" data-target="#modalprofilefile"><span class="glyphicon glyphicon-info-sign"></span></button>
                                 </div>
+--->
                                 <div class="row d-flex mt-1">
                                     <div class="col-5 pr-0">
                                         <div class="col-12" style="padding:5px 0px 10px 0px">
@@ -561,8 +566,7 @@ allows easy access to a range of thermal models. The interface allows for downlo
               <p style="margin-bottom:0"><b>Disclaimer:</b> SCEC and the CEM development teams do not make any representations or warranties as to the accuracy, completeness, reliability, currency, or quality of any data provided herein </p>
            </div>
            <div class="col-12 flex-row" align="end">
-               <button class="btn ctm-top-small-btn" title="download all the material property in the table" onclick="downloadMPTable()" ><span class="glyphicon glyphicon-download"></span></button>
-               <button class="btn ctm-top-small-btn" title="material property  parameters displayed in the table" data-toggle="modal" data-target="#modalparameters"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+               <button class="btn ctm-top-small-btn" title="download all the material property in the table" onclick="downloadMPTable()" ><span class="glyphicon glyphicon-download"></span></button></td>
             </div>
             <div class="col-12 mb-0" id="mp-table">
                 <div id="materialPropertyTable-container" style="overflow:auto;max-height:20vh;margin:0px 0px 0px 0px;">

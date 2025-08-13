@@ -22,7 +22,7 @@ $uid = ($_GET['uid']);
 
 $csvfile="../result/".$fname;
 
-$gmtpl="../perl/plotCVM-horzSliceAll.pl";
+$gmtpl="../perl/plotCTM-horzSliceAll.pl";
 
 $envstr=makeEnvString();
 

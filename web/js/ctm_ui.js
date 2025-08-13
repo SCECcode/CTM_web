@@ -473,7 +473,8 @@ function makeMPTable(uid,str)
             // special case
             if(!showInTable(key))
               continue;
-            labelline=labelline+"<th style=\"width:48vw;background-color:whitesmoke;\"><b>"+key+"</b></th>";
+            let label=labelInTable(key);
+            labelline=labelline+"<th style=\"width:48vw;background-color:whitesmoke;\"><b>"+label+"</b></th>";
         }
         table.deleteRow(0); // delete the holdover
         hold_mptable=0;

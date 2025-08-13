@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#plotCVM-1Dvert.pl
+#plotCTM-1Dvert.pl
 #Written 2024-11-13 by Scott T. Marshall
 #-----------------------------------------------------------------------------------------------------------------------------#
 # 
@@ -12,7 +12,7 @@
 # Note: The csv file must be in another directory and the path to the file must be included at the command line
 # as the path is used to set other filenames and to make a tmp directory for GMT.
 #  
-#   Usage: ./plotCVM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax
+#   Usage: ./plotCTM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax
 #     Parameters are described below:
 #     path/to/file.csv : The csv file must be specified with a path (relative or absolute). ./ will not work.
 #     plotParam        : Select what is plotted 1=Vp; 2=Vs; 3=Density; 4=All;
@@ -42,7 +42,7 @@ use File::Basename;
 #-----------------------------------------------------------------------------------------------------------------------------#
 #Should I open the .eps file when finished? 0=no, 1=gv, 2=evince, 3=illustrator
 $openEPS=0;
-#Should I print useful stats about the data to STDOUT? 1=yes 0=no, but json metadata will be printed for the CVM Explorer
+#Should I print useful stats about the data to STDOUT? 1=yes 0=no, but json metadata will be printed for the CTM Explorer
 $printStats=0;
 
 #check for correct usage and make sure the csv file exists
@@ -53,7 +53,7 @@ elsif(@ARGV==8){
 }
 #print usage for incorrect inputs
 else {
-	print "\n  Usage: ./plotCVM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax\n";
+	print "\n  Usage: ./plotCTM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax\n";
 	print "    Parameters are described below:\n";
 	print "    path/to/file.csv: The csv file must be specified with a path (relative or absolute).\n";
 	print "    plotParam: Select what is plotted 1=Vp; 2=Vs; 3=Density; 4=All;\n";
@@ -135,7 +135,7 @@ while(<CSV>){
 		@data=split(":",$_);
 		#grab useful portions of the header
 		if   ($data[0] eq "Title")             {$title       =$data[1]}
-		elsif($data[0] eq "CVM(abbr)")         {$model       =$data[1]}
+		elsif($data[0] eq "CTM(abbr)")         {$model       =$data[1]}
 		elsif($data[0] eq "Lat")               {$lat         =$data[1]}
 		elsif($data[0] eq "Lon")               {$lon         =$data[1]}
 		elsif($data[0] eq "Start_depth(m)")    {$startZ      =$data[1]/1000; $z="depth"}
@@ -455,12 +455,12 @@ while(<TMP>){
 	chomp;
 	#check and replace header lines. Otherwise print line as-is
 	if($_=~ "\%\%Title:"){
-		if   ($plotParam==1){print NEW "\%\%Title: SCEC CVM Explorer | Model: $model | Plot: Vp (km/s) | 1D Profile Location: ($lon, $lat)\n"}
-		elsif($plotParam==2){print NEW "\%\%Title: SCEC CVM Explorer | Model: $model | Plot: Vs (km/s) | 1D Profile Location: ($lon, $lat)\n"}
-		elsif($plotParam==3){print NEW "\%\%Title: SCEC CVM Explorer | Model: $model | Plot: Density (g/cm^3) | 1D Profile Location: ($lon, $lat)\n"}
-		elsif($plotParam==4){print NEW "\%\%Title: SCEC CVM Explorer | Model: $model | Plot: Vp (km/s), Vs (km/s), and Density (g/cm^3) | 1D Profile Location: ($lon, $lat)\n"}
+		if   ($plotParam==1){print NEW "\%\%Title: SCEC CTM Explorer | Model: $model | Plot: Vp (km/s) | 1D Profile Location: ($lon, $lat)\n"}
+		elsif($plotParam==2){print NEW "\%\%Title: SCEC CTM Explorer | Model: $model | Plot: Vs (km/s) | 1D Profile Location: ($lon, $lat)\n"}
+		elsif($plotParam==3){print NEW "\%\%Title: SCEC CTM Explorer | Model: $model | Plot: Density (g/cm^3) | 1D Profile Location: ($lon, $lat)\n"}
+		elsif($plotParam==4){print NEW "\%\%Title: SCEC CTM Explorer | Model: $model | Plot: Vp (km/s), Vs (km/s), and Density (g/cm^3) | 1D Profile Location: ($lon, $lat)\n"}
 	}
-	elsif($_=~ "\%\%Creator:"){print NEW "\%\%Creator: SCEC CVM Explorer\n"}
+	elsif($_=~ "\%\%Creator:"){print NEW "\%\%Creator: SCEC CTM Explorer\n"}
 	else {print NEW "$_\n";}
 }#end while (reading $plotFile)
 close(TMP);
@@ -505,7 +505,7 @@ if($printStats==1){
 	#print a final message
 	print "Finished!\n\n";
 }
-#print a json string to tell the CVM Explorer the status of each plot parameter
+#print a json string to tell the CTM Explorer the status of each plot parameter
 if($printStats==0){
 	print "{\"type\": \"profile\", \"file\": \"$pdfFile\", \"plotParam\": $plotParam, \"plotMap\": $plotMap, \"faults\": $plotFaults, \"cities\": $plotCities, \"points\": $plotPts, \"pad\": $pad, \"forceRange\": $forceRange, \"range\": { \"min\": $zMin, \"max\": $zMax } }\n";
 }

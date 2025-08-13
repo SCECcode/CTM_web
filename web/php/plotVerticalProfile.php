@@ -26,7 +26,7 @@ $csvfile="../result/".$uid."_v_matprops.csv";
 $pngfile="../result/".$uid."_v_matprops.png";
 $pdffile="../result/".$uid."_v_matprops.pdf";
 
-$gmtpl="../perl/plotCVM-1Dvert.pl";
+$gmtpl="../perl/plotCTM-1Dvert.pl";
 
 //query_1d_depth_profile.py --lat 35 --lon -118 --z_start 0 --z_end 30000 --z_step 100 --mod
 //elname Lee_2025 --modelpath ${MPATH}/ThermalModel_WUS_v2.nc --outpath ./test1d.csv
@@ -41,21 +41,19 @@ $rc=checkResult($query, $result, $uid);
 
 $mode=1;
 
-#Usage: ./plotCVM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax
+#Usage: ./plotCTM-1Dvert.pl path/to/file.csv plotParam plotMap plotFaults plotCities plotPts pad forceRange zMin zMax
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$mode." 1 0 0 0 1 0";
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 
-/*
-print($gmtcommand);
-print("<br>");
-print("gmtresult:"); print($gmtresult); print("<br>");
-print("gmtstatus:"); print($gmtstatus); print("<br>");
-print("gmtretval:"); 
-print("<pre>");
-print_r($gmtretval);
-print("</pre>");
-print("<br>");
-*/
+//print($gmtcommand);
+//print("<br>");
+//print("gmtresult:"); print($gmtresult); print("<br>");
+//print("gmtstatus:"); print($gmtstatus); print("<br>");
+//print("gmtretval:"); 
+//print("<pre>");
+//print_r($gmtretval);
+//print("</pre>");
+//print("<br>");
 
 $resultarray = new \stdClass();
 $resultarray->uid= $uid;

@@ -52,11 +52,11 @@ var CTM_tb={
      'description':'A Horizontal slice of a selected property is produced in a area marked by the rectangle drawn with the depth or elevation supplied as Z, and the interval is determined by the web service.'}
  ],
 "descript": [
-    {'id':'lon','label':'lon','show':1,'descript':'Longitude'},
-    {'id':'lat','label':'lat','show':1,'descript':'Latitude'},
-    {'id':'Z','label':'Z','show':1,'descript':'Depth'},
-    {'id':'temp','label':'temperature','show':1,'descript':'Temperature'},
-    {'id':'model','label':'model','show':1,'descript':'Model'}
+    {'id':'lon','label':'Longitude','show':1,'descript':'Longitude'},
+    {'id':'lat','label':'Latitude','show':1,'descript':'Latitude'},
+    {'id':'Z','label':'Depth (m)','show':1,'descript':'Depth'},
+    {'id':'temp','label':'Temperature (C)','show':1,'descript':'Temperature'},
+    {'id':'model','label':'Model','show':1,'descript':'Model'}
  ],
 "references": [
 { 'type':'model','name': ['Lee_2025'],

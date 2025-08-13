@@ -26,7 +26,7 @@ $csvfile="../result/".$fname;
 
 $envstr=makeEnvString();
 
-$gmtpl="../perl/plotCVM-1Dvert.pl";
+$gmtpl="../perl/plotCTM-1Dvert.pl";
 
 if( $onrange == '1' ) {
   $gmtlstr=" ".$onpar." ".$onmap." ".$oncfm." ".$onca." ".$onpoint." ".$onpad." 1 ".$onmin." ".$onmax;
