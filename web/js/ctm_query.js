@@ -451,8 +451,13 @@ function plotHorizontalSlice() {
     var firstlatstr=document.getElementById("areaFirstLatTxt").value;
     var firstlonstr=document.getElementById("areaFirstLonTxt").value;
     var zstr=document.getElementById("areaZTxt").value;
-    var modelstr=document.getElementById("selectModelType").value;
     var uid=document.getElementById("areaUIDTxt").value;
+
+    var modelshort=document.getElementById("selectModelType").value;
+    var mid=getModelIndex(modelshort);
+    var modeldata=getModelFilenameById(mid);
+    var modelstr=getModelAbbNameById(mid);
+    var modelpath = "../ctm_data/"+modeldata;
 
     var secondlatstr=document.getElementById("areaSecondLatTxt").value;
     var secondlonstr=document.getElementById("areaSecondLonTxt").value;
@@ -482,17 +487,6 @@ function plotHorizontalSlice() {
     var flon2=parseFloat(secondlonstr);
     [flat1,flon1,flat2,flon2]=fixAreaOrdering(flat1,flon1,flat2,flon2)
 
-    // precalculate the spacing
-    var dlon=flon2-flon1;
-    var dlat=flat2-flat1;
-    var ds= Math.sqrt((dlon * dlat) / 10000.0);
-    var ds4=round2Four(ds);
-    if(ds4 == 0) {
-      ds4=0.001; 
-    }
-
-    var dchk= (dlat/ds4) * (dlon/ds4);
-
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -517,7 +511,7 @@ function plotHorizontalSlice() {
             reset_area_UID();
         }
     }
-    xmlhttp.open("GET","php/plotHorizontalSlice.php?firstlat="+flat1+"&firstlon="+flon1+"&secondlat="+flat2+"&secondlon="+flon2+"&z="+zstr+"&model="+modelstr+"&uid="+uid+"&spacing="+ds4,true);
+    xmlhttp.open("GET","php/plotHorizontalSlice.php?firstlat="+flat1+"&firstlon="+flon1+"&secondlat="+flat2+"&secondlon="+flon2+"&z="+zstr+"&modelpath="+modelpath+"&model="+modelstr+"&uid="+uid,true);
     xmlhttp.send();
 }
 

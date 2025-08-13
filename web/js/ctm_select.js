@@ -65,7 +65,6 @@ function set_area_latlons_preset() {
 
 function set_area_latlons(uid, firstlat,firstlon,secondlat,secondlon) {
    // need to capture the lat lon and draw a area
-   var tt= document.getElementById("areaDataTypeTxt").value;
    if(area_select && drawing_area) {
        $( "#areaFirstLatTxt" ).val(round2Four(firstlat));
        $( "#areaFirstLonTxt" ).val(round2Four(firstlon));

@@ -178,8 +178,8 @@ while(<CSV>){
 			#print the line to the new GMT file (still a csv file, format-wise)
 			printf GMT ("%.10f %.10f %.10f\n",$data[0],$data[1],$data[2]);
 			#set the colorbar and eps file titles
-			$zTitle="Vp (km/s)";
-			$epsTitle="Vp (km/s)";
+			$zTitle="Temperature (1000C)"; #"Vp (km/s)";
+			$epsTitle="Temperature (1000C)"; #"Vp (km/s)";
 		}#end if
 		#print the Vs data to $gmtFile
 		elsif($plotParam==2){

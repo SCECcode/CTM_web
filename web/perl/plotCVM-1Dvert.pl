@@ -315,7 +315,7 @@ if($printStats==1){
 #plot the 1D profile data
 #plot Vp
 if($plotParam==1){
-	if   ($z eq "depth")    {system "gmt psbasemap  -X0.58i -Y0.56i $Rxy -JX4.0i/-${plotHeight}i -Gwhite -Bx$xAxis+l\"Vp (km/s)\" -By$yAxis+l\"Depth (km)\"     -BWeSn+t\"Model: ${model}at ($lon, $lat)\" -P -K --MAP_TITLE_OFFSET=0.12i > $plotFile"}
+	if   ($z eq "depth")    {system "gmt psbasemap  -X0.58i -Y0.56i $Rxy -JX4.0i/-${plotHeight}i -Gwhite -Bx$xAxis+l\"Temperature (1000C)\" -By$yAxis+l\"Depth (km)\"     -BWeSn+t\"Model: ${model}at ($lon, $lat)\" -P -K --MAP_TITLE_OFFSET=0.12i > $plotFile"}
 	elsif($z eq "elevation"){system "gmt psbasemap  -X0.65i -Y0.56i $Rxy -JX4.0i/${plotHeight}i  -Gwhite -Bx$xAxis+l\"Vp (km/s)\" -By$yAxis+l\"Elevation (km)\" -BWeSn+t\"Model: ${model}at ($lon, $lat)\" -P -K --MAP_TITLE_OFFSET=0.12i > $plotFile"}
 	#no map, so eps file must be ended
 	if($plotMap==0){

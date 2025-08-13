@@ -726,7 +726,7 @@ sub getMapScale {
 	#divide by 4 because a map scale should probably not take up more than 1/4 of the plot width
 	my $distScale=$dist/4;
 	my $mapScale;
-	
+
 	#figure out what distance scale to apply
 	if($distScale<0.2){
 		print "\n\n  Error: getMapScale was not designed for maps this small\n";
