@@ -341,11 +341,11 @@ $cAxis=getCBarTick($T);
 if($printStats==1){print "Making color palette file\n"}
 if($cMap==1){
 	$cpt="seis";
-	system "gmt makecpt -C$cpt $T -D --COLOR_NAN=white > $cptFile";
+	system "gmt makecpt -C$cpt $T -D -I --COLOR_NAN=white > $cptFile";
 }
 elsif($cMap==2){
 	$cpt="rainbow";
-	system "gmt makecpt -C$cpt $T -D -I --COLOR_NAN=white > $cptFile";
+	system "gmt makecpt -C$cpt $T -D --COLOR_NAN=white > $cptFile";
 }
 elsif($cMap==3){
 	$cpt="plasma";

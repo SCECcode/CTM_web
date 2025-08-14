@@ -415,8 +415,8 @@ $cAxis=getCBarTick($T);
 
 #set the color palette based on the user specified value
 if($printStats==1){print "Making color palette file\n"}
-if   ($cMap==1){$cpt="seis";    system "gmt makecpt -C$cpt $T -D --COLOR_NAN=white > $cptFile"}
-elsif($cMap==2){$cpt="rainbow";	system "gmt makecpt -C$cpt $T -D -I --COLOR_NAN=white > $cptFile"}
+if   ($cMap==1){$cpt="seis";    system "gmt makecpt -C$cpt $T -D -I --COLOR_NAN=white > $cptFile"}
+elsif($cMap==2){$cpt="rainbow";	system "gmt makecpt -C$cpt $T -D --COLOR_NAN=white > $cptFile"}
 elsif($cMap==3){$cpt="plasma";  system "gmt makecpt -C$cpt $T -D -I --COLOR_NAN=white > $cptFile"}
 else {print "\n\n  Error: cMap must be 1-3. You entered $cMap\n\n"; exit}
 
