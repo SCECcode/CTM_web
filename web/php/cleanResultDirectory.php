@@ -23,7 +23,7 @@ foreach ($Files as $file) {
 
     if($fileAge > $maxAge) {
 	         
-       if(is_dir($filePath) {
+       if(is_dir($filePath)) {
 	 deleteDirectory($filePath);
          $count=$count+1;
          array_push($result,$file);
