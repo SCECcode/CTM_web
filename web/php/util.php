@@ -1,4 +1,20 @@
 <?php
+function deleteDirectory($dir) {
+    $items = scandir($dir);
+    foreach ($items as $item) {
+        if ($item == '.' || $item == '..') {
+            continue;
+        }
+        $path = $dir . DIRECTORY_SEPARATOR . $item;
+        if (is_dir($path)) {
+            deleteDirectory($path);
+        } else {
+            unlink($path);
+        }
+    }
+    return rmdir($dir);
+}
+
 function makeEnvString() {
    $myhost = gethostname();
    $ctmwebLoc= getenv('CTM_WEB_TOP_DIR');

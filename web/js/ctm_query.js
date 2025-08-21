@@ -560,7 +560,6 @@ function replotHorizontalSlice() {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
             let responseText = this.responseText;
             var str=processSearchResult("replotHorizontalSlice");
-window.console.log("??? str",str);
 // needs to retrieve gmtresult blob, and update uid_state_blob 
             updateMetaReplotResultTable(str);
 
