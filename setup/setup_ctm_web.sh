@@ -4,6 +4,6 @@
 export CTM_WEB_TOP_DIR=/app/web
 export PLOTTING_TOP_DIR=/usr/local/share/plotting
 export ANACONDA3_TOP_DIR=/usr/local/share/anaconda3
-
+export CVM_LARGEDATA_DIR=/usr/local/share/cvm-largedata-dir
 export CTM_IN_DOCKER='#'
 

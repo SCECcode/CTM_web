@@ -13,6 +13,7 @@ services:
     - ./:/app
     - ./custom-php.ini:/etc/php.d/custom-php.ini
     - ./ctm-result:/usr/local/share/ctm/ctm-result
+    - /var/www/html/CTM_DATASET_DIRECTORY:/usr/local/share/ctm-largedata-dir:ro
    restart: unless-stopped
 
 

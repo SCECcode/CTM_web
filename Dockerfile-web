@@ -4,6 +4,7 @@ ENV CTM_WEB_TOP_DIR=/app/web
 ENV ANACONDA3_TOP_DIR=/usr/local/share/anaconda3
 ENV PLOTTING_TOP_DIR=/usr/local/share/plotting
 
+ENV CTM_LARGEDATA_DIR=/usr/local/share/ctm-largedata-dir
 ENV CTM_IN_DOCKER='#'
 
 WORKDIR /app

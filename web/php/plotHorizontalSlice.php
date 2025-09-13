@@ -13,7 +13,13 @@ $firstlat = ($_GET['firstlat']);
 $firstlon = ($_GET['firstlon']);
 $z = ($_GET['z']);
 $model = ($_GET['model']);
-$modelpath = ($_GET['modelpath']);
+
+$modeldata = ($_GET['modeldata']);
+$ModelPathLoc = getenv('CVM_LARGEDATA_DIR');
+if $ModelPathLoc !== false : ## if not define
+  $ModelPathLoc = "../ctm_data";
+$modelpath= $ModelPathLoc+'/'+$modeldata;
+
 $uid = ($_GET['uid']);
 $secondlat = ($_GET['secondlat']);
 $secondlon = ($_GET['secondlon']);
