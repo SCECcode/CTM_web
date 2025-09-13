@@ -17,10 +17,11 @@ $comment = "'".($_GET['comment'])."'";
 $uid = ($_GET['uid']);
 
 $modeldata = ($_GET['modeldata']);
-$ModelPathLoc = getenv('CVM_LARGEDATA_DIR');
-if $ModelPathLoc !== false : ## if not define
+$ModelPathLoc = getenv('CTM_LARGEDATA_DIR');
+if ($ModelPathLoc !== false) { ## if not define
   $ModelPathLoc = "../ctm_data";
-$modelpath= $ModelPathLoc+'/'+$modeldata;
+}
+$modelpath= $ModelPathLoc.'/'.$modeldata;
 
 $envstr=makeEnvString();
 
