@@ -30,14 +30,15 @@ source $ANACONDA3_TOP_DIR/bin/activate
 conda init
 
 conda config --set solver classic
-conda update conda
-conda update -all
+conda update -n base -c defaults conda
+
 
 export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 
 ## python basemap, basemap-data-hires, matplotlib
 ## Apparently, after python3.12, distutils got kicked out
-  $ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray pyproj netCDF4
+$ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray netCDF4
+#$ANACONDA3_TOP_DIR/bin/python -m pip install pyproj
 
 #conda config --add channels conda-forge
 # load gmt
@@ -51,7 +52,8 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 #   conda install setuptools -y
 #   conda install anaconda::pybind11 -y
 #   conda install conda-forge::h5py -y
-#   conda env export > ctm_explorer_conda_env.yml
+#   conda install -c conda-forge pyproj
+#   conda env export > ctm_explorer_conda_envX.yml
 
 
 ## use conda environment
