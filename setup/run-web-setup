@@ -37,9 +37,8 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 
 ## python basemap, basemap-data-hires, matplotlib
 ## Apparently, after python3.12, distutils got kicked out
-$ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray netCDF4
+#$ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy pandas xarray netCDF4
 #$ANACONDA3_TOP_DIR/bin/python -m pip install pyproj
-
 #conda config --add channels conda-forge
 # load gmt
 #conda install conda-forge::gmt -y
@@ -52,8 +51,9 @@ $ANACONDA3_TOP_DIR/bin/python -m pip install matplotlib numpy ipandas xarray net
 #   conda install setuptools -y
 #   conda install anaconda::pybind11 -y
 #   conda install conda-forge::h5py -y
-#   conda install -c conda-forge pyproj
-#   conda env export > ctm_explorer_conda_envX.yml
+#   conda install -c conda-forge libstdcxx-ng
+#   conda install -c conda-forge matplotlib numpy pandas pyproj xarray netCDF4
+#   conda env export > ctm_explorer_conda_env.yml
 
 
 ## use conda environment
