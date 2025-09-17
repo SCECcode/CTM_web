@@ -30,7 +30,7 @@ function makeEnvString() {
 
    $pythonstr= $pyctmLoc.":".$plottingLoc."/ctm_plotting";
 
-   $envstr="LD_PRELOAD=".$condaenvLoc."/lib/libstdc++.so.6 PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
+   $envstr="PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
 //   print($envstr);
    return $envstr;
 }

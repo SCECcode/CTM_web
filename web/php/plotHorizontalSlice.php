@@ -50,7 +50,7 @@ $pdffile="../result/".$uid."_h_data.pdf";
 
 $estr = " --lat_start ".$firstlat." --lon_start ".$firstlon." --lat_end ".$secondlat." --lon_end ".$secondlon." --z ".$z." --modelname ".$model." --modelpath ".$modelpath." --outpath ".$csvfile;
 $query = $envstr." query_2d_horizontal_slice.py ".$estr;
-print($query);
+//print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
 $rc=checkResult($query,$result,$uid);
