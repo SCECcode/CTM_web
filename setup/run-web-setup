@@ -63,9 +63,10 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 #   conda install -c conda-forge h5py -y
 #   conda install -c conda-forge pyproj -y
 #   conda install -c conda-forge numpy -y
+#   conda install -c conda-forge scipy -y
 #   conda install -c conda-forge pandas -y
 #   conda install -c conda-forge xarray -y
-#   conda install -c conda-forge netcdf4 -y
+#   conda install -c conda-forge netCDF4 -y
 #XXX   conda install -c conda-forge matplotlib -y
 #   conda env export > ctm_explorer_conda_env.yml
 
@@ -76,14 +77,25 @@ conda env create -f ./setup/ctm_explorer_conda_env.yml
 conda activate ctm_explorer_conda_env
 echo "conda activate ctm_explorer_conda_env" >> ~/.bashrc
 
-$ANACONDA3_TOP_DIR/bin/pip install setuptools
+
+#CONDA_PREFIX_1=/usr/local/share/anaconda3
+#CONDA_PREFIX=/usr/local/share/anaconda3/envs/ctm_explorer_conda_env
+#CONDA_PYTHON_EXE=/usr/local/share/anaconda3/bin/python
+#CONDA_DEFAULT_ENV=ctm_explorer_conda_env
+#(ctm_explorer_conda_env) bash-4.2# which python
+#/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin/python
+#(ctm_explorer_conda_env) bash-4.2# which pip
+#/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin/pip
+
+#$ANACONDA3_TOP_DIR/bin/pip install setuptools
+pip install setuptools
 
 ## setup plotting  
-#mkdir -p $PLOTTING_TOP_DIR
-#cd $PLOTTING_TOP_DIR
-#git clone https://github.com/SCECcode/ctm_plotting.git 
-#cd ctm_plotting
-#$ANACONDA3_TOP_DIR/bin/pip install dist/ctm_plotting-0.0.1.tar.gz
+mkdir -p $PLOTTING_TOP_DIR
+cd $PLOTTING_TOP_DIR
+git clone https://github.com/SCECcode/ctm_plotting.git 
+cd ctm_plotting
+pip install dist/ctm_plotting-0.0.1.tar.gz
 
 
 

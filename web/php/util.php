@@ -21,14 +21,15 @@ function makeEnvString() {
    $conda3Loc= getenv('ANACONDA3_TOP_DIR');
    $plottingLoc= getenv('PLOTTING_TOP_DIR');
    $syspathstr= getenv('PATH');
-   $pyctmLoc= $conda3Loc."/lib/python3.11/site-packages";
    $projstr= $installLoc."/lib/proj/share/proj";
 
    $condaenvLoc=$conda3Loc."/envs/ctm_explorer_conda_env";
+   $pyctmLoc= $condaenvLoc."/lib/python3.11/site-packages";
 
    $pathstr= $conda3Loc."/bin:".$conda3Loc."/condabin:".$condaenvLoc."/bin:".$syspathstr;
 
-   $pythonstr=$plottingLoc."/ctm_plotting";
+   $pythonstr= $pyctmLoc.":".$plottingLoc."/ctm_plotting";
+
    $envstr="LD_PRELOAD=".$condaenvLoc."/lib/libstdc++.so.6 PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
 //   print($envstr);
    return $envstr;
