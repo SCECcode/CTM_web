@@ -29,7 +29,7 @@ function makeEnvString() {
    $pathstr= $conda3Loc."/bin:".$conda3Loc."/condabin:".$condaenvLoc."/bin:".$syspathstr;
 
    $pythonstr=$plottingLoc."/ctm_plotting";
-   $envstr="LD_PRELOAD=$CONDA_PREFIX/lib/libstdc++.so.6 PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
+   $envstr="LD_PRELOAD=".$condaenvLoc."/lib/libstdc++.so.6 PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
 //   print($envstr);
    return $envstr;
 }
