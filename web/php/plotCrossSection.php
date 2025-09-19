@@ -43,6 +43,13 @@ $query = $envstr." query_2d_cross_section.py ".$estr;
 //print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
+
+if ($status == 1) {
+	echo "<div data-side=\"crossSection".$uid."\" data-params=\"ERROR: No result were produced\" style=\"display:flex\"></div>";
+return;
+}
+
+
 //$rc=checkResult($query, $result, $uid);
 //print($result);
 

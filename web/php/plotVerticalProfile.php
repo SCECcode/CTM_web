@@ -39,10 +39,16 @@ $gmtpl="../perl/plotCTM-1Dvert.pl";
 
 $estr = " --lat ".$lat." --lon ".$lon." --z_start ".$zstart." --z_end ".$zend." --z_step ".$zstep." --modelname '".$model."' --modelpath '".$modelpath."' --outpath ".$csvfile;
 $query = $envstr." query_1d_depth_profile.py ".$estr;
- 
 //print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
+
+if ($status == 1) {
+echo "<div data-side=\"verticalProfile".$uid."\" data-params=\"ERROR: No result were produced\" style=\"display:flex\"></div>";
+return;
+}
+
+
 $rc=checkResult($query, $result, $uid);
 
 $mode=1;

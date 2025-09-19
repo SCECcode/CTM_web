@@ -31,11 +31,11 @@ $lval= round(($secondlat - $firstlat), 3);
 $llval=round(($secondlon - $firstlon), 3);
 
 if ($lval == 0) {
-echo "ERROR: Two points can not have same Latitute";
+echo "<div data-side=\"horizontalSlice".$uid."\" data-params=\"ERROR: Two points can not have same Latitude\" style=\"display:flex\"></div>";
 return;
 }
 if ($llval == 0) {
-echo "ERROR: Two points can not have same Longitude";
+echo "<div data-side=\"horizontalSlice".$uid."\" data-params=\"ERROR: Two points can not have same Longitude\" style=\"display:flex\"></div>";
 return;
 }
 
@@ -53,8 +53,15 @@ $query = $envstr." query_2d_horizontal_slice.py ".$estr;
 //print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
+//print_r($retval);
+//print($status);
+
+if ($status == 1) {
+echo "<div data-side=\"horizontalSlice".$uid."\" data-params=\"ERROR: No result were produced\" style=\"display:flex\"></div>";
+return;
+}
+
 $rc=checkResult($query,$result,$uid);
-//print($result);
 
 $gtype=1;
 ##old: csv, plotparam, plotfault, plotcities, potpts, cmap, range

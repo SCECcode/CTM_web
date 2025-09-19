@@ -1096,3 +1096,24 @@ a label that is being used as datafile prefix separated by a comma or a space </
     </div> <!--Content-->
   </div>
 </div> <!--Modal: Name-->
+
+<div class="modal" id="modalnotify" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-small" id="modalnotifyDialog" role="document">
+    <!--Content-->
+    <div class="modal-content" id="modalnotifyContent">
+      <!--Body-->
+      <div class="modal-body" id="modalnotifyBody">
+        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
+          <div class="col-12" style="font-size:14pt">
+            <p id="notify-container">blah blah</p>
+          </div>
+        </div>
+      </div>
+    </div> <!--Content-->
+  </div>
+</div> <!--Modal: modalnotify-->
+
+</div> <!-- container -->
+</body>
+</html>
+

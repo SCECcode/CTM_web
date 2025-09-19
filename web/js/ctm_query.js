@@ -209,11 +209,17 @@ function plotCrossSection() {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
 
             var str=processSearchResult("plotCrossSection",uid);
-
-         if (str != undefined) { 
+            if (str != undefined && typeof str === 'object') { 
                 var mstr=getModelNameWithType(modelstr);
                 var note="Vertical Cross Section with "+mstr;
                 insertMetaPlotResultTable(note,uid,str);
+                } else {
+                    if(str != undefined) {
+                        notify(str);
+		        } else {
+                          notify("No Result Generated");
+                    }
+                    remove_bounding_line_layer(uid);
             }
 
             document.getElementById('spinIconForLine').style.display = "none";
@@ -326,15 +332,21 @@ function plotVerticalProfileByList(dataarray,idx,total) {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
             var str=processSearchResult("plotVerticalProfile",uid);
 
-            if (str != undefined) {
+            if (str != undefined && typeof str === 'object') {
                 var mstr=getModelNameWithType(modelstr);
                 var note="Vertical Profile with "+mstr;
 		add_bounding_profile(uid,latstr,lonstr);
                 insertMetaPlotResultTable(note, uid,str);
                 reset_profile_UID();
                 } else { // failed to produce valid vertical profile plot, remove marker
+                    if(str != undefined) { 
+                      notify(str);
+                      } else {	
+                        notify("No Result Generated");
+                    }
                     remove_bounding_profile_layer(uid);
             }
+
             document.getElementById('spinIconForProfile').style.display = "none";
 		
             // call next one
@@ -493,12 +505,19 @@ function plotHorizontalSlice() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
-            var str=processSearchResult("plotHorizontalSlice",uid);
 
-            if (str != undefined) { 
+            var str=processSearchResult("plotHorizontalSlice",uid);
+            if (str != undefined && typeof str === 'object') { 
                 var mstr=getModelNameWithType(modelstr);
                 var note="Horizontal Slice with "+mstr;
                 insertMetaPlotResultTable(note,uid,str);
+                } else { //  no result came back and so remove the marked region
+                    if(str != undefined) { 
+                      notify(str);
+                      } else {	
+                        notify("No Result Generated");
+                    }
+                    remove_bounding_area_layer(uid);
             }
 
             document.getElementById('spinIconForArea').style.display = "none";
