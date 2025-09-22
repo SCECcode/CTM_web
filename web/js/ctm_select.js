@@ -59,7 +59,7 @@ function areaClick() {
 
 function set_area_latlons_preset() {
    var areazptr=$('#areaZTxt');
-   areazptr.val(1000);
+   areazptr.val(15000);
    areazptr.css("display","");
 }
 
@@ -321,7 +321,7 @@ function lineClick() {
 }
 
 function set_line_latlons_preset() {
-   $( "#lineZEndTxt" ).val(5000);
+   $( "#lineZEndTxt" ).val(30000);
    $( "#lineZStartTxt" ).val(0);
 }
 
