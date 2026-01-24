@@ -1,7 +1,7 @@
 var CTM_tb={
   "models": [
     {'id':1,
-     'name':'Lee_2025',
+     'name':'Lee_2026',
      'data':'ThermalModel_WUS_v2.nc'},
     {'id':2,
      'name':'Shinevar_2018',
@@ -11,7 +11,7 @@ var CTM_tb={
      'data':'Suietal_GJI_2025_vol.nc'},
     {'id':4,
      'name':'Boyd_2019',
-     'data':'NCM_Temperature_250929_ll.nc'},
+     'data':'NCM_TemperatureVolume_250929_ll.nc'},
   ]
 };
 
