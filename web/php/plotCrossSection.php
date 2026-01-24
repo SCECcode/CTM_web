@@ -14,12 +14,14 @@ $firstlon = ($_GET['firstlon']);
 $secondlat = ($_GET['secondlat']);
 $secondlon = ($_GET['secondlon']);
 
+$modeldir = ($_GET['modeldir']);
 $modeldata = ($_GET['modeldata']);
 $ModelPathLoc = getenv('CTM_LARGEDATA_DIR');
-if ($ModelPathLoc !== false) { ## if not define
+
+if ($ModelPathLoc == '') { ## if not define
   $ModelPathLoc = "../ctm_data";
 }
-$modelpath= $ModelPathLoc.'/model/'.$modeldata;
+$modelpath= $ModelPathLoc.'/model/'.$modeldir.'/'.$modeldata;
 
 $model= ($_GET['model']);
 $zstart = ($_GET['zstart']);

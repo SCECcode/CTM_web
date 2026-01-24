@@ -130,11 +130,11 @@ dependencies:
   - zstd=1.5.7=hb8e6e7a_2
   - pip:
       - contourpy==1.3.3
-      - ctm-plotting==0.0.1
+      - ctm-plotting==0.0.2
       - cycler==0.12.1
-      - fonttools==4.60.0
+      - fonttools==4.61.1
       - kiwisolver==1.4.9
-      - matplotlib==3.10.6
-      - pillow==11.3.0
-      - pyparsing==3.2.4
+      - matplotlib==3.10.8
+      - pillow==12.1.0
+      - pyparsing==3.3.2
 prefix: /usr/local/share/anaconda3/envs/ctm_explorer_conda_env

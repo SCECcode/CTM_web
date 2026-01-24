@@ -14,12 +14,13 @@ $z = ($_GET['z']);
 $model = ($_GET['model']);
 $uid = ($_GET['uid']);
 
+$modeldir = ($_GET['modeldir']);
 $modeldata = ($_GET['modeldata']);
 $ModelPathLoc = getenv('CTM_LARGEDATA_DIR');
-if ( $ModelPathLoc !== false ) { ## if not define
+if ( $ModelPathLoc == '' ) { ## if not define
   $ModelPathLoc = "../ctm_data";
 }
-$modelpath= $ModelPathLoc.'/model/'.$modeldata;
+$modelpath= $ModelPathLoc.'/model/'.$modeldir.'/'.$modeldata;
 
 $envstr=makeEnvString();
 

@@ -9,7 +9,7 @@ var CTM = new function () {
 
 // gather up the valid ctm models for this instance
   this.setup_model = function() {
-    let str= { 'models': ['lee2025','shinevar2018'] };
+    let str= { 'models': ['lee2026','shinevar2018','boyd2019','suietal2025'] };
     makeInstallModelList(str);
   };
 

@@ -103,10 +103,18 @@ function getModelNameById(id) {
    var name=item['name'];
    return name;
 }
+
 function getModelAbbNameById(id) {
    let tb=CTM_tb['models'];
    let item=tb[id];
    var name=item['abb name'];
+   return name;
+}
+
+function getModelPathById(id) {
+   let tb=CTM_tb['models'];
+   let item=tb[id];
+   var name=item['path name'];
    return name;
 }
 
