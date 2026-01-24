@@ -5,7 +5,13 @@ var CTM_tb={
      'data':'ThermalModel_WUS_v2.nc'},
     {'id':2,
      'name':'Shinevar_2018',
-     'data':'Shinevar_2018_Temperature.nc'}
+     'data':'Shinevar_2018_Temperature.nc'},
+    {'id':3,
+     'name':'Suietal_2025',
+     'data':'Suietal_GJI_2025_vol.nc'},
+    {'id':4,
+     'name':'Boyd_2019',
+     'data':'NCM_Temperature_250929_ll.nc'},
   ]
 };
 
