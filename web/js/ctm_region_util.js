@@ -7,7 +7,7 @@
 // information on model 
 var CTM_installed=[];
 
-// str is a blob { 'models': ['lee2025','shinevar2018'] }
+// str is a blob { 'models': ['lee2026','shinevar2018'] }
 function makeInstallModelList(str) {
   var blob;
   if( str == undefined || str == "" ) {

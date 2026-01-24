@@ -19,7 +19,7 @@ $ModelPathLoc = getenv('CTM_LARGEDATA_DIR');
 if ($ModelPathLoc !== false) { ## if not define
   $ModelPathLoc = "../ctm_data";
 }
-$modelpath= $ModelPathLoc.'/'.$modeldata;
+$modelpath= $ModelPathLoc.'/model/'.$modeldata;
 
 $uid = ($_GET['uid']);
 $secondlat = ($_GET['secondlat']);

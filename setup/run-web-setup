@@ -75,11 +75,5 @@ mkdir -p $PLOTTING_TOP_DIR
 cd $PLOTTING_TOP_DIR
 git clone https://github.com/SCECcode/ctm_plotting.git 
 cd ctm_plotting
-pip install dist/ctm_plotting-0.0.1.tar.gz
-
-## setup ctm_data 
-cd $CTM_WEB_TOP_DIR
-mkdir -p ctm_data
-cd ctm_data
-ln -s $CTM_LARGEDATA_DIR/model/*/*.nc .
+pip install dist/ctm_plotting-0.0.2.tar.gz
 
