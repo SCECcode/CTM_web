@@ -7,24 +7,15 @@
 // information on model 
 var CTM_installed=[];
 
-// str is a blob { 'models': ['lee2026','shinevar2018'] }
-function makeInstallModelList(str) {
-  var blob;
-  if( str == undefined || str == "" ) {
-     window.console.log("ERROR: no return result");
-     return "";
-  }
-  if( typeof str === 'string') {
-     blob=JSON.parse(str);
-     } else {
-       blob=str;
-  }
-  var mlist=blob['models'];
-  var cnt=mlist.length;
+function makeInstallModelList() {
+  var tb=CTM_tb['models'];
+  var cnt=tb.length;
   var i;
   for(i=0;i<cnt;i++) {
-    var item=mlist[i];
-    CTM_installed.push(item);
+    var item=tb[i];
+    if(item['skip'] == 'no') {
+      CTM_installed.push(item['path name']);
+    }
   }
   setup_modeltype();
 }

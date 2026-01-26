@@ -1,0 +1,18 @@
+With a new CTM dataset,  
+
+  Check with ctm_plotting
+    - drop the data.nc into example directory
+    - ask contributor (Terry Lee) for reference call and csv reference files
+    - create a test script base from one of the r_sample 
+    - run and verify the result matches with csv reference files
+
+  Work into CTM explorer (CTM_web)
+    - put datafile into CTM_DATASET_DIRECTORY  (on moho, at /var/www/html)
+           model/newmodel/datafile.nc
+    - change owner/group to apache
+
+    - add model information into web/js/ctm_region.js
+
+Currently, postgres db is not being used but can potentially be used to store
+the metadata in ctm_region.js
+
