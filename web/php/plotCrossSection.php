@@ -84,6 +84,8 @@ $resultarray->query= $query;
 $resultarray->meta= $uid."_c_meta.json";
 $resultarray->data= $uid."_c_data.bin";
 $resultarray->csv= $uid."_c_data.csv";
+## return csv file without dummy column
+$resultarray->final_csv= $uid."_c_data_final.csv";
 $resultarray->gmtpng= $uid."_c_data.png";
 $resultarray->gmtpdf= $uid."_c_data.pdf";
 $resultarray->elapsed=round($elapsed_time, 2);

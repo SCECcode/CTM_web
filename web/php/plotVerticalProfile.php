@@ -78,6 +78,7 @@ $resultarray->query= $query;
 $resultarray->meta= $uid."_v_meta.json";
 $resultarray->dataset= $uid."_v_matprops.json";
 $resultarray->csv= $uid."_v_matprops.csv";
+$resultarray->final_csv= $uid."_v_matprops_final.csv";
 $resultarray->gmtpng= $uid."_v_matprops.png";
 $resultarray->gmtpdf= $uid."_v_matprops.pdf";
 $jj=json_decode($gmtresult);

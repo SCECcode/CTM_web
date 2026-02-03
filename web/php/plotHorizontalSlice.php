@@ -91,10 +91,13 @@ $resultarray->type="horizontal";
 if (file_exists($file)) {
   $resultarray->plot= $uid."_h.png";
 }
+
 $resultarray->query= $query;
 $resultarray->meta= $uid."_h_meta.json";
 $resultarray->data= $uid."_h_data.bin";
 $resultarray->csv= $uid."_h_data.csv";
+## return the csv file without dummy column
+$resultarray->final_csv= $uid."_h_data_final.csv";
 $resultarray->gmtpng= $uid."_h_data.png";
 $resultarray->gmtpdf= $uid."_h_data.pdf";
 $resultarray->elapsed=round($elapsed_time, 2);

@@ -171,7 +171,7 @@ function clearSearchResult() {
 function makeDownloadLinks(str) {
     var html="";
 
-window.console.log("downloadlinks>>",str);
+window.console.log("XX downloadlinks>>",str);
     // just one
     if( typeof str === 'string') { 
        // if the file ends with png 
@@ -196,6 +196,9 @@ window.console.log("downloadlinks>>",str);
        var val=str[keys[i]]; 
        switch(keys[i]) {
           case 'csv':
+              //do nothing      
+              break;
+          case 'final_csv':
               html=html+"<div class=\"links\"><a class=\"openpop\" href=\"result/"+val+"\" target=\"downloadlink\"><span class=\"glyphicon glyphicon-download-alt\"></span></a>&nbsp;&nbsp;Download data (.csv format)</div>";
               break;
           case 'gmtpdf':

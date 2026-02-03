@@ -456,6 +456,7 @@ function replotVerticalProfile() {
 }
 
 function plotHorizontalSlice() {
+
     document.getElementById('spinIconForArea').style.display = "block";
     $("#modalwaiton").modal({ backdrop: 'static', keyboard: false });
     var xmlhttp;
