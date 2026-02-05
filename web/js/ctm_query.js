@@ -4,7 +4,7 @@
 ***/
 
 // if there are too many file points, do not generate the mp layer
-// limit it to 200 maximum
+// limit it to 10000 maximum
 var MAX_FILEPOINTS=500;
 var MODAL_REPLOT_SRC="";
 var MODAL_REPLOT_TYPE="";
@@ -73,7 +73,12 @@ function getMaterialPropertyByLatlonList(uid,dataarray,current_chunk, total_chun
 function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk, total_chunks, chunk_step) {
     var xmlhttp;
     // extract content of a file
-    var modelstr=document.getElementById("selectModelType").value;
+
+    var modelshort=document.getElementById("selectModelType").value;
+    var mid=getModelIndex(modelshort);
+    var modeldata=getModelFilenameById(mid);
+    var modelstr=getModelAbbNameById(mid);
+    var modeldir=getModelPathById(mid);
 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -92,6 +97,9 @@ function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk
               if( dataarray.length < MAX_FILEPOINTS) {
                 set_point_UID(uid);    
                 add_bounding_file_points(uid,dataarray);
+                } else { // tell user only a fixed number of points are displayed.. 
+                  msg="Too many locations, not displayed on the 2D map";
+                  notify(msg);
               }
             }
 
@@ -109,7 +117,7 @@ function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk
             }
        }
     }
-    xmlhttp.open("GET","php/getMaterialPropertyByLatlonChunk.php?datastr="+datastr+"&chunkid="+current_chunk+"&chunks="+total_chunks+"&model="+modelstr+ "&uid="+uid, true);
+    xmlhttp.open("GET","php/getMaterialPropertyByLatlonChunk.php?datastr="+datastr+"&chunkid="+current_chunk+"&chunks="+total_chunks+"&model="+modelstr+"&modeldir="+modeldir+"&modeldata="+modeldata+"&uid="+uid, true);
     xmlhttp.send();
 }
 

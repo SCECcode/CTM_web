@@ -275,6 +275,7 @@ function readAndProcessLocalFileForPoint(fobj) {
     var uid=getRnd("CTM");
      
     add_file_of_point(uid,fobj);
+window.console.log(" XXX calling getMaterialPropertyByLatlonList the first time..total loc %d \n", fdata.length);
     getMaterialPropertyByLatlonList(uid,fdata,0, chunks, chunk_size);
 
   };

@@ -12,7 +12,7 @@ var CTM_tb={
      'path name':'boyd2019',
      'model filename':'NCM_TemperatureVolume_250929_ll.nc',
      'description':'The national 3D thermal model of Boyd (2019) is part of the USGS National Crustal Model. It integrates observational data of surface temperature (Wan et al., 2015), surface temperature gradient (SMU, 2015; UND, 2015), thermal conductivity (SMU, 2015; UND, 2015), surface heat production (SMU, 2015; UND, 2015; Hasterok and Webb, 2017), crustal thickness of Buehler and Shearer (2017), and Moho temperature inverted from Pn wave speed with the approach of Schutt et al. (2018) and Pn velocity model of Buehler and Shearer (2017). These compiled parameters are together input into an analytical 1D steady-state heat conduction models to derive the 3D thermal structure of the conterminous United States. This model assumes exponential decrease of heat production through depth and depth-dependent thermal conductivity',
-     'description_brief':'The national 3D thermal model of Boyd (2019) is part of the USGS National Crustal Model. It integrates observational data of surface temperature (Wan et al., 2015), surface temperature gradient (SMU, 2015; UND, 2015), thermal conductivity (SMU, 2015; UND, 2015), surface heat production (SMU, 2015; UND, 2015; Hasterok and Webb, 2017), crustal thickness of Buehler and Shearer (2017), and Moho temperature inverted from Pn wave speed with the approach of Schutt et al. (2018) and ...',
+     'description_brief':'The national 3D thermal model of Boyd (2019) is part of the USGS National Crustal Model. It integrates observational data of surface temperature (Wan et al., 2015), surface temperature gradient (SMU, 2015; UND, 2015), thermal conductivity (SMU, 2015; UND, 2015), surface heat production (SMU, 2015; UND, 2015; Hasterok and Webb, 2017), crustal thickness of Buehler and Shearer (2017), and Moho temperature inverted from Pn wave speed ...',
      'coordinates': [ {'lon':-126.0,'lat':24.0},
                       {'lon':-65.0,'lat':24.0},
                       {'lon':-65.0,'lat':50.0},
@@ -25,7 +25,7 @@ var CTM_tb={
      'path name':'lee2026',
      'model filename':'ThermalModel_WUS_v2.nc',
      'description':'CTM of Lee et al. (2026) is a statewide California-Nevada 3D thermal model. This model is developed by a Monte-Carlo inversion approach to generate unique thermal parameters (e.g., thermal conductivity, radiogenic heat production) and crustal heat flow scenarios that best-fit the input independent temperature proxies, including surface heat flow (Williams et al., 2007; Mordensky and DeAngelo, 2023), new seismogenic thickness (D95) inferred from >40 years of earthquake records, crustal thickness (Buehler and Shearer, 2017) and Moho temperature (Schutt et al., 2018). This model assumes that the depth to the D95 is equivalent to an isothermal surface of 350 ± 100 °C, 1D vertical steady-state heat conduction from the base of the crust to the surface, exponential decrease of radiogenic heat production through depth, and temperature-independent thermal conductivity. This model integrates best-fit 1D vertical steady-state conductive geotherms at each crustal column across the modeling area, yielding a statewide 3D temperature volume for California and Nevada. White areas are regions that do not yield any accepted, best-fit modeling results, suggesting that steady-state conductive heat condition cannot fit the observed temperature proxies at crustal depths. The resultant 3D temperature volume is statistically diffused in lateral directions for 5 myr with a thermal diffusivity of 10^-6m^2s^-1',
-     'description_brief':'CTM of Lee et al. (2026) is a statewide California-Nevada 3D thermal model. This model is developed by a Monte-Carlo inversion approach to generate unique thermal parameters (e.g., thermal conductivity, radiogenic heat production) and crustal heat flow scenarios that best-fit the input independent temperature proxies, including surface heat flow (Williams et al., 2007; Mordensky and DeAngelo, 2023), new seismogenic thickness (D95) inferred from >40 years of earthquake records, ...',
+     'description_brief':'CTM of Lee et al. (2026) is a statewide California-Nevada 3D thermal model. This model is developed by a Monte-Carlo inversion approach to generate unique thermal parameters (e.g., thermal conductivity, radiogenic heat production) and crustal heat flow scenarios that best-fit the input independent temperature proxies, including surface heat flow (Williams et al., 2007; Mordensky and DeAngelo, 2023), new seismogenic thickness (D95) inferred from >40 years of ...',
      'coordinates': [ {'lon':-125.0,'lat':41.97},
                       {'lon':-114.0,'lat':41.97},
                       {'lon':-114.0,'lat':32.06},
@@ -38,7 +38,7 @@ var CTM_tb={
      'path name':'shinevar2018',
      'model filename':'Shinevar_2018_Temperature.nc',
      'description':'CTM of Shinevar et al. (2018) is a southern California 3D thermal model. This model assumes steady-state, 1D vertical heat conduction throughout the region, and relies on heat flow measurements from Williams and DeAngelo (2011) and the SMU Geothermal Database. Temperature as a function of depth is calculated at each grid point assuming a steady-state 1-D geotherm following the assumption that the heat production in the upper crust accounts for 40% of the measured surface heat flow (Pollack and Chapman, 1977). Thermal conductivity is taken to be a function of temperature (Durham et al., 1987, and EQ 8 in Shinevar et al., 2018). To smooth horizontal temperature gradients, the temperature field is allowed to diffuse laterally for 5 myr, assuming constant boundary temperatures and a thermal diffusivity of 10^-6m^2s^-1',
-     'description_brief':'CTM of Shinevar et al. (2018) is a southern California 3D thermal model. This model assumes steady-state, 1D vertical heat conduction throughout the region, and relies on heat flow measurements from Williams and DeAngelo (2011) and the SMU Geothermal Database. Temperature as a function of depth is calculated at each grid point assuming a steady-state 1-D geotherm following the assumption that ...',
+     'description_brief':'CTM of Shinevar et al. (2018) is a southern California 3D thermal model. This model assumes steady-state, 1D vertical heat conduction throughout the region, and relies on heat flow measurements from Williams and DeAngelo (2011) and the SMU Geothermal Database. Temperature as a function of depth is calculated at each grid point assuming a steady-state 1-D geotherm following the assumption ...',
      'coordinates': [ {'lon':-121.0,'lat':37.0},
                       {'lon':-112.0,'lat':37.0},
                       {'lon':-112.0,'lat':31.0},
@@ -51,7 +51,7 @@ var CTM_tb={
      'path name':'shinevar2024',
      'model filename':'Shinevar_2024_Temperature.nc',
      'description':'CTM of Shinevar (2024) is a southern California 3D thermal model. This regional thermal model relies on integrating surface heat flow (Williams and DeAngelo (2011); SMU Geothermal Database), surface heat production measurement (Gard et al., 2019), and temperature at 50-km depth derived by inverting the bulk P-wave velocity from the Community Velocity Model of Shaw et al. (2015). The boundary conditions are fixed to the surface at 15 °C and base at 50 km by the seismically derived temperature estimates. This model assumes 1D steady-state heat conductions, a temperature-independent thermal conductivity at 2.5 W m^-1 °C^-1, exponential decrease of heat production within the upper-middle crust, and uniform heat production within the lower crust (0.5 µW m^-3) and mantle (0.03 µW m^-3). Full model description can be found at the Zenodo repository: https://zenodo.org/records/7842960',
-     'description_brief':'CTM of Shinevar (2024) is a southern California 3D thermal model. This regional thermal model relies on integrating surface heat flow (Williams and DeAngelo (2011); SMU Geothermal Database), surface heat production measurement (Gard et al., 2019), and temperature at 50-km depth derived by inverting the bulk P-wave velocity from the Community Velocity Model of Shaw et al. (2015). The boundary conditions are fixed to the surface at 15 °C and base at 50 km by the seismically derived temperature estimates. ...',
+     'description_brief':'CTM of Shinevar (2024) is a southern California 3D thermal model. This regional thermal model relies on integrating surface heat flow (Williams and DeAngelo (2011); SMU Geothermal Database), surface heat production measurement (Gard et al., 2019), and temperature at 50-km depth derived by inverting the bulk P-wave velocity from the Community Velocity Model of Shaw et al. (2015). The boundary conditions are fixed to the surface ...',
      'coordinates': [ {'lon':-121.0,'lat':36.5},
                       {'lon':-114.0,'lat':36.5},
                       {'lon':-114.0,'lat':32.0},
@@ -64,7 +64,7 @@ var CTM_tb={
      'path name':'suietal2025',
      'model filename':'Suietal_GJI_2025_vol.nc',
      'description':'The crustal thermal model of Sui et al. (2025) provides temperature estimates for the conterminous United States. First, this model calculates the crustal heat production profiles at 1,683 locations using the empirical geochemical-seismic relationship and approach of Sui et al. (2022). Integrating the resultant crustal heat production profiles with surface temperature (Wan et al., 2015), surface heat conductivity (SMU, 2015; Fuchs & Norden, 2021), surface heat flow (SMU, 2015; Fuchs & Norden, 2021), Moho temperature (Schutt et al., 2018; Boyd, 2019), and Curie depth (Gard and Hasterok, 2021) into a Markov Chain Monte-Carlo inversion model yield a series of 1,683 1D vertical geotherms throughout the conterminous United States. The resultant 3D thermal model is interpolated from the 1,683 1D vertical geotherms throughout the conterminous United States at a resolution of 0.25°',
-     'description_brief':'The crustal thermal model of Sui et al. (2025) provides temperature estimates for the conterminous United States. First, this model calculates the crustal heat production profiles at 1,683 locations using the empirical geochemical-seismic relationship and approach of Sui et al. (2022). Integrating the resultant crustal heat production profiles with surface temperature (Wan et al., 2015), surface heat conductivity (SMU, 2015; Fuchs & Norden, 2021), surface heat flow (SMU, 2015; Fuchs & Norden, 2021), ...',
+     'description_brief':'The crustal thermal model of Sui et al. (2025) provides temperature estimates for the conterminous United States. First, this model calculates the crustal heat production profiles at 1,683 locations using the empirical geochemical-seismic relationship and approach of Sui et al. (2022). Integrating the resultant crustal heat production profiles with surface temperature (Wan et al., 2015), surface heat conductivity (SMU, 2015; Fuchs & Norden, 2021), ...',
      'coordinates': [ {'lon':-126.0,'lat':24.0},
                       {'lon':-65.0,'lat':24.0},
                       {'lon':-65.0,'lat':50.0},
@@ -100,14 +100,21 @@ var CTM_tb={
     {'id':'model','label':'Model','show':1,'descript':'Model'}
  ],
 "references": [
-{ 'type':'model','name': ['Lee_2025'],
-     'author': 'Lee et al., (2025)',
-     'ref': 'Lee, T., Zuza, A. V., Trugman, D. T., Vlaha, D. R., & Cao, W. (2025, 09). Statewide Community Thermal Model of California and Nevada: Model comparisons, implications, and a new explorer platform. Poster Presentation at 2025 SCEC Annual Meeting. SCEC Contribution 14291'
-},
+{ 'type':'model','name': ['Lee_2026'],
+     'author': 'Lee et al., (2026)',
+     'ref': 'Lee, T., Zuza, A. V., Trugman, D. T., Vlaha, D. R., & Cao, W. (2025, 09). Statewide Community Thermal Model of California and Nevada: Model comparisons, implications, and a new explorer platform. Poster Presentation at 2025 SCEC Annual Meeting. SCEC Contribution 14291'},
 { 'type':'model','name':['Shinevar_2018'],
      'author':'Shinevar et al. (2018)',
-     'ref':'Shinevar, W. J., Behn, M. D., Hirth, G., & Jagoutz, O. (2018). Inferring crustal viscosity from seismic velocity: Application to the lower crust of Southern California. Earth and Planetary Science Letters, 494, 83-91'
-}]
-
+     'ref':'Shinevar, W. J., Behn, M. D., Hirth, G., & Jagoutz, O. (2018). Inferring crustal viscosity from seismic velocity: Application to the lower crust of Southern California. Earth and Planetary Science Letters, 494, 83-91'},
+{ 'type':'model','name':['Shinevar_2024'],
+     'author':'Shinevar, W. (2024)',
+     'ref':'Shinevar, W. (2024). California Thermal Model (SCTM2) (1.0). Zenodo. https://zenodo.org/records/7842960'},
+{ 'type':'model','name': ['Boyd_2019'],
+     'author': 'Boyd, O. S. (2019)',
+     'ref': 'Boyd, O. S. (2019). Temperature model in support of the US Geological Survey National Crustal Model for seismic hazard Studies (No. 2019-1121). US Geological Survey'},
+{ 'type':'model','name': ['Suietal_2025'],
+     'author':'Sui, S., Shen, W., & Boyd, O. S. (2025)',
+     'ref':'A crustal thermal model of the conterminous United States constrained by multiple data sets: a Monte–Carlo approach. Geophysical Journal International, 241(3), 1711-1724'}
+]
 };
 

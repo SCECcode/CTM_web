@@ -293,14 +293,14 @@ allows easy access to a range of thermal models. The interface allows for downlo
                                     </div>
                                 </div>
 
-<!--- disable for now
+<!--- XXX disable -->
                                 <div class="mt-1">
                                      <input class="form-control" id='infileBtn' type='file' onchange='selectLocalFiles(this.files,1)' style='display:none;'></input>
                                      <button id="fileSelectBtn" class="btn ctm-top-btn" style="width:85%" title="open a file to ingest" onclick='javascript:document.getElementById("infileBtn").click();'>
                                      <span class="glyphicon glyphicon-file"></span> Select file to use</button>
 <button class="btn ctm-top-small-btn" data-toggle="modal" data-target="#modalfileinfo"><span class="glyphicon glyphicon-info-sign"></span></button>
                                 </div>
---->
+<!--- --->
 
                                 <div class="row d-flex mt-1">
                                     <div class="col-5 pr-0">
@@ -1053,7 +1053,7 @@ allows easy access to a range of thermal models. The interface allows for downlo
 lon1 lat1 z1             lon1,lat1,z1
 lon2 lat2 z2      or     lon2,lat2,z2
 </pre>
-<h5>Maximum display points is 200</h5>
+<h5>Maximum display points is 10000</h5>
           </div>
         </div>
       </div>
