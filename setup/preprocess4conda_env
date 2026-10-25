@@ -1,0 +1,23 @@
+
+source ./setup_ctm_web.sh
+
+# preprocess4conda_env
+CONDA_NO_PLUGINS=true conda remove conda-libmamba-solver libmamba libmambapy -n base
+
+# preprocess to create a new yml file to be used during runtime 
+conda remove --name ctm_explorer_conda_env --all
+conda clean --all
+conda create --name ctm_explorer_conda_env python=3.11 -y
+conda activate ctm_explorer_conda_env
+conda install -c conda-forge gmt -y
+conda install -c conda-forge setuptools -y
+conda install -c conda-forge pybind11 -y
+conda install -c conda-forge h5py -y
+conda install -c conda-forge pyproj -y
+conda install -c conda-forge numpy -y
+conda install -c conda-forge scipy -y
+conda install -c conda-forge pandas -y
+conda install -c conda-forge xarray -y
+conda install -c conda-forge netCDF4 -y
+conda install -c conda-forge matplotlib -y
+conda env export > ctm_explorer_conda_env.yml

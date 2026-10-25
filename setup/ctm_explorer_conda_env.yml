@@ -108,7 +108,6 @@ dependencies:
   - python_abi=3.11=2_cp311
   - pytz=2025.2=pyhd8ed1ab_0
   - readline=8.3=hc2a1206_0
-  - scipy=1.16.2=py311h1e13796_0
   - setuptools=80.9.0=pyhff2d567_0
   - six=1.17.0=pyhe01879c_1
   - snappy=1.2.2=h03e3b7b_0
@@ -128,13 +127,4 @@ dependencies:
   - xz-tools=5.8.1=hb9d3cd8_2
   - zlib=1.3.1=hb25bd0a_0
   - zstd=1.5.7=hb8e6e7a_2
-  - pip:
-      - contourpy==1.3.3
-      - ctm-plotting==0.0.2
-      - cycler==0.12.1
-      - fonttools==4.61.1
-      - kiwisolver==1.4.9
-      - matplotlib==3.10.8
-      - pillow==12.1.0
-      - pyparsing==3.3.2
 prefix: /usr/local/share/anaconda3/envs/ctm_explorer_conda_env
