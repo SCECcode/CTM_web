@@ -129,7 +129,7 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 
 ## use ctm_explorer_conda environment
 # these are the 'runtime' commands
-#conda env create -f ./setup/ctm_explorer_conda_env.yml
+conda env create -f ./setup/ctm_explorer_conda_env.yml
 conda activate ctm_explorer_conda_env
 echo "conda activate ctm_explorer_conda_env" >> ~/.bashrc
 
