@@ -17,7 +17,7 @@ COPY ./doc/ctm.conf /etc/httpd/conf.d/
 RUN dnf upgrade -y --releasever=latest && \
     dnf install -y \
         php8.2 php8.2-cli php8.2-pgsql && \
-    dnf install -y wget yum perl &&\
+    dnf install -y vi wget yum perl &&\
     dnf clean all && \
     rm -rf /var/cache/dnf && \
     php -v
@@ -35,6 +35,9 @@ RUN /app/setup/run-web-setup
 RUN chown -R apache:apache /app/web/php && \
     chown -R apache:apache /app/web/perl && \
     chown -R apache:apache /app/web/result
+
+RUN sed -i 's/;clear_env = no/clear_env = no/g' /etc/php-fpm.d/www.conf
+RUN sed -i 's/variable_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php-fpm.d/www.conf
 
 RUN echo -e '#!/bin/bash\nphp-fpm -D\nexec /usr/sbin/httpd -D FOREGROUND' > /usr/local/bin/entrypoint.sh && chmod +x /usr/local/bin/entrypoint.sh
 

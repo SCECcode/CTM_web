@@ -109,8 +109,8 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 
 # use conda environment
 # preprocess to create a new yml file to be used during runtime 
-#conda remove --name ctm_explorer_conda_env --all
-#conda clean --all
+####conda remove --name ctm_explorer_conda_env --all
+####conda clean --all
 #   conda create --name ctm_explorer_conda_env python=3.11 -y
 #   conda activate ctm_explorer_conda_env
 #   conda install -c conda-forge gmt -y
@@ -124,6 +124,7 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 #   conda install -c conda-forge xarray -y
 #   conda install -c conda-forge netCDF4 -y
 #   conda install -c conda-forge matplotlib -y
+#   conda install php -y
 #   conda env export > ctm_explorer_conda_env.yml
 
 
