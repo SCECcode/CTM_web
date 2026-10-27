@@ -4,5 +4,12 @@ pid=`docker ps | grep ctm_web_web | cut -f 1 -d ' '`
 #docker container exec -u apache -it $pid /bin/bash
 docker container exec -it $pid /bin/bash
 
-#docker container exec -it $pid php -v
+### test the running container 
+##docker container exec -it $pid php -v
+##echo "--"
+###docker exec -it $pid env | grep UCVM
+##echo "--"
+##docker exec -it $pid php -r "echo getenv('UCVM_INSTALL_PATH');"
+##echo "--"
+
 
