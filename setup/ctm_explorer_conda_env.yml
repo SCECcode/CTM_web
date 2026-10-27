@@ -221,5 +221,5 @@ dependencies:
   - zlib-ng=2.3.3=hce19668_1
   - zstd=1.5.7=hb78ec9c_7
   - pip:
-      - ctm-plotting==0.0.2
+      - ctm-plotting==0.0.3
 prefix: /usr/local/share/anaconda3/envs/ctm_explorer_conda_env

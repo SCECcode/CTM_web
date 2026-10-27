@@ -79,10 +79,7 @@ flatpak install flathub org.gnome.Evince
 wget https://www.mirrorservice.org/sites/ftp.soest.hawaii.edu/gmt/gshhg-gmt-2.3.7.tar.gz
 tar -xzf gshhg-gmt-2.3.7.tar.gz
 # Move to your application's expected path or GMT directory
-
-
-
-
+## XXX  not sure where this should go
 
 
 ### 24.5.0, old one is 4.7.10
@@ -107,6 +104,8 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 ## python basemap, basemap-data-hires, matplotlib
 ## Apparently, after python3.12, distutils got kicked out
 
+## go back to build directory
+cd $CTM_TOP_DIR
 # use conda environment
 # preprocess to create a new yml file to be used during runtime 
 ####conda remove --name ctm_explorer_conda_env --all
@@ -127,7 +126,6 @@ export PATH=$ANACONDA3_TOP_DIR/bin:$PATH
 #   conda install php -y
 #   conda env export > ctm_explorer_conda_env.yml
 
-
 ## use ctm_explorer_conda environment
 # these are the 'runtime' commands
 conda env create -f ./setup/ctm_explorer_conda_env.yml
@@ -139,5 +137,5 @@ mkdir -p $PLOTTING_TOP_DIR
 cd $PLOTTING_TOP_DIR
 git clone https://github.com/SCECcode/ctm_plotting.git 
 cd ctm_plotting
-pip install dist/ctm_plotting-0.0.2.tar.gz
+pip install dist/ctm_plotting-0.0.3.tar.gz
 

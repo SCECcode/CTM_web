@@ -16,8 +16,8 @@ COPY ./doc/ctm.conf /etc/httpd/conf.d/
 
 RUN dnf upgrade -y --releasever=latest && \
     dnf install -y \
-        php8.2 php8.2-cli php8.2-pgsql && \
-    dnf install -y vi wget yum perl &&\
+        php8.3 php8.3-cli php8.3-pgsql && \
+    dnf install -y which vi wget yum perl &&\
     dnf clean all && \
     rm -rf /var/cache/dnf && \
     php -v
