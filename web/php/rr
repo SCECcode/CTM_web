@@ -1,0 +1,13 @@
+#plotHorizontalSlice.php?firstlat=24.2215&firstlon=-125.4587&secondlat=49.8609&secondlon=-65.1828&z=15000&modeldata=NCM_TemperatureVolume_250929_ll.nc&model=Boyd_2019&modeldir=boyd2019&uid=CTM_1793125818520
+
+#export QUERY_STRING="firstlat=24.2215&firstlon=-125.4587&secondlat=49.8609&secondlon=-65.1828&z=15000&modeldata=NCM_TemperatureVolume_250929_ll.nc&model=Boyd_2019&modeldir=boyd2019&uid=CTM_1793125818520" 
+#php -f ./plotHorizontalSlice.php
+
+## /usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin/query_2d_horizontal_slice.py
+## print(repr(df.columns.tolist()))
+
+PATH=/usr/local/share/anaconda3/bin:/usr/local/share/anaconda3/condabin:/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin:/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin:/usr/local/share/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin PYTHONPATH=/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/lib/python3.11/site-packages:/usr/local/share/plotting/ctm_plotting query_2d_horizontal_slice.py  --lat_start 24.2215 --lon_start -125.4587 --lat_end 49.8609 --lon_end -65.1828 --z 15000 --modelname Boyd_2019 --modelpath /usr/local/share/ctm-largedata-dir/model/boyd2019/NCM_TemperatureVolume_250929_ll.nc --outpath ../result/CTM_1793125818520_h_data.csv
+
+#PATH=/usr/local/share/anaconda3/bin:/usr/local/share/anaconda3/condabin:/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin:/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin:/usr/local/share/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin PYTHONPATH=/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/lib/python3.11/site-packages:/usr/local/share/plotting/ctm_plotting ../perl/plotCTM-horzSliceAll.pl ../result/CTM_1793125818520_h_data.csv 1 0 0 0 0 1 0
+
+head -20  ../result/CTM_1793125818520_h_data.csv

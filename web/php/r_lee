@@ -1,0 +1,6 @@
+LD_PRELOAD=/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/lib/libstdc++.so.6 PROJ_LIB=/lib/proj/share/proj PATH=/usr/local/share/anac
+onda3/bin:/usr/local/share/anaconda3/condabin:/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin:/usr/local/sbin:/usr/local/bin:/usr/
+sbin:/usr/bin:/sbin:/bin PYTHONPATH=/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/lib/python3.11/site-packages:/usr/local/share/plot
+ting/ctm_plotting query_2d_horizontal_slice.py --lat_start 38.1459 --lon_start -123.8006 --lat_end 40.7483 --lon_end -119.3869 --z 1000 --mod
+elname Lee_2026 --modelpath /usr/local/share/ctm-largedata-dir/model/lee2026/ThermalModel_WUS_v2.nc --outpath lee_result.csv
+

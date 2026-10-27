@@ -1,0 +1,2 @@
+
+PROJ_LIB=/lib/proj/share/proj PATH=/usr/local/share/anaconda3/bin:/usr/local/share/anaconda3/condabin:/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin PYTHONPATH=/usr/local/share/anaconda3/envs/ctm_explorer_conda_env/lib/python3.11/site-packages:/usr/local/share/plotting/ctm_plotting query_0d_point.py --lat 34.0612 --lon -110.0503 --z 0 --modelname 'Boyd_2019' --modelpath /usr/local/share/ctm-largedata-dir/model/boyd2019/NCM_TemperatureVolume_250929_ll.nc --outpath boyd_result.csv

@@ -73,12 +73,7 @@ function getMaterialPropertyByLatlonList(uid,dataarray,current_chunk, total_chun
 function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk, total_chunks, chunk_step) {
     var xmlhttp;
     // extract content of a file
-
-    var modelshort=document.getElementById("selectModelType").value;
-    var mid=getModelIndex(modelshort);
-    var modeldata=getModelFilenameById(mid);
-    var modelstr=getModelAbbNameById(mid);
-    var modeldir=getModelPathById(mid);
+    var modelstr=document.getElementById("selectModelType").value;
 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -103,6 +98,11 @@ function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk
               }
             }
 
+            if(current_chunk==(total_chunks-1)) { // last one
+              var mpname=str['mp'];
+// create a download link to the actual data file
+              var mstr=getModelNameWithType(modelstr);
+              var note="Material Property with "+mstr;
             if(current_chunk==(total_chunks-1)) { // last one
               var mpname=str['mp'];
 // create a download link to the actual data file
@@ -578,11 +578,6 @@ function replotHorizontalSlice() {
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;

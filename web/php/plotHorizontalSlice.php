@@ -9,6 +9,11 @@ $start_time = microtime(true);
 
 include ("util.php");
 
+// for debugging directly with php
+//if (empty($_GET) && isset($_SERVER['QUERY_STRING'])) {
+//    parse_str($_SERVER['QUERY_STRING'], $_GET);
+//}
+
 $firstlat = ($_GET['firstlat']);
 $firstlon = ($_GET['firstlon']);
 $z = ($_GET['z']);
@@ -51,10 +56,10 @@ $pdffile="../result/".$uid."_h_data.pdf";
 
 $estr = " --lat_start ".$firstlat." --lon_start ".$firstlon." --lat_end ".$secondlat." --lon_end ".$secondlon." --z ".$z." --modelname ".$model." --modelpath ".$modelpath." --outpath ".$csvfile;
 $query = $envstr." query_2d_horizontal_slice.py ".$estr;
-//print($query);
 
 $result = exec(escapeshellcmd($query), $retval, $status);
-//print_r($retval);
+//print($query); print("\n");
+//print_r($retval); print("\n");
 //print($status);
 
 if ($status == 1) {
@@ -71,14 +76,14 @@ $gmtpl="../perl/plotCTM-horzSliceAll.pl";
 $gmtcommand = $envstr." ".$gmtpl." ".$csvfile." ".$gtype." 0 0 0 0 1 0";
 $gmtresult = exec(escapeshellcmd($gmtcommand), $gmtretval, $gmtstatus);
 
-#print($gmtcommand);
-#print("gmtresult:"); print($gmtresult); print("<br>");
-#print("gmtstatus:"); print($gmtstatus); print("<br>");
-#print("gmtretval:"); 
-#print("<pre>");
-#print_r($gmtretval);
-#print("</pre>");
-#print("<br>");
+//print($gmtcommand); print("\n");
+//print("gmtresult:"); print($gmtresult); print("\n");
+//print("gmtstatus:"); print($gmtstatus); print("\n");
+//print("gmtretval:"); 
+//print("<pre>");
+//print_r($gmtretval);
+//print("</pre>");
+//print("<br>");
 
 
 $end_time = microtime(true);

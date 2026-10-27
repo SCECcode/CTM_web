@@ -21,7 +21,7 @@ function makeEnvString() {
    $conda3Loc= getenv('ANACONDA3_TOP_DIR');
    $plottingLoc= getenv('PLOTTING_TOP_DIR');
    $syspathstr= getenv('PATH');
-   $projstr= $installLoc."/lib/proj/share/proj";
+//   $projstr= $installLoc."/lib/proj/share/proj";
 
    $condaenvLoc=$conda3Loc."/envs/ctm_explorer_conda_env";
    $pyctmLoc= $condaenvLoc."/lib/python3.11/site-packages";
@@ -30,7 +30,8 @@ function makeEnvString() {
 
    $pythonstr= $pyctmLoc.":".$plottingLoc."/ctm_plotting";
 
-   $envstr="PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
+   $envstr="PATH=".$pathstr." PYTHONPATH=".$pythonstr;
+//   $envstr="PROJ_LIB=".$projstr." PATH=".$pathstr." PYTHONPATH=".$pythonstr;
 //   print($envstr);
    return $envstr;
 }
