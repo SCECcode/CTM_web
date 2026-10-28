@@ -103,11 +103,6 @@ function _getMaterialPropertyByLatlonChunk(uid,datastr, dataarray, current_chunk
 // create a download link to the actual data file
               var mstr=getModelNameWithType(modelstr);
               var note="Material Property with "+mstr;
-            if(current_chunk==(total_chunks-1)) { // last one
-              var mpname=str['mp'];
-// create a download link to the actual data file
-              var mstr=getModelNameWithType(modelstr);
-              var note="Material Property with "+mstr;
               insertMetaPlotResultTable(note,uid, {"materialproperty":mpname});
               document.getElementById('spinIconForListProperty').style.display = "none";
               if( dataarray.length < MAX_FILEPOINTS) {
@@ -578,6 +573,11 @@ function replotHorizontalSlice() {
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
+        } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
@@ -588,7 +588,7 @@ function replotHorizontalSlice() {
 
 /* refresh the plot on the plotoption iframe */
              var srcloc=MODAL_REPLOT_SRC+"?"+new Date().getTime();
- window.console.log("srcloc",srcloc);
+// window.console.log("srcloc",srcloc);
              $('#plotOptionIfram').attr('src',srcloc);
 
             document.getElementById('spinIconForArea').style.display = "none";
